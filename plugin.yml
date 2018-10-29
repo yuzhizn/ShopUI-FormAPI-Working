@@ -1,0 +1,9 @@
+name: CustomShopUI
+main: AlexPads\ShopUI\TinyPixelDevz\shop
+version: 1.0.0
+api: [3.0.0]
+author: TinyPixelDevz
+website: tinypixel.ga
+commands:
+ shop:
+  description: "Opens server selection Menu... By: TinyPixelDevz!"
