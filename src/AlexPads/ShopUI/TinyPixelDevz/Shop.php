@@ -16,9 +16,12 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
+use pocketmine\command\ConsoleCommandSender;
+use pocketmine\item\Item;
 use pocketmine\utils\TextFormat as TF;
 
 class Shop extends PluginBase implements Listener{
+	
 
     public function onEnable(){
               $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -46,6 +49,7 @@ class Shop extends PluginBase implements Listener{
 
     public function openMyForm(Player $player) : void{
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+		$this->getServer()->getPluginManager()->getPlugin("EconomyAPI");
         $form = $api->createSimpleForm(function(Player $player, int $data = null){
             $result = $data;
 			$ip1 = $this->getConfig()->get("IP1");
@@ -316,11 +320,34 @@ class Shop extends PluginBase implements Listener{
         $form = $api->createSimpleForm(function(Player $player, int $data = null){
             $result = $data;
 			if ($result === 0){
-				$this->getServer()->getInstance->dispatchCommand(new ConsoleCommandSender(), "say hi");
+				$price = $this->getConfig()->get("Steak-Price");
+				$id = 364;
+				$no = 0;
+				$num = 32;
+				$this->BuySell($player);
 			}
 		});
 		$form->setTitle("Food");
 		$form->addButton("Steak");
+		$form->sendToPlayer($player);
+	}
+	public function BuySell(Player $player) : void{
+        $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+        $form = $api->createSimpleForm(function(Player $player, int $data = null){
+            $result = $data;
+			if ($result === 0){
+				$player->getInventory()->addItem(Item::get($id, $no, $num));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get($price));
+					
+			}
+			if ($result === 0){
+				$player->getInventory()->removeItem(Item::get($id, $no, $num));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get($price));
+			}
+		});
+		$form->setTitle("Buy/Sell");
+		$form->addButton("Buy!");
+		$form->addButton("Sell");
 		$form->sendToPlayer($player);
 	}
 }
