@@ -49,72 +49,44 @@ class Shop extends PluginBase implements Listener{
 
     public function openMyForm(Player $player) : void{
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-		$this->getServer()->getPluginManager()->getPlugin("EconomyAPI");
         $form = $api->createSimpleForm(function(Player $player, int $data = null){
             $result = $data;
-			$ip1 = $this->getConfig()->get("IP1");
-			$ip2 = $this->getConfig()->get("IP2");
-			$ip3 = $this->getConfig()->get("IP3");
-			$ip4 = $this->getConfig()->get("IP4");
-			$ip5 = $this->getConfig()->get("IP5");
-			$ip6 = $this->getConfig()->get("IP6");
-			$ip7 = $this->getConfig()->get("IP7");
-			$ip8 = $this->getConfig()->get("IP8");
-			$ip9 = $this->getConfig()->get("IP9");
-			$ip10 = $this->getConfig()->get("IP10");
-			$port1 = $this->getConfig()->get("Port1");
-			$port2 = $this->getConfig()->get("Port2");
-			$port3 = $this->getConfig()->get("Port3");
-			$port4 = $this->getConfig()->get("Port4");
-			$port5 = $this->getConfig()->get("Port5");
-			$port6 = $this->getConfig()->get("Port6");
-			$port7 = $this->getConfig()->get("Port7");
-			$port8 = $this->getConfig()->get("Port8");
-			$port9 = $this->getConfig()->get("Port9");
-			$port10 = $this->getConfig()->get("Port10");
-			$number = $this->getConfig()->get("Servers");
-			$prefix = $this->getConfig()->get("Prefix");
-            if($result === null){
-                return;
-            }
 			if ($result === 0 ){
 				$this->Food($player);
 			}
 			if($result === 1){
-				$message = $this->getConfig()->get("Message");
-				$player->transfer($ip2, $port2, $message);
-				$bcast = $this->getConfig()->get("broadcast");
-				$bcast = $this->getConfig()->get("broadcast");
-                $name = $player->getName();
-				$color = $this->getConfig()->get("Color");
-				$server = $this->getConfig()->get("Server-2");
-				$this->getServer()->broadcastMessage("$prefix $color $name $bcast $server");
 			}
         });
-		$title = $this->getConfig()->get("Title");
-		$number = $this->getConfig()->get("Servers");
-        $form->setTitle($title);
-		if ($number === 1){
-			$name1 = $this->getConfig()->get("Food");
-			$form->addButton($name1);
-			$form->sendToPlayer($player);
+        $form->setTitle($this->getConfig()->get("Title"));
+		$form->addButton($this->getConfig()->get("Food"));
+		$form->sendToPlayer($player);
 		}
-    }
 	public function Food(Player $player) : void{
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createSimpleForm(function(Player $player, int $data = null){
             $result = $data;
 			if ($result === 0){
 				$player->getInventory()->addItem(Item::get($this->getConfig()->get("Food1ID"), $this->getConfig()->get("Food1Met"), $this->getConfig()->get("Food1Num")));
-				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->removeMoney($player->getName(), $this->getConfig()->get("Food1-Price"));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Food1Price"));
 			}
 			if ($result === 1){
 				$player->getInventory()->addItem(Item::get($this->getConfig()->get("Food2ID"), $this->getConfig()->get("Food2Met"), $this->getConfig()->get("Food2Num")));
-				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->removeMoney($player->getName(), $this->getConfig()->get("Food2-Price"));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Food2Price"));
+			}
+			if ($result === 2){
+				$player->getInventory()->addItem(Item::get($this->getConfig()->get("Food3ID"), $this->getConfig()->get("Food3Met"), $this->getConfig()->get("Food3Num")));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Food3Price"));
+			}
+			if ($result === 3){
+				$player->getInventory()->addItem(Item::get($this->getConfig()->get("Food4ID"), $this->getConfig()->get("Food4Met"), $this->getConfig()->get("Food4Num")));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Food4Price"));
 			}
 		});
 		$form->setTitle("Food");
-		$form->addButton("Steak");
+		$form->addButton($this->getConfig()->get("Food1Name"));
+		$form->addButton($this->getConfig()->get("Food2Name"));
+		$form->addButton($this->getConfig()->get("Food3Name"));
+		$form->addButton($this->getConfig()->get("Food4Name"));
 		$form->sendToPlayer($player);
 	}
 }

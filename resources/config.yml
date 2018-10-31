@@ -1,19 +1,120 @@
 ## Offical TinyPixel Shop!
-## Food items/ids
-## is the Price of Steak
+## Title of First Form!
+Title: TinyPixel ShopUI
+## Food items/ids Title
+Food: Food
+## Name of of the Food/Object (What people see on the Form)
+Food1Name: Steak
+## is the Price of Food1
 Food1-Price: 250
-## is the Item ID of Steak
-## This Id Is Changeable BUT Dont change the SteakID part just the ID
+## is the Item ID of the Item Steak
 Food1ID: 364
 ## is the ammount of Steak
 Food1Num: 32
 ## is the Meta or the second number Ex.. 364, 0, 32 has NO damage. (useful for tools), OR, 364, 1, 32 is Steak with the id 364:1
 Food1Met: 0
-
+## Food2
+Food2Name: Soup
+Food2Price: 100
+Food2ID: 282
+Food2Num: 20
+Food2Met: 0
+## Food3
+Food3Name: Apple
+Food3Price: 50
+Food3ID: 10
+Food3Num: 260
+Food3Met: 0
+## Food4
+Food4Name: Bread
+Food4Price: 500
+Food4ID: 297
+Food4Num: 64
+Food4Met: 0
 ## Blocks items/ids
+Block1: 2
+Price1: 500
+Name1: Grass
+Amount1: 32
 
+Block2: 43
+BlockMeta2: 2
+Price2: 1500
+Name2: Wood
+Amount2: 15
+
+Block3: 17
+Price3: 1800
+Name3: Oak Logs
+Amount3: 10
+
+Block4: 1
+Price4: 500
+Name4: Stone
+Amount: 32
+
+Block5: 4
+Price5: 500
+Name5: CobbleStone
+Amount5: 32
+
+Block6: 98
+Price6: 250
+Name6: StoneBrick
+Amount6: 25
+
+Block7: 43
+BlockMeta7: 4
+Price7: 350
+Name7: Bricks
+Amount7: 32
+
+Block8: 12
+Price8: 2000
+Name8: Sand
+Amount8: 25
+
+Block9: 87
+Price9: 500
+Name9: Netherrack
+Amount9: 64
+
+Block10: 1
+BlockMeta10: 5
+Price10: 350
+Name10: Andesite
+Amount10: 32
+
+Block11: 1
+BlockMeta11: 1
+Price11: 350
+Name11: Granite
+
+Block12: 1
+BlockMeta12: 3
+Price12: 350
+Name12: Dorite
+Amount12: 32
+
+Block13: 48
+Price13: 500
+Name13: Mossy Cobblestone
+Amount13: 25
+
+Block14: 121
+Price14: 2000
+Name14: EndStone
+Amount14: 64
+
+Block15: 49
+Price15: 10000
+Name15: Obsidian
+Amount15: 32
 ## Tools/Farming items/ids
 
 ## Armor
 
 ## Raiding items/ids
+
+## Messages
+Message: hello!
