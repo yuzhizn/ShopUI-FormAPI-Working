@@ -33,6 +33,7 @@ Food4Num: 64
 Food4Met: 0
 ## Blocks items/ids
 Block1: 2
+BlockMeta1: 0
 Price1: 500
 Name1: Grass
 Amount1: 32
@@ -44,21 +45,25 @@ Name2: Wood
 Amount2: 15
 
 Block3: 17
+BlockMeta3: 0
 Price3: 1800
 Name3: Oak Logs
 Amount3: 10
 
 Block4: 1
+BlockMeta4: 0
 Price4: 500
 Name4: Stone
 Amount: 32
 
 Block5: 4
+BlockMeta5: 0
 Price5: 500
 Name5: CobbleStone
 Amount5: 32
 
 Block6: 98
+BlockMeta6: 0
 Price6: 250
 Name6: StoneBrick
 Amount6: 25
@@ -70,11 +75,13 @@ Name7: Bricks
 Amount7: 32
 
 Block8: 12
+BlockMeta8: 0
 Price8: 2000
 Name8: Sand
 Amount8: 25
 
 Block9: 87
+BlockMeta9: 0
 Price9: 500
 Name9: Netherrack
 Amount9: 64
@@ -97,24 +104,193 @@ Name12: Dorite
 Amount12: 32
 
 Block13: 48
+BlockMeta13: 0
 Price13: 500
 Name13: Mossy Cobblestone
 Amount13: 25
 
 Block14: 121
+BlockMeta14: 0
 Price14: 2000
 Name14: EndStone
 Amount14: 64
 
 Block15: 49
+BlockMeta15: 0
 Price15: 10000
 Name15: Obsidian
 Amount15: 32
 ## Tools/Farming items/ids
 
+Item1: tnt
+ItemID1: 
+ItemMeta1:
+ItemAmmount1:
+ItemPrice1:
+
+Item2: Creeper Spawn Egg
+ItemID2: 
+ItemMeta2:
+ItemAmmount2:
+ItemPrice2:
+
+Item3: Flint and Steel
+ItemID3: 
+ItemMeta3:
+ItemAmmount3:
+ItemPrice3:
+
+Item4: Potion of Fire Resistance
+ItemID4: 
+ItemMeta4:
+ItemAmmount4:
+ItemPrice4:
+
+Item5: Speed Potion
+ItemID5: 
+ItemMeta5:
+ItemAmmount5:
+ItemPrice5:
+
+Item6: Potion of Invisibility
+ItemID6: 
+ItemMeta6:
+ItemAmmount6:
+ItemPrice6:
+
+Item7: Strength Potion
+ItemID7: 
+ItemMeta7:
+ItemAmmount7:
+ItemPrice7:
+
+Item8: Potion of Water Breathing
+ItemID8: 
+ItemMeta8:
+ItemAmmount8:
+ItemPrice8:
+
+## Misc. Items like Endercest chest and some potions and things 
+
+M1: Ender Chest
+Mid1:
+MM1:
+Ma1:
+
+M2: Chest 
+Mid2:
+MM2:
+Ma2:
+
+M2: Ender Pearl
+Mid2:
+MM2:
+Ma2:
+
+M3: Eye of Ender
+Mid3:
+MM3:
+Ma3:
+
+M4: Bone
+Mid4:
+MM4:
+Ma4:
+
+M5: Monster Spawner
+Mid5:
+MM5:
+Ma5:
+
+M6: Skeleton Egg
+Mid6:
+MM6:
+Ma6:
+
+M7: Blaze Egg
+Mid7:
+MM7:
+Ma7:
+
+M8: Zombie Egg
+Mid8:
+MM8:
+Ma8:
+
+M9: Sheep Egg
+Mid9:
+MM9:
+Ma9:
+
+M10: Enderman Egg
+Mid10:
+MM10:
+Ma10:
+
 ## Armor
 
+A1: Diamond Helmet
+Aid1:
+Am1:
+Aa1:
+
+A2: Diamond Chest Plate
+Aid2:
+Am2:
+Aa2:
+
+A3: Diamond Leggins
+Aid3:
+Am3:
+Aa3:
+
+A4: Diamond Boots
+Aid4:
+Am4:
+Aa4:
+
+A5: Iron Helmet
+Aid5:
+Am5:
+Aa5:
+
+A6: Iron Chestplate
+Aid6:
+Am6:
+Aa6:
+
+A7: Iron Leggings
+Aid7:
+Am7:
+Aa7:
+
+A8: Iron Boots
+Aid8:
+Am8:
+Aa8:
+
+A9: Diamond Sword
+Aid9:
+Am9:
+Aa9:
+
+A10: Bow
+Aid10:
+Am10:
+Aa10:
+
+A11: Arrow
+Aid11:
+Am11:
+Aa11:
+
 ## Raiding items/ids
+
+## Keys Items
+
+## Ces
+
+# Custom Items/commands! 
 
 ## Messages
 Message: hello!
