@@ -32,6 +32,9 @@ Food4ID: 297
 Food4Num: 64
 Food4Met: 0
 ## Blocks items/ids
+## Title
+Blocks: Blocks
+## Now the Data 
 Block1: 2
 BlockMeta1: 0
 Price1: 500
@@ -120,171 +123,187 @@ BlockMeta15: 0
 Price15: 10000
 Name15: Obsidian
 Amount15: 32
-## Tools/Farming items/ids
-
-Item1: tnt
-ItemID1: 
-ItemMeta1:
-ItemAmmount1:
-ItemPrice1:
+## Raiding items/ids
+Raiding: Raiding
+Item1: TNT
+ItemID1: 46
+ItemMeta1: 0
+ItemAmmount1: 10
+ItemPrice1: 1000
 
 Item2: Creeper Spawn Egg
-ItemID2: 
-ItemMeta2:
-ItemAmmount2:
-ItemPrice2:
+ItemID2: 383
+ItemMeta2: 33
+ItemAmmount2: 5
+ItemPrice2: 1500
 
 Item3: Flint and Steel
-ItemID3: 
-ItemMeta3:
-ItemAmmount3:
-ItemPrice3:
+ItemID3: 259
+ItemMeta3: 0
+ItemAmmount3: 1
+ItemPrice3: 100
 
 Item4: Potion of Fire Resistance
-ItemID4: 
-ItemMeta4:
-ItemAmmount4:
-ItemPrice4:
+ItemID4: 373
+ItemMeta4: 13
+ItemAmmount4: 1
+ItemPrice4: 10000
 
 Item5: Speed Potion
-ItemID5: 
-ItemMeta5:
-ItemAmmount5:
-ItemPrice5:
+ItemID5: 373
+ItemMeta5: 15
+ItemAmmount5: 1
+ItemPrice5: 10000
 
 Item6: Potion of Invisibility
-ItemID6: 
-ItemMeta6:
-ItemAmmount6:
-ItemPrice6:
+ItemID6: 373
+ItemMeta6: 8
+ItemAmmount6: 1
+ItemPrice6: 100000
 
 Item7: Strength Potion
-ItemID7: 
-ItemMeta7:
-ItemAmmount7:
-ItemPrice7:
+ItemID7: 373
+ItemMeta7: 32
+ItemAmmount7: 1
+ItemPrice7: 10000
 
-Item8: Potion of Water Breathing
-ItemID8: 
-ItemMeta8:
-ItemAmmount8:
-ItemPrice8:
+Item8: Water Breathing
+ItemID8: 373
+ItemMeta8: 20
+ItemAmmount8: 1
+ItemPrice8: 10000
 
 ## Misc. Items like Endercest chest and some potions and things 
+Misc: Miscellaneous
 
 M1: Ender Chest
-Mid1:
-MM1:
-Ma1:
+Mid1: 130
+MM1: 0
+Mp1: 4500
+Ammount1: 1
 
 M2: Chest 
-Mid2:
-MM2:
-Ma2:
-
-M2: Ender Pearl
-Mid2:
-MM2:
-Ma2:
+Mid2: 54
+MM2: 0
+Mp2: 1000
+Ammount2: 6
 
 M3: Eye of Ender
-Mid3:
-MM3:
-Ma3:
+Mid3: 381
+MM3: 0
+Mp3: 20000
+Ammount3: 2
 
-M4: Bone
-Mid4:
-MM4:
-Ma4:
+M4: Beacon
+Mid4: 138
+MM4: 0
+Mp4: 100000
+Ammount4: 1
 
 M5: Monster Spawner
-Mid5:
-MM5:
-Ma5:
+Mid5: 52
+MM5: 0
+Mp5: 800000
+Ammount5: 1
 
 M6: Skeleton Egg
-Mid6:
-MM6:
-Ma6:
+Mid6: 383
+MM6: 34
+Mp6: 200000
+Ammount6: 1
 
 M7: Blaze Egg
-Mid7:
-MM7:
-Ma7:
+Mid7: 383
+MM7: 43
+Mp7: 200000
+Ammount7: 1
 
 M8: Zombie Egg
-Mid8:
-MM8:
-Ma8:
+Mid8: 383
+MM8: 32
+Mp8: 200000
+Ammount8: 1
 
 M9: Sheep Egg
-Mid9:
-MM9:
-Ma9:
+Mid9: 383
+MM9: 13
+Mp9: 100000
+Ammount9: 1
 
 M10: Enderman Egg
-Mid10:
-MM10:
-Ma10:
+Mid10: 383
+MM10: 38
+Mp10: 400000
+Ammount10: 1
 
-## Armor
+## Armor/Weapons Ids
+Armor: Armor
 
 A1: Diamond Helmet
-Aid1:
-Am1:
-Aa1:
+Aid1: 310
+Am1: 0
+Aa1: 1
+Ap1: 2000
 
 A2: Diamond Chest Plate
-Aid2:
-Am2:
-Aa2:
+Aid2: 311
+Am2: 0
+Aa2: 1
+Ap2: 5000
 
 A3: Diamond Leggins
-Aid3:
-Am3:
-Aa3:
+Aid3: 312
+Am3: 0
+Aa3: 1
+Ap3: 2000
 
 A4: Diamond Boots
-Aid4:
-Am4:
-Aa4:
+Aid4: 313
+Am4: 0
+Aa4: 1
+Ap4: 2000
 
 A5: Iron Helmet
-Aid5:
-Am5:
-Aa5:
-
+Aid5: 306
+Am5: 0
+Aa5: 1
+Ap5: 500
 A6: Iron Chestplate
-Aid6:
-Am6:
-Aa6:
+Aid6: 307
+Am6: 0 
+Aa6: 1
+Ap6: 1000
 
 A7: Iron Leggings
-Aid7:
-Am7:
-Aa7:
+Aid7: 308
+Am7: 0
+Aa7: 1
+Ap7: 200
 
 A8: Iron Boots
-Aid8:
-Am8:
-Aa8:
-
+Aid8: 309
+Am8: 0
+Aa8: 1
+Ap8: 150
+ 
 A9: Diamond Sword
-Aid9:
-Am9:
-Aa9:
+Aid9: 276
+Am9: 0
+Aa9: 1
+Ap9: 1200
 
 A10: Bow
-Aid10:
-Am10:
-Aa10:
+Aid10: 261
+Am10: 0
+Aa10: 1
+Ap10: 2000
 
 A11: Arrow
-Aid11:
-Am11:
-Aa11:
+Aid11: 262
+Am11: 0
+Aa11: 32
+Ap11: 1500
 
-## Raiding items/ids
 
 ## Keys Items
 
@@ -293,4 +312,4 @@ Aa11:
 # Custom Items/commands! 
 
 ## Messages
-Message: hello!
+Message: Thank you for using TinyPixel ShopUI!

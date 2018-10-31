@@ -57,9 +57,24 @@ class Shop extends PluginBase implements Listener{
 			if($result === 1){
 				$this->Blocks($player);
 			}
+			if($result === 2){
+				$this->Raiding($player);
+			}
+			if($result === 3){
+				$this->Misc($player);
+			}
+			if($result === 4){
+				$this->Blocks($player);
+			}
+			if($result === 5){
+				$this->Blocks($player);
+			}
         });
         $form->setTitle($this->getConfig()->get("Title"));
 		$form->addButton($this->getConfig()->get("Food"));
+		$form->addButton($this->getConfig()->get("Blocks"));
+		$form->addButton($this->getConfig()->get("Raiding"));
+		$form->addButton($this->getConfig()->get("Misc"));
 		$form->sendToPlayer($player);
 		}
 	public function Food(Player $player) : void{
@@ -159,7 +174,7 @@ class Shop extends PluginBase implements Listener{
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Price16"));
 			}
 		});
-		$form->setTitle("Food");
+		$form->setTitle($this->getConfig()->get("Blocks"));
 		$form->addButton($this->getConfig()->get("Name1"));
 		$form->addButton($this->getConfig()->get("Name2"));
 		$form->addButton($this->getConfig()->get("Name3"));
@@ -214,7 +229,7 @@ class Shop extends PluginBase implements Listener{
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("ItemPrice8"));
 			}
 		});
-		$form->setTitle("Food");
+		$form->setTitle($this->getConfig()->get("Raiding"));
 		$form->addButton($this->getConfig()->get("Item1"));
 		$form->addButton($this->getConfig()->get("Item2"));
 		$form->addButton($this->getConfig()->get("Item3"));
@@ -223,6 +238,64 @@ class Shop extends PluginBase implements Listener{
 		$form->addButton($this->getConfig()->get("Item6"));
 		$form->addButton($this->getConfig()->get("Item7"));
 		$form->addButton($this->getConfig()->get("Item8"));
+		$form->sendToPlayer($player);
+	}
+	public function Misc(Player $player) : void{
+        $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+        $form = $api->createSimpleForm(function(Player $player, int $data = null){
+            $result = $data;
+			if ($result === 0){
+				$player->getInventory()->addItem(Item::get($this->getConfig()->get("Mid1"), $this->getConfig()->get("MM1"), $this->getConfig()->get("Ammount1")));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Mp1"));
+			}
+			if ($result === 1){
+				$player->getInventory()->addItem(Item::get($this->getConfig()->get("Mid2"), $this->getConfig()->get("MM2"), $this->getConfig()->get("Ammount2")));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Mp2"));
+			}
+			if ($result === 2){
+				$player->getInventory()->addItem(Item::get($this->getConfig()->get("Mid3"), $this->getConfig()->get("MM3"), $this->getConfig()->get("Ammount3")));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Mp3"));
+			}
+			if ($result === 3){
+				$player->getInventory()->addItem(Item::get($this->getConfig()->get("Mid4"), $this->getConfig()->get("MM4"), $this->getConfig()->get("4Num")));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Mp4"));
+			}
+			if ($result === 4){
+				$player->getInventory()->addItem(Item::get($this->getConfig()->get("Mid5"), $this->getConfig()->get("MM5"), $this->getConfig()->get("Ammount5")));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Mp5"));
+			}
+			if ($result === 5){
+				$player->getInventory()->addItem(Item::get($this->getConfig()->get("Mid6"), $this->getConfig()->get("MM6"), $this->getConfig()->get("Ammount6")));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Mp6"));
+			}
+			if ($result === 6){
+				$player->getInventory()->addItem(Item::get($this->getConfig()->get("Mid7"), $this->getConfig()->get("MM7"), $this->getConfig()->get("Ammount7")));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Mp7"));
+			}
+			if ($result === 7){
+				$player->getInventory()->addItem(Item::get($this->getConfig()->get("Mid8"), $this->getConfig()->get("MM8"), $this->getConfig()->get("Ammount8")));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Mp8"));
+			}
+			if ($result === 8){
+				$player->getInventory()->addItem(Item::get($this->getConfig()->get("Mid9"), $this->getConfig()->get("MM9"), $this->getConfig()->get("Ammount9")));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Mp9"));
+			}
+			if ($result === 9){
+				$player->getInventory()->addItem(Item::get($this->getConfig()->get("Mid10"), $this->getConfig()->get("MM10"), $this->getConfig()->get("Ammount10")));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("Mp10"));
+			}
+		});
+		$form->setTitle($this->getConfig()->get("Misc"));
+		$form->addButton($this->getConfig()->get("M1"));
+		$form->addButton($this->getConfig()->get("M2"));
+		$form->addButton($this->getConfig()->get("M3"));
+		$form->addButton($this->getConfig()->get("M4"));
+		$form->addButton($this->getConfig()->get("M5"));
+		$form->addButton($this->getConfig()->get("M6"));
+		$form->addButton($this->getConfig()->get("M7"));
+		$form->addButton($this->getConfig()->get("M8"));
+		$form->addButton($this->getConfig()->get("M9"));
+		$form->addButton($this->getConfig()->get("M10"));
 		$form->sendToPlayer($player);
 	}
 }
