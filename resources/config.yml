@@ -22,8 +22,8 @@ Food2Met: 0
 ## Food3
 Food3Name: Apple
 Food3Price: 50
-Food3ID: 10
-Food3Num: 260
+Food3ID: 260
+Food3Num: 10
 Food3Met: 0
 ## Food4
 Food4Name: Bread
@@ -307,7 +307,25 @@ Ap11: 1500
 
 ## Keys Items
 
-## Ces
+CommonKeyPrice:
+
+CommonVirtualKeyPrice:
+
+UncommonVirtualKeyPrice:
+
+LegendaryVirtualKeyPrice:
+
+MythicVirtualKeyPrice: 
+
+## Enchants!
+
+UnbreakingPrice:
+
+UnbreakingPrice2:
+
+UnbreakingPrice5:
+
+
 
 # Custom Items/commands! 
 
