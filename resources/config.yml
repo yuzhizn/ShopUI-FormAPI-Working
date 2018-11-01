@@ -1,4 +1,13 @@
 ## Offical TinyPixel Shop!
+
+Enabled-Food: true
+Enabled-Blocks: true
+Enabled-Raiding: true
+Enabled-Misc: true
+Enabled-Armor: true
+Enabled-Keys: true
+Enabled-Enchants: true
+
 ## Title of First Form!
 Title: TinyPixel ShopUI
 ## Food items/ids Title
@@ -306,24 +315,26 @@ Ap11: 1500
 
 
 ## Keys Items
+Keys: Keys
 
-CommonKeyPrice:
+CommonPrice: 2000
 
-CommonVirtualKeyPrice:
+CommonvPrice: 5000
 
-UncommonVirtualKeyPrice:
+UncommonPrice: 6000
 
-LegendaryVirtualKeyPrice:
+LegendPrice: 10000
 
-MythicVirtualKeyPrice: 
+MythicPrice: 50000 
 
 ## Enchants!
+Enchants: Enchants
 
-UnbreakingPrice:
+UnbreakingPrice1: 5000
 
-UnbreakingPrice2:
+UnbreakingPrice2: 10000
 
-UnbreakingPrice5:
+UnbreakingPrice5: 50000
 
 
 
@@ -331,3 +342,5 @@ UnbreakingPrice5:
 
 ## Messages
 Message: Thank you for using TinyPixel ShopUI!
+Setup: Item, Ammount, Price
+Money: Not Enough Money!
