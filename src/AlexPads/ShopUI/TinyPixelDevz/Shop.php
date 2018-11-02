@@ -652,11 +652,12 @@ class Shop extends PluginBase implements Listener{
         $form = $api->createSimpleForm(function(Player $player, int $data = null){
             $result = $data;
 			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
+			$usr = $player->getName();
 			if ($result === 0){
 				if($money < $this->getConfig()->get("CommonPrice")) {
 					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
 				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "key Common".$player->getName()."2");
+				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "key Common $usr 2");
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("CommonPrice"));
 				$this->Form($player);
 			}}
@@ -809,7 +810,7 @@ class Shop extends PluginBase implements Listener{
 			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 			if ($result === 0){
 				if($money < $this->getConfig()->get("Food1Price")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Food1ID"), $this->getConfig()->get("Food1Met"), $this->getConfig()->get("Food1Num")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Food1Price"));
@@ -817,7 +818,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 1){
 				if($money < $this->getConfig()->get("Food2Price")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Food2ID"), $this->getConfig()->get("Food2Met"), $this->getConfig()->get("Food2Num")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Food2Price"));
@@ -825,7 +826,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 2){
 				if($money < $this->getConfig()->get("Food3Price")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Food3ID"), $this->getConfig()->get("Food3Met"), $this->getConfig()->get("Food3Num")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Food3Price"));
@@ -833,7 +834,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 3){
 				if($money < $this->getConfig()->get("Food4Price")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Food4ID"), $this->getConfig()->get("Food4Met"), $this->getConfig()->get("Food4Num")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Food4Price"));
@@ -855,7 +856,7 @@ class Shop extends PluginBase implements Listener{
 			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 			if ($result === 0){
 				if($money < $this->getConfig()->get("OrePrice1")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("OreID1"), $this->getConfig()->get("OreMeta1"), $this->getConfig()->get("OreAmmount1")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("OreSell1"));
@@ -863,7 +864,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 1){
 				if($money < $this->getConfig()->get("OrePrice2")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("OreID2"), $this->getConfig()->get("OreMeta2"), $this->getConfig()->get("OreAmmount2")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("OreSell2"));
@@ -871,7 +872,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 2){
 				if($money < $this->getConfig()->get("OrePrice3")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("OreID3"), $this->getConfig()->get("OreMeta3"), $this->getConfig()->get("OreAmmount3")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("OreSell3"));
@@ -879,7 +880,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 3){
 				if($money < $this->getConfig()->get("OrePrice4")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("OreID4"), $this->getConfig()->get("OreMeta5"), $this->getConfig()->get("OreAmmount4")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("OreSell4"));
@@ -901,7 +902,7 @@ class Shop extends PluginBase implements Listener{
 			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 			if ($result === 0){
 				if($money < $this->getConfig()->get("Price1")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block1"), $this->getConfig()->get("BlockMeta1"), $this->getConfig()->get("Amount1")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price1"));
@@ -909,7 +910,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 1){
 				if($money < $this->getConfig()->get("Price2")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block2"), $this->getConfig()->get("BlockMeta2"), $this->getConfig()->get("Amount2")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price2"));
@@ -917,7 +918,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 2){
 				if($money < $this->getConfig()->get("Price3")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block3"), $this->getConfig()->get("BlockMeta3"), $this->getConfig()->get("Amount3")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price3"));
@@ -925,7 +926,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 3){
 				if($money < $this->getConfig()->get("Price4")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block4"), $this->getConfig()->get("BlockMeta4"), $this->getConfig()->get("Amount4")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price4"));
@@ -933,14 +934,14 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 4){
 				if($money < $this->getConfig()->get("Price5")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block5"), $this->getConfig()->get("BlockMeta5"), $this->getConfig()->get("Amount5")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price5"));
 			}}
 			if ($result === 5){
 				if($money < $this->getConfig()->get("Price6")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block6"), $this->getConfig()->get("BlockMeta6"), $this->getConfig()->get("Amount6")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price6"));
@@ -948,7 +949,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 6){
 				if($money < $this->getConfig()->get("Price7")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block7"), $this->getConfig()->get("BlockMeta7"), $this->getConfig()->get("Amount7")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price7"));
@@ -956,7 +957,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 7){
 				if($money < $this->getConfig()->get("Price8")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block8"), $this->getConfig()->get("BlockMeta8"), $this->getConfig()->get("Amount8")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price8"));
@@ -964,7 +965,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 8){
 				if($money < $this->getConfig()->get("Price9")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block9"), $this->getConfig()->get("BlockMeta9"), $this->getConfig()->get("Amount9")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price9"));
@@ -972,7 +973,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 9){
 				if($money < $this->getConfig()->get("Price10")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block10"), $this->getConfig()->get("BlockMeta10"), $this->getConfig()->get("Amount10")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price10"));
@@ -980,7 +981,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 10){
 				if($money < $this->getConfig()->get("Price11")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block11"), $this->getConfig()->get("BlockMeta11"), $this->getConfig()->get("Amount11")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price11"));
@@ -988,7 +989,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 11){
 				if($money < $this->getConfig()->get("Price12")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block12"), $this->getConfig()->get("BlockMeta12"), $this->getConfig()->get("Amount12")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price12"));
@@ -996,7 +997,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 12){
 				if($money < $this->getConfig()->get("Price13")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block13"), $this->getConfig()->get("BlockMeta13"), $this->getConfig()->get("Amount13")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price13"));
@@ -1004,7 +1005,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 13){
 				if($money < $this->getConfig()->get("Price14")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block14"), $this->getConfig()->get("BlockMeta14"), $this->getConfig()->get("Amount14")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price14"));
@@ -1012,7 +1013,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 14){
 				if($money < $this->getConfig()->get("Price15")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block15"), $this->getConfig()->get("BlockMeta15"), $this->getConfig()->get("Amount15")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price15"));
@@ -1020,7 +1021,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 15){
 				if($money < $this->getConfig()->get("Preice16")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Block16"), $this->getConfig()->get("BlockMeta16"), $this->getConfig()->get("Amount16")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Price16"));
@@ -1053,7 +1054,7 @@ class Shop extends PluginBase implements Listener{
 			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 			if ($result === 0){
 				if($money < $this->getConfig()->get("ItemPrice1")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("ItemID1"), $this->getConfig()->get("ItemMeta1"), $this->getConfig()->get("ItemAmmount1")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("ItemPrice1"));
@@ -1061,7 +1062,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 1){
 				if($money < $this->getConfig()->get("ItemPrice2")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("ItemID2"), $this->getConfig()->get("ItemMeta2"), $this->getConfig()->get("ItemAmmount2")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("ItemPrice2"));
@@ -1069,7 +1070,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 2){
 				if($money < $this->getConfig()->get("ItemPrice3")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("ItemID3"), $this->getConfig()->get("ItemMeta3"), $this->getConfig()->get("ItemAmmount3")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("ItemPrice3"));
@@ -1077,7 +1078,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 3){
 				if($money < $this->getConfig()->get("ItemPrice4")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("ItemID4"), $this->getConfig()->get("ItemMeta4"), $this->getConfig()->get("Food4Num")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("ItemPrice4"));
@@ -1085,7 +1086,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 4){
 				if($money < $this->getConfig()->get("ItemPrice5")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("ItemID5"), $this->getConfig()->get("ItemMeta5"), $this->getConfig()->get("ItemAmmount5")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("ItemPrice5"));
@@ -1093,7 +1094,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 5){
 				if($money < $this->getConfig()->get("ItemPrice6")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("ItemID6"), $this->getConfig()->get("ItemMeta6"), $this->getConfig()->get("ItemAmmount6")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("ItemPrice6"));
@@ -1101,7 +1102,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 6){
 				if($money < $this->getConfig()->get("ItemPrice7")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("ItemID7"), $this->getConfig()->get("ItemMeta7"), $this->getConfig()->get("ItemAmmount7")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("ItemPrice7"));
@@ -1109,7 +1110,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 7){
 				if($money < $this->getConfig()->get("ItemPrice8")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("ItemID8"), $this->getConfig()->get("ItemMeta8"), $this->getConfig()->get("ItemAmmount8")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("ItemPrice8"));
@@ -1135,7 +1136,7 @@ class Shop extends PluginBase implements Listener{
 			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 			if ($result === 0){
 				if($money < $this->getConfig()->get("Mp1")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Mid1"), $this->getConfig()->get("MM1"), $this->getConfig()->get("Ammount1")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Mp1"));
@@ -1143,7 +1144,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 1){
 				if($money < $this->getConfig()->get("Mp2")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Mid2"), $this->getConfig()->get("MM2"), $this->getConfig()->get("Ammount2")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Mp2"));
@@ -1151,7 +1152,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 2){
 				if($money < $this->getConfig()->get("Mp3")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Mid3"), $this->getConfig()->get("MM3"), $this->getConfig()->get("Ammount3")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Mp3"));
@@ -1159,7 +1160,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 3){
 				if($money < $this->getConfig()->get("Mp4")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Mid4"), $this->getConfig()->get("MM4"), $this->getConfig()->get("4Num")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Mp4"));
@@ -1167,7 +1168,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 4){
 				if($money < $this->getConfig()->get("Mp5")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Mid5"), $this->getConfig()->get("MM5"), $this->getConfig()->get("Ammount5")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Mp5"));
@@ -1175,7 +1176,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 5){
 				if($money < $this->getConfig()->get("Mp6")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Mid6"), $this->getConfig()->get("MM6"), $this->getConfig()->get("Ammount6")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Mp6"));
@@ -1183,7 +1184,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 6){
 				if($money < $this->getConfig()->get("Mp7")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Mid7"), $this->getConfig()->get("MM7"), $this->getConfig()->get("Ammount7")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Mp7"));
@@ -1191,7 +1192,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 7){
 				if($money < $this->getConfig()->get("Mp8")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Mid8"), $this->getConfig()->get("MM8"), $this->getConfig()->get("Ammount8")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Mp8"));
@@ -1199,7 +1200,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 8){
 				if($money < $this->getConfig()->get("Mp9")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Mid9"), $this->getConfig()->get("MM9"), $this->getConfig()->get("Ammount9")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Mp9"));
@@ -1207,7 +1208,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 9){
 				if($money < $this->getConfig()->get("Mp10")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Mid10"), $this->getConfig()->get("MM10"), $this->getConfig()->get("Ammount10")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Mp10"));
@@ -1236,7 +1237,7 @@ class Shop extends PluginBase implements Listener{
 			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 			if ($result === 0){
 				if($money < $this->getConfig()->get("Ap1")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Aid1"), $this->getConfig()->get("Am1"), $this->getConfig()->get("Aa1")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Ap1"));
@@ -1244,7 +1245,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 1){
 				if($money < $this->getConfig()->get("Ap2")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Aid2"), $this->getConfig()->get("Am2"), $this->getConfig()->get("Aa2")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Ap2"));
@@ -1252,7 +1253,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 2){
 				if($money < $this->getConfig()->get("Ap3")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Aid3"), $this->getConfig()->get("Am3"), $this->getConfig()->get("Aa3")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Ap3"));
@@ -1260,7 +1261,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 3){
 				if($money < $this->getConfig()->get("Ap4")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Aid4"), $this->getConfig()->get("Am4"), $this->getConfig()->get("4Num")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Ap4"));
@@ -1268,7 +1269,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 4){
 				if($money < $this->getConfig()->get("Ap5")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Aid5"), $this->getConfig()->get("Am5"), $this->getConfig()->get("Aa5")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Ap5"));
@@ -1276,7 +1277,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 5){
 			if($money < $this->getConfig()->get("Ap6")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Aid6"), $this->getConfig()->get("Am6"), $this->getConfig()->get("Aa6")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Ap6"));
@@ -1284,7 +1285,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 6){
 				if($money < $this->getConfig()->get("Ap7")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Aid7"), $this->getConfig()->get("Am7"), $this->getConfig()->get("Aa7")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Ap7"));
@@ -1292,7 +1293,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 7){
 				if($money < $this->getConfig()->get("Ap8")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Aid8"), $this->getConfig()->get("Am8"), $this->getConfig()->get("Aa8")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Ap8"));
@@ -1300,7 +1301,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 8){
 				if($money < $this->getConfig()->get("Ap9")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Aid9"), $this->getConfig()->get("Am9"), $this->getConfig()->get("Aa9")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Ap9"));
@@ -1308,7 +1309,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 9){
 				if($money < $this->getConfig()->get("Ap10")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Aid10"), $this->getConfig()->get("Am10"), $this->getConfig()->get("Aa10")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Ap10"));
@@ -1316,7 +1317,7 @@ class Shop extends PluginBase implements Listener{
 			}}
 			if ($result === 10){
 				if($money < $this->getConfig()->get("Ap11")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
+					$player->sendMessage(TF::RED . $this->getConfig()->get("Sell-Error"));
 				}else {
 				$player->getInventory()->removeItem(Item::get($this->getConfig()->get("Aid11"), $this->getConfig()->get("Am11"), $this->getConfig()->get("Aa11")));
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("Ap11"));
