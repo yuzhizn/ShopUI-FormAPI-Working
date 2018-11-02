@@ -656,7 +656,7 @@ class Shop extends PluginBase implements Listener{
 				if($money < $this->getConfig()->get("CommonPrice")) {
 					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
 				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "key common $player 2");
+				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "key common". $player->getName(). "2");
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("CommonPrice"));
 				$this->Form($player);
 			}}
@@ -664,7 +664,7 @@ class Shop extends PluginBase implements Listener{
 				if($money < $this->getConfig()->get("CommonvPrice")) {
 					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
 				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "mb add$player common 1");
+				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "mb add". $player->getName(). "common 1");
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("CommonvPrice"));
 				$this->Form($player);
 			}}
@@ -672,7 +672,7 @@ class Shop extends PluginBase implements Listener{
 				if($money < $this->getConfig()->get("UncommonPrice")) {
 					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
 				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "mb add $player uncommon 1");
+				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "mb add". $player->getName(). "uncommon 1");
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("UncommonPrice"));
 				$this->Form($player);
 			}}
@@ -680,7 +680,7 @@ class Shop extends PluginBase implements Listener{
 				if($money < $this->getConfig()->get("LegendPrice")) {
 					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
 				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "mb add $player legend 1");
+				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "mb add". $player->getName(). "legend 1");
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("LegendPrice"));
 				$this->Form($player);
 			}}
@@ -688,7 +688,7 @@ class Shop extends PluginBase implements Listener{
 				if($money < $this->getConfig()->get("MythicPrice")) {
 					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
 				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "mb add $player TP 1");
+				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "mb add". $player->getName(). "TP 1");
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("MythicPrice"));
 				$this->Form($player);
 			}}
