@@ -384,4 +384,5 @@ Buy-Sell: Buy or Sell
 Buy-Sell-question: Would you like to Buy Items or sell Items
 Buy: Buy
 Sell: Sell
+Sell-Error: You do not have enough Items!
 
