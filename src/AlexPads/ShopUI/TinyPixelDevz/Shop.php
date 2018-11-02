@@ -656,7 +656,7 @@ class Shop extends PluginBase implements Listener{
 				if($money < $this->getConfig()->get("CommonPrice")) {
 					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
 				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "key common". $player->getName(). "2");
+				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "key Common".$player->getName()."2");
 				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player->getName(), $this->getConfig()->get("CommonPrice"));
 				$this->Form($player);
 			}}
@@ -780,12 +780,6 @@ class Shop extends PluginBase implements Listener{
 			if($result === 5){
 				$this->SellArmor($player);
 			}
-			if($result === 6){
-				$this->SellKeys($player);
-			}
-			if($result === 7){
-				$this->SellEnchants($player);
-			}
         });
         $form->setTitle($this->getConfig()->get("Title"));
 		if ($this->getConfig()->get("Enabled-Food") === true){
@@ -800,12 +794,6 @@ class Shop extends PluginBase implements Listener{
 				$form->addButton($this->getConfig()->get("Misc"));
 			if ($this->getConfig()->get("Enabled-Armor") === true){
 				$form->addButton($this->getConfig()->get("Armor"));
-			if ($this->getConfig()->get("Enabled-Keys") === true){
-				$form->addButton($this->getConfig()->get("Keys"));
-			if ($this->getConfig()->get("Enabled-Enchants") === true){
-				$form->addButton($this->getConfig()->get("Enchants"));
-									}
-								}
 							}
 						}
 					}
@@ -1348,98 +1336,6 @@ class Shop extends PluginBase implements Listener{
 		$form->addButton($this->getConfig()->get("A9"). " ". $this->getConfig()->get("Aa9"). " ". $this->getConfig()->get("Ap9"). "$");
 		$form->addButton($this->getConfig()->get("A10"). " ". $this->getConfig()->get("Aa10"). " ". $this->getConfig()->get("Ap10"). "$");
 		$form->addButton($this->getConfig()->get("A11"). " ". $this->getConfig()->get("Aa11"). " ". $this->getConfig()->get("Ap11"). "$");
-		$form->sendToPlayer($player);
-	}
-	public function SellKeys(Player $player) : void{
-        $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function(Player $player, int $data = null){
-            $result = $data;
-			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
-			if ($result === 0){
-				if($money < $this->getConfig()->get("CommonPrice")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
-				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "key common $player 2");
-				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("CommonPrice"));
-				$this->Question($player);
-			}}
-			if ($result === 1){
-				if($money < $this->getConfig()->get("CommonvPrice")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
-				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "mb add$player common 1");
-				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("CommonvPrice"));
-				$this->Question($player);
-			}}
-			if ($result === 2){
-				if($money < $this->getConfig()->get("UncommonPrice")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
-				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "mb add $player uncommon 1");
-				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("UncommonPrice"));
-				$this->Question($player);
-			}}
-			if ($result === 3){
-				if($money < $this->getConfig()->get("LegendPrice")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
-				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "mb add $player legend 1");
-				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("LegendPrice"));
-				$this->Question($player);
-			}}
-			if ($result === 4){
-				if($money < $this->getConfig()->get("MythicPrice")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
-				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "mb add $player TP 1");
-				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("MythicPrice"));
-				$this->Question($player);
-			}}
-		});
-		$form->setTitle($this->getConfig()->get("Keys"));
-		$form->setContent($this->getConfig()->get("Setup"));
-		$form->addButton("Common Key 2 2000");
-		$form->addButton("Virtual Common Key 1 5000");
-		$form->addButton("Virtual unCommon Key 1 10000");
-		$form->addButton("Virtual legend Key 1 20000");
-		$form->addButton("Virtual Mythic Key 1 50000");
-		$form->sendToPlayer($player);
-	}
-	public function SellEnchants(Player $player) : void{
-        $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function(Player $player, int $data = null){
-            $result = $data;
-			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
-			if ($result === 0){
-				if($money < $this->getConfig()->get("UnbreakingPrice1")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
-				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "enchant ". $player->getName(). " unbreaking 1");
-				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("UnbreakingPrice1"));
-				$this->Question($player);
-			}}
-			if ($result === 1){
-				if($money < $this->getConfig()->get("UnbreakingPrice2")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
-				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "enchant ". $player->getName(). " unbreaking 2");
-				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("UnbreakingPrice2"));
-				$this->Question($player);
-			}}
-			if ($result === 2){
-				if($money < $this->getConfig()->get("UnbreakingPrice5")) {
-					$player->sendMessage(TF::RED . $this->getConfig()->get("Money"));
-				}else {
-				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "enchant ". $player->getName(). " unbreaking 5");
-				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player->getName(), $this->getConfig()->get("UnbreakingPrice5"));
-				$this->Question($player);
-			}}
-		});
-		$form->setTitle($this->getConfig()->get("Enchants"));
-		$form->setContent($this->getConfig()->get("Setup"));
-		$form->addButton("Unbreaking I");
-		$form->addButton("Unbreaking II");
-		$form->addButton("Unbreaking V");
 		$form->sendToPlayer($player);
 	}
 }
