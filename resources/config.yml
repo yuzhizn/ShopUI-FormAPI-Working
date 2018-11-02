@@ -2,6 +2,7 @@
 
 Enabled-Food: true
 Enabled-Blocks: true
+Enabled-Ores: true
 Enabled-Raiding: true
 Enabled-Misc: true
 Enabled-Armor: true
@@ -132,7 +133,41 @@ BlockMeta15: 0
 Price15: 10000
 Name15: Obsidian
 Amount15: 32
+
+## Ores
+
+Ores: Ores
+
+OreName1: Diamond
+OreID1: 264
+OreMeta1: 0
+OrePrice1: 5000
+OreSell1: 650
+OreAmmount1: 3
+
+OreName2: Gold Ingot
+OreID2: 266
+OreMeta2: 0
+OrePrice2: 1000
+OreSell2: 300
+OreAmmount2: 15
+
+OreName3: Iron Ingot
+OreID3: 265
+OreMeta3: 0
+OrePrice3: 3500
+OreSell3: 450
+OreAmmount3: 15
+
+OreName4: Coal
+OreID4: 263
+OreMeta4: 0
+OrePrice4: 15
+OreSell4: 10
+OreAmmount4: 32
+
 ## Raiding items/ids
+
 Raiding: Raiding
 Item1: TNT
 ItemID1: 46
@@ -183,6 +218,7 @@ ItemAmmount8: 1
 ItemPrice8: 10000
 
 ## Misc. Items like Endercest chest and some potions and things 
+
 Misc: Miscellaneous
 
 M1: Ender Chest
@@ -246,6 +282,7 @@ Mp10: 400000
 Ammount10: 1
 
 ## Armor/Weapons Ids
+
 Armor: Armor
 
 A1: Diamond Helmet
@@ -313,8 +350,8 @@ Am11: 0
 Aa11: 32
 Ap11: 1500
 
-
 ## Keys Items
+
 Keys: Keys
 
 CommonPrice: 2000
@@ -328,6 +365,7 @@ LegendPrice: 10000
 MythicPrice: 50000 
 
 ## Enchants!
+
 Enchants: Enchants
 
 UnbreakingPrice1: 5000
@@ -336,11 +374,14 @@ UnbreakingPrice2: 10000
 
 UnbreakingPrice5: 50000
 
-
-
 # Custom Items/commands! 
 
 ## Messages
 Message: Thank you for using TinyPixel ShopUI!
 Setup: Item, Ammount, Price
 Money: Not Enough Money!
+Buy-Sell: Buy or Sell
+Buy-Sell-question: Would you like to Buy Items or sell Items
+Buy: Buy
+Sell: Sell
+
