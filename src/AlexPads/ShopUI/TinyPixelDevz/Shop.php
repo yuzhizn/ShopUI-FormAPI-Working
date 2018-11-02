@@ -752,9 +752,9 @@ class Shop extends PluginBase implements Listener{
 			}
 		});
 		$form->setTitle($this->getConfig()->get("Buy-Sell"));
-		$form->setContent("Buy-Sell-question");
-		$form->addButton("Buy");
-		$form->addButton("Sell");
+		$form->setContent($this->getConfig()->get("Buy-Sell-question"));
+		$form->addButton($this->getConfig()->get("Buy"));
+		$form->addButton($this->getConfig()->get("Sell"));
 		$form->sendToPlayer($player);
 	}
 	public function SellForm(Player $player) : void{
