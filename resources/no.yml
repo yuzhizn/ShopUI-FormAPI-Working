@@ -1,0 +1,388 @@
+## Offical TinyPixel Shop!
+
+Enabled-Food: true
+Enabled-Blocks: true
+Enabled-Ores: true
+Enabled-Raiding: true
+Enabled-Misc: true
+Enabled-Armor: true
+Enabled-Keys: true
+Enabled-Enchants: true
+
+## Title of First Form!
+Title: TinyPixel ShopUI
+## Food items/ids Title
+Food: Food
+## Name of of the Food/Object (What people see on the Form)
+Food1Name: Steak
+## is the Price of Food1
+Food1-Price: 250
+## is the Item ID of the Item Steak
+Food1ID: 364
+## is the ammount of Steak
+Food1Num: 32
+## is the Meta or the second number Ex.. 364, 0, 32 has NO damage. (useful for tools), OR, 364, 1, 32 is Steak with the id 364:1
+Food1Met: 0
+## Food2
+Food2Name: Soup
+Food2Price: 100
+Food2ID: 282
+Food2Num: 20
+Food2Met: 0
+## Food3
+Food3Name: Apple
+Food3Price: 50
+Food3ID: 260
+Food3Num: 10
+Food3Met: 0
+## Food4
+Food4Name: Bread
+Food4Price: 500
+Food4ID: 297
+Food4Num: 64
+Food4Met: 0
+## Blocks items/ids
+## Title
+Blocks: Blocks
+## Now the Data 
+Block1: 2
+BlockMeta1: 0
+Price1: 500
+Name1: Grass
+Amount1: 32
+
+Block2: 43
+BlockMeta2: 2
+Price2: 1500
+Name2: Wood
+Amount2: 15
+
+Block3: 17
+BlockMeta3: 0
+Price3: 1800
+Name3: Oak Logs
+Amount3: 10
+
+Block4: 1
+BlockMeta4: 0
+Price4: 500
+Name4: Stone
+Amount: 32
+
+Block5: 4
+BlockMeta5: 0
+Price5: 500
+Name5: CobbleStone
+Amount5: 32
+
+Block6: 98
+BlockMeta6: 0
+Price6: 250
+Name6: StoneBrick
+Amount6: 25
+
+Block7: 43
+BlockMeta7: 4
+Price7: 350
+Name7: Bricks
+Amount7: 32
+
+Block8: 12
+BlockMeta8: 0
+Price8: 2000
+Name8: Sand
+Amount8: 25
+
+Block9: 87
+BlockMeta9: 0
+Price9: 500
+Name9: Netherrack
+Amount9: 64
+
+Block10: 1
+BlockMeta10: 5
+Price10: 350
+Name10: Andesite
+Amount10: 32
+
+Block11: 1
+BlockMeta11: 1
+Price11: 350
+Name11: Granite
+
+Block12: 1
+BlockMeta12: 3
+Price12: 350
+Name12: Dorite
+Amount12: 32
+
+Block13: 48
+BlockMeta13: 0
+Price13: 500
+Name13: Mossy Cobblestone
+Amount13: 25
+
+Block14: 121
+BlockMeta14: 0
+Price14: 2000
+Name14: EndStone
+Amount14: 64
+
+Block15: 49
+BlockMeta15: 0
+Price15: 10000
+Name15: Obsidian
+Amount15: 32
+
+## Ores
+
+Ores: Ores
+
+OreName1: Diamond
+OreID1: 264
+OreMeta1: 0
+OrePrice1: 5000
+OreSell1: 650
+OreAmmount1: 3
+
+OreName2: Gold Ingot
+OreID2: 266
+OreMeta2: 0
+OrePrice2: 1000
+OreSell2: 300
+OreAmmount2: 15
+
+OreName3: Iron Ingot
+OreID3: 265
+OreMeta3: 0
+OrePrice3: 3500
+OreSell3: 450
+OreAmmount3: 15
+
+OreName4: Coal
+OreID4: 263
+OreMeta4: 0
+OrePrice4: 15
+OreSell4: 10
+OreAmmount4: 32
+
+## Raiding items/ids
+
+Raiding: Raiding
+Item1: TNT
+ItemID1: 46
+ItemMeta1: 0
+ItemAmmount1: 10
+ItemPrice1: 1000
+
+Item2: Creeper Spawn Egg
+ItemID2: 383
+ItemMeta2: 33
+ItemAmmount2: 5
+ItemPrice2: 1500
+
+Item3: Flint and Steel
+ItemID3: 259
+ItemMeta3: 0
+ItemAmmount3: 1
+ItemPrice3: 100
+
+Item4: Potion of Fire Resistance
+ItemID4: 373
+ItemMeta4: 13
+ItemAmmount4: 1
+ItemPrice4: 10000
+
+Item5: Speed Potion
+ItemID5: 373
+ItemMeta5: 15
+ItemAmmount5: 1
+ItemPrice5: 10000
+
+Item6: Potion of Invisibility
+ItemID6: 373
+ItemMeta6: 8
+ItemAmmount6: 1
+ItemPrice6: 100000
+
+Item7: Strength Potion
+ItemID7: 373
+ItemMeta7: 32
+ItemAmmount7: 1
+ItemPrice7: 10000
+
+Item8: Water Breathing
+ItemID8: 373
+ItemMeta8: 20
+ItemAmmount8: 1
+ItemPrice8: 10000
+
+## Misc. Items like Endercest chest and some potions and things 
+
+Misc: Miscellaneous
+
+M1: Ender Chest
+Mid1: 130
+MM1: 0
+Mp1: 4500
+Ammount1: 1
+
+M2: Chest 
+Mid2: 54
+MM2: 0
+Mp2: 1000
+Ammount2: 6
+
+M3: Eye of Ender
+Mid3: 381
+MM3: 0
+Mp3: 20000
+Ammount3: 2
+
+M4: Beacon
+Mid4: 138
+MM4: 0
+Mp4: 100000
+Ammount4: 1
+
+M5: Monster Spawner
+Mid5: 52
+MM5: 0
+Mp5: 800000
+Ammount5: 1
+
+M6: Skeleton Egg
+Mid6: 383
+MM6: 34
+Mp6: 200000
+Ammount6: 1
+
+M7: Blaze Egg
+Mid7: 383
+MM7: 43
+Mp7: 200000
+Ammount7: 1
+
+M8: Zombie Egg
+Mid8: 383
+MM8: 32
+Mp8: 200000
+Ammount8: 1
+
+M9: Sheep Egg
+Mid9: 383
+MM9: 13
+Mp9: 100000
+Ammount9: 1
+
+M10: Enderman Egg
+Mid10: 383
+MM10: 38
+Mp10: 400000
+Ammount10: 1
+
+## Armor/Weapons Ids
+
+Armor: Armor
+
+A1: Diamond Helmet
+Aid1: 310
+Am1: 0
+Aa1: 1
+Ap1: 2000
+
+A2: Diamond Chest Plate
+Aid2: 311
+Am2: 0
+Aa2: 1
+Ap2: 5000
+
+A3: Diamond Leggins
+Aid3: 312
+Am3: 0
+Aa3: 1
+Ap3: 2000
+
+A4: Diamond Boots
+Aid4: 313
+Am4: 0
+Aa4: 1
+Ap4: 2000
+
+A5: Iron Helmet
+Aid5: 306
+Am5: 0
+Aa5: 1
+Ap5: 500
+A6: Iron Chestplate
+Aid6: 307
+Am6: 0 
+Aa6: 1
+Ap6: 1000
+
+A7: Iron Leggings
+Aid7: 308
+Am7: 0
+Aa7: 1
+Ap7: 200
+
+A8: Iron Boots
+Aid8: 309
+Am8: 0
+Aa8: 1
+Ap8: 150
+ 
+A9: Diamond Sword
+Aid9: 276
+Am9: 0
+Aa9: 1
+Ap9: 1200
+
+A10: Bow
+Aid10: 261
+Am10: 0
+Aa10: 1
+Ap10: 2000
+
+A11: Arrow
+Aid11: 262
+Am11: 0
+Aa11: 32
+Ap11: 1500
+
+## Keys Items
+
+Keys: Keys
+
+CommonPrice: 2000
+
+CommonvPrice: 5000
+
+UncommonPrice: 6000
+
+LegendPrice: 10000
+
+MythicPrice: 50000 
+
+## Enchants!
+
+Enchants: Enchants
+
+UnbreakingPrice1: 5000
+
+UnbreakingPrice2: 10000
+
+UnbreakingPrice5: 50000
+
+# Custom Items/commands! 
+
+## Messages
+Message: Thank you for using TinyPixel ShopUI!
+Setup: Item, Ammount, Price
+Money: Not Enough Money!
+Buy-Sell: Buy or Sell
+Buy-Sell-question: Would you like to Buy Items or sell Items
+Buy: Buy
+Sell: Sell
+Sell-Error: You do not have enough Items!
+
