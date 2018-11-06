@@ -27,6 +27,7 @@ class Shop extends PluginBase implements Listener{
 	public $items;
 	public $category;
 	public $allshop;
+	public $name;
 
 	public function onEnable(){
         foreach (['FormAPI', 'EconomyAPI'] as $depend) {
@@ -66,18 +67,17 @@ class Shop extends PluginBase implements Listener{
 			foreach ($allshop as $category) {
 			}
 			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
-			if ($result === 0 or $result === 1 or $result === 2 or $result === 3 or $result === 4 or $result === 5 or $result === 6){
-				$this->itemForm($player, $category[$result]);
+			foreach ($allshop as $name => $content){
+			var_dump($name);
 			}
-			if ($result === 7){
-				$this->getServer()->dispatchCommand($player, "ceshop");
+			if ($result < $name){
+				$this->itemForm($sender);
 			}
 		});
 		$form->setTitle($this->getConfig()->get("Title"));
 		$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 		$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
-        foreach ($allshop as $name => content) {
-			var_dump($name);
+        foreach ($allshop as $name => $content){
 			$form->addButton(ucfirst($name));
         }
 		$form->sendToPlayer($player);
@@ -112,14 +112,14 @@ class Shop extends PluginBase implements Listener{
                         }
                         $player->sendMessage($message);                    }
                 } else {
-                    $this->mainForm($player);
+                    $this->catForm($player);
                 }
 		});
 		$form->setTitle($this->getConfig()->get("Title"));
 		$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 		$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
-        foreach ($allshop as $category) {
-        }
+		foreach ($allshop as $category){
+		}
 		foreach ($category as $item) {
 			var_dump($item);
             $list = explode(":", $item);
