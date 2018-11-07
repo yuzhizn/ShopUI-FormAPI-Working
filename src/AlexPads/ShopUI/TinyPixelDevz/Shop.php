@@ -62,16 +62,15 @@ class Shop extends PluginBase implements Listener{
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createSimpleForm(function(Player $player, int $data = null){
             $result = $data;
+			var_dump($result);
 			$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
-			var_dump($allshop);
 			foreach ($allshop as $category) {
 			}
 			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 			foreach ($allshop as $name => $content){
-			var_dump($name);
 			}
-			if ($result < $name){
-				$this->itemForm($sender);
+			if ($result < 800000000000000){
+				$this->itemForm($player);
 			}
 		});
 		$form->setTitle($this->getConfig()->get("Title"));
@@ -82,7 +81,7 @@ class Shop extends PluginBase implements Listener{
         }
 		$form->sendToPlayer($player);
 	}
-	public function itemForm(Player $player, $allshop) : void{
+	public function itemForm(Player $player) : void{
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createSimpleForm(function(Player $player, int $data = null){
             $result = $data;
@@ -112,18 +111,18 @@ class Shop extends PluginBase implements Listener{
                         }
                         $player->sendMessage($message);                    }
                 } else {
-                    $this->catForm($player);
+                    $this->Form($player);
                 }
 		});
 		$form->setTitle($this->getConfig()->get("Title"));
 		$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 		$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
-		foreach ($allshop as $category){
+		foreach($allshop as $category){
 		}
 		foreach ($category as $item) {
-			var_dump($item);
             $list = explode(":", $item);
             $form->addButton($list[3] . "  " . "$" . $list[4]);
+			var_dump($item);
         }
 		$form->addButton(TF::RED . TF::BOLD . "Back");
 		$form->sendToPlayer($player);
