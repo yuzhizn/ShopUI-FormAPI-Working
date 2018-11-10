@@ -28,6 +28,8 @@ class Shop extends PluginBase implements Listener{
 	public $category;
 	public $allshop;
 	public $name;
+	public $result;
+	public $data;
 
 	public function onEnable(){
         foreach (['FormAPI', 'EconomyAPI'] as $depend) {
@@ -39,7 +41,7 @@ class Shop extends PluginBase implements Listener{
             }
         }
         $this->saveDefaultConfig();
-		$this->getLogger()->info(TF::GREEN . "Enabled");	
+		$this->getLogger()->info(TF::GREEN . "Enabled By: AlexPads!");	
     }
 	public function onDisable(){
               $this->getLogger()->info(TF::RED . "Disabled");
@@ -61,17 +63,8 @@ class Shop extends PluginBase implements Listener{
 	public function catForm(Player $player) : void{
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createSimpleForm(function(Player $player, int $data = null){
-            $result = $data;
-			var_dump($result);
-			$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
-			foreach ($allshop as $category) {
-			}
-			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
-			foreach ($allshop as $name => $content){
-			}
-			if ($result < 800000000000000){
-				$this->itemForm($player);
-			}
+            $result = $data; $cate = $data;
+			$this->itemForm($player, $result, $data, $cate);
 		});
 		$form->setTitle($this->getConfig()->get("Title"));
 		$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
@@ -81,49 +74,55 @@ class Shop extends PluginBase implements Listener{
         }
 		$form->sendToPlayer($player);
 	}
-	public function itemForm(Player $player) : void{
+	public function itemForm(Player $player, $result, $data, $cate) : void{
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function(Player $player, int $data = null){
-            $result = $data;
-			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
-			if ($data < count($this->$allshop)) {
-                    $item = $this->$allshop[$data[0]];
-                    $list = explode(":", $allshop);
-                    $money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
-                    if ($money >= $list[4]) {
-                        $player->getInventory()->addItem(Item::get($list[0], $list[1], $list[2])->setCustomName($list[3]));
-                        $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player, $list[4]);
-                        $message = $this->getConfig()->getNested("messages.paid-for");
-                        $vars = ["{amount}" => $list[2], "{item}" => $list[3], "{cost}" => $list[4]];
-                        foreach ($vars as $var => $replacement){
-                            $message = str_replace($var, $replacement, $message);
-                        }
-                        $player->sendMessage($message);
-                    } else {
-                        $message = $this->getConfig()->getNested("messages.not-enough-money");
-                        $tags = [
-                            "{amount}" => $list[2],
-                            "{name}" => $list[3],
-                            "{missing}" => $list[4] - $money
-                        ];
-                        foreach ($tags as $tag => $replacement){
-                            $message = str_replace($tag, $replacement, $message);
-                        }
-                        $player->sendMessage($message);                    }
-                } else {
-                    $this->Form($player);
+        $form = $api->createSimpleForm(function(Player $player, int $data = null) use ($cate){
+		$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
+		$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
+		$result = $data;
+		foreach ($allshop as $categoryName => $access){
+			$category[] = $access;
+		}
+		foreach ($category[$cate] as $items => $itemarray){
+			$itemlist[] = $itemarray;
+		}
+		$list = explode(":", $itemlist[$data]);
+		var_dump($itemlist);
+		$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
+		if ($money >= $list[4]) {
+			$player->getInventory()->addItem(Item::get($list[0], $list[1], $list[2])->setCustomName($list[3]));
+			$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player, $list[4]);
+            $message = $this->getConfig()->getNested("messages.paid-for");
+            $vars = ["{amount}" => $list[2], "{item}" => $list[3], "{cost}" => $list[4]];
+            foreach ($vars as $var => $replacement){
+				$message = str_replace($var, $replacement, $message);
+            }
+            $player->sendMessage($message);
+            } else {
+                $message = $this->getConfig()->getNested("messages.not-enough-money");
+                $tags = [
+                    "{amount}" => $list[2],
+                    "{name}" => $list[3],
+					"{cost}" => $list[4],
+                    "{missing}" => $list[4] - $money
+                ];
+                foreach ($tags as $tag => $replacement){
+                    $message = str_replace($tag, $replacement, $message);
                 }
+                $player->sendMessage($message);                    
+				}
 		});
 		$form->setTitle($this->getConfig()->get("Title"));
 		$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 		$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
-		foreach($allshop as $category){
+		$form = setContent($this->getConfig()->get("messages.money"). $money);
+		foreach ($allshop as $categoryName => $access){
+			$category[] = $access;
 		}
-		foreach ($category as $item) {
-            $list = explode(":", $item);
-            $form->addButton($list[3] . "  " . "$" . $list[4]);
-			var_dump($item);
-        }
+		foreach ($category[$data] as $items){
+			$list = explode(":", $items);
+			$form->addButton($list[3] . "  " . "$" . $list[4]);
+		}
 		$form->addButton(TF::RED . TF::BOLD . "Back");
 		$form->sendToPlayer($player);
 	}
