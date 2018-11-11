@@ -1,5 +1,5 @@
 <?php
- #   _______   _                   _____    _                 _   _____                       
+#   _______   _                   _____    _                 _   _____                       
 #  |__   __| (_)                 |  __ \  (_)               | | |  __ \                      
 #     | |     _   _ __    _   _  | |__) |  _  __  __   ___  | | | |  | |   ___  __   __  ____
 #     | |    | | | '_ \  | | | | |  ___/  | | \ \/ /  / _ \ | | | |  | |  / _ \ \ \ / / |_  /
@@ -19,6 +19,9 @@ use pocketmine\command\ConsoleCommandSender;
 use pocketmine\item\Item;
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\utils\Config;
+use jojoe77777\FormAPI;
+use jojoe77777\FormAPI\SimpleForm;
+
  class Shop extends PluginBase implements Listener{
  	public $items;
 	public $category;
@@ -55,8 +58,7 @@ use pocketmine\utils\Config;
         return true;
     }
  	public function catForm(Player $player) : void{
-        $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function(Player $player, int $data = null){
+        $form = new SimpleForm(function(Player $player, int $data = null){
             $cate = $data;
 			$this->itemForm($player, $data, $cate);
 		});
@@ -69,8 +71,7 @@ use pocketmine\utils\Config;
 		$form->sendToPlayer($player);
 	}
 	public function itemForm(Player $player, $data, $cate) : void{
-        $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function(Player $player, int $data = null) use ($cate){
+        $form = new SimpleForm(function(Player $player, int $data = null) use ($cate){
 			$result = $data;
 			$this->buysellForm($player, $result, $cate);
 	});
@@ -87,8 +88,7 @@ use pocketmine\utils\Config;
 		$form->sendToPlayer($player);
 	}
 	public function buysellForm(Player $player, $result, $cate) : void{
-        $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createSimpleForm(function(Player $player, int $data = null) use ($cate, $result){
+        $form = new SimpleForm(function(Player $player, int $data = null) use ($cate, $result){
 		if ($data === 0){
 			$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
 			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
