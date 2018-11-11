@@ -115,7 +115,6 @@ class Shop extends PluginBase implements Listener{
 		$form->setTitle($this->getConfig()->get("Title"));
 		$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 		$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
-		$form = setContent($this->getConfig()->get("messages.money"). $money);
 		foreach ($allshop as $categoryName => $access){
 			$category[] = $access;
 		}
