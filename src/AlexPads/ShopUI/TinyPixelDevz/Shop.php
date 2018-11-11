@@ -118,6 +118,7 @@ class Shop extends PluginBase implements Listener{
 					$message = str_replace($var, $replacement, $message);
 			}
 			$player->sendMessage($message);
+			$this->buysellForm($player, $result, $cate);
             } else {
                 $message = $this->getConfig()->getNested("messages.not-enough-money");
                 $tags = [
@@ -129,7 +130,8 @@ class Shop extends PluginBase implements Listener{
                 foreach ($tags as $tag => $replacement){
                     $message = str_replace($tag, $replacement, $message);
                 }
-                $player->sendMessage($message);                    
+                $player->sendMessage($message);  
+				$this->buysellForm($player, $result, $cate);
 			}
 		}
 		if ($data === 1){
@@ -154,6 +156,7 @@ class Shop extends PluginBase implements Listener{
 					$message = str_replace($var, $replacement, $message);
 				}
 				$player->sendMessage($message);
+				$this->buysellForm($player, $result, $cate);
 			}else{
 				$message = $this->getConfig()->getNested("messages.not-enough-items");
 				$tags = [
@@ -161,7 +164,8 @@ class Shop extends PluginBase implements Listener{
 				foreach ($tags as $tag => $replacement){
 					$message = str_replace($tag, $replacement, $message);
 				}
-				$player->sendMessage($message);                    
+				$player->sendMessage($message);  
+				$this->buysellForm($player, $result, $cate);
 				}
 			}
 		if ($data === 2){
