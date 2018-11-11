@@ -9,7 +9,8 @@
 #                         |___/    
 #     
 namespace AlexPads\ShopUI\TinyPixelDevz;
- use pocketmine\Server;
+
+use pocketmine\Server;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
@@ -100,7 +101,6 @@ use jojoe77777\FormAPI\SimpleForm;
 				$itemlist[] = $itemarray;
 			}
 			$list = explode(":", $itemlist[$result]);
-			var_dump($itemlist);
 			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 			if ($money >= $list[4]) {
 				$player->getInventory()->addItem(Item::get($list[0], $list[1], $list[2])->setCustomName($list[3]));
@@ -137,8 +137,6 @@ use jojoe77777\FormAPI\SimpleForm;
 				$itemlist[] = $itemarray;
 			}
 			$list = explode(":", $itemlist[$result]);
-			var_dump($itemlist);
-			var_dump($result);
 			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 			if ($player->getInventory()->contains(Item::get($list[0], $list[1], $list[2])) === true){
 				$player->getInventory()->removeItem(Item::get($list[0], $list[1], $list[2]));
