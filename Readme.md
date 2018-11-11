@@ -5,20 +5,23 @@ All of your forms for KitUI and Any UI will Still work! (Unlike many shopUI Plug
 
 ## Features
 
-- Configureable Price, Id, Name, Ammount, Meta,  sometimes Sell price (Still working on this)
+- Fully Customizeable Add your Own Category's and Items that can be Sold and Bought!!! 
 - Working UI afterwards
-- Cangeable messages for Sell Buy Errors!
-- YOU Can Suggest more blocks and spaces that can be added to each section in the Issues Section on GitHub! (all issues will be dealt with accordingly!)
+- Configureable messages for Sell Buy Errors!/Buy and Sell Success
+- YOU Can Suggest more Features at my Discord or in the Issues Section!
 
 ## Important
 
 - Requires FromAPI and EconomyAPI buy ONEBONE
-- Requires 8.0kb Space xD
+- Requires 2.7kb Space xD
 
 ## Devs/Info
 
 - Made by: TinyPixelDevz
 - TeamMembers: AlexPads
+- Colaborator: Thunder33345
 - Discord: https://discord.gg/snXHfsN
 - Website: https://tinypixel.ga
-- I am Available On my Discord (Link above) to Dev plugins for anyone free of charge unless very complicated! Donations are always Welcome!
+- I am Available On my Discord (Link above) to Dev plugins for anyone free of charge unless complicated OR there is already a working plugin. Donations are always Welcome!
+donate at (TinyPixel.ga Link above!)
+
