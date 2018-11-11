@@ -30,6 +30,7 @@ class Shop extends PluginBase implements Listener{
 	public $name;
 	public $result;
 	public $data;
+	public $list;
 
 	public function onEnable(){
         foreach (['FormAPI', 'EconomyAPI'] as $depend) {
@@ -63,8 +64,8 @@ class Shop extends PluginBase implements Listener{
 	public function catForm(Player $player) : void{
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createSimpleForm(function(Player $player, int $data = null){
-            $result = $data; $cate = $data;
-			$this->itemForm($player, $result, $data, $cate);
+            $cate = $data;
+			$this->itemForm($player, $data, $cate);
 		});
 		$form->setTitle($this->getConfig()->get("Title"));
 		$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
@@ -74,30 +75,49 @@ class Shop extends PluginBase implements Listener{
         }
 		$form->sendToPlayer($player);
 	}
-	public function itemForm(Player $player, $result, $data, $cate) : void{
+	public function itemForm(Player $player, $data, $cate) : void{
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createSimpleForm(function(Player $player, int $data = null) use ($cate){
-		$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
+			$result = $data;
+			$this->buysellForm($player, $result, $cate);
+	});
+		$form->setTitle($this->getConfig()->get("Title"));
 		$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
-		$result = $data;
+		$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
 		foreach ($allshop as $categoryName => $access){
 			$category[] = $access;
 		}
-		foreach ($category[$cate] as $items => $itemarray){
-			$itemlist[] = $itemarray;
+		foreach ($category[$data] as $items){
+			$list = explode(":", $items);
+			$form->addButton($list[3] . "  " . "$" . $list[4]);
 		}
-		$list = explode(":", $itemlist[$data]);
-		var_dump($itemlist);
-		$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
-		if ($money >= $list[4]) {
-			$player->getInventory()->addItem(Item::get($list[0], $list[1], $list[2])->setCustomName($list[3]));
-			$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player, $list[4]);
-            $message = $this->getConfig()->getNested("messages.paid-for");
-            $vars = ["{amount}" => $list[2], "{item}" => $list[3], "{cost}" => $list[4]];
-            foreach ($vars as $var => $replacement){
-				$message = str_replace($var, $replacement, $message);
-            }
-            $player->sendMessage($message);
+		$form->sendToPlayer($player);
+	}
+	public function buysellForm(Player $player, $result, $cate) : void{
+        $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
+        $form = $api->createSimpleForm(function(Player $player, int $data = null) use ($cate, $result){
+		if ($data === 0){
+			$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
+			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
+			$result = $data;
+			foreach ($allshop as $categoryName => $access){
+				$category[] = $access;
+			}
+			foreach ($category[$cate] as $items => $itemarray){
+				$itemlist[] = $itemarray;
+			}
+			$list = explode(":", $itemlist[$result]);
+			var_dump($itemlist);
+			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
+			if ($money >= $list[4]) {
+				$player->getInventory()->addItem(Item::get($list[0], $list[1], $list[2])->setCustomName($list[3]));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->reduceMoney($player, $list[4]);
+				$message = $this->getConfig()->getNested("messages.paid-for");
+				$vars = ["{amount}" => $list[2], "{item}" => $list[3], "{cost}" => $list[4]];
+				foreach ($vars as $var => $replacement){
+					$message = str_replace($var, $replacement, $message);
+			}
+			$player->sendMessage($message);
             } else {
                 $message = $this->getConfig()->getNested("messages.not-enough-money");
                 $tags = [
@@ -110,20 +130,58 @@ class Shop extends PluginBase implements Listener{
                     $message = str_replace($tag, $replacement, $message);
                 }
                 $player->sendMessage($message);                    
+			}
+		}
+		if ($data === 1){
+			$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
+			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
+			foreach ($allshop as $categoryName => $access){
+				$category[] = $access;
+			}
+			foreach ($category[$cate] as $items => $itemarray){
+				$itemlist[] = $itemarray;
+			}
+			$list = explode(":", $itemlist[$result]);
+			var_dump($itemlist);
+			var_dump($result);
+			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
+			if ($player->getInventory()->contains(Item::get($list[0], $list[1], $list[2])) === true){
+				$player->getInventory()->removeItem(Item::get($list[0], $list[1], $list[2]));
+				$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player, $list[5]);
+				$message = $this->getConfig()->getNested("messages.money-recieved");
+				$vars = ["{amount}" => $list[2], "{item}" => $list[3], "{money}" => $list[5]];
+				foreach ($vars as $var => $replacement){
+					$message = str_replace($var, $replacement, $message);
 				}
+				$player->sendMessage($message);
+			}else{
+				$message = $this->getConfig()->getNested("messages.not-enough-items");
+				$tags = [
+					"{amount}" => $list[2], "{name}" => $list[3], "{money}" => $list[5], "{missing}" => $list[4] - $money];
+				foreach ($tags as $tag => $replacement){
+					$message = str_replace($tag, $replacement, $message);
+				}
+				$player->sendMessage($message);                    
+				}
+			}
+		if ($data === 2){
+			$this->catForm($player);
+		}
 		});
 		$form->setTitle($this->getConfig()->get("Title"));
 		$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
 		$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
 		foreach ($allshop as $categoryName => $access){
-			$category[] = $access;
-		}
-		foreach ($category[$data] as $items){
-			$list = explode(":", $items);
-			$form->addButton($list[3] . "  " . "$" . $list[4]);
-		}
-		$form->addButton(TF::RED . TF::BOLD . "Back");
-		$form->sendToPlayer($player);
+				$category[] = $access;
+			}
+			foreach ($category[$cate] as $items => $itemarray){
+				$itemlist[] = $itemarray;
+			}
+			$list = explode(":", $itemlist[$result]);
+			$form->addButton("Buy". " ". $list[2]. " ". "For". " ". "$". $list[4]);
+			$form->addButton("Sell". " ". $list[2]. " ". "For". " ". "$". $list[5]);
+			$form->addButton(TF::RED . TF::BOLD . "Back");
+			$form->sendToPlayer($player);
 	}
 	
 	
