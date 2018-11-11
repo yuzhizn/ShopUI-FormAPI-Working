@@ -1,4 +1,43 @@
 ---
+#  _____     _              _  _     ___     _                       _      ___                           
+# |_   _|   (_)    _ _     | || |   | _ \   (_)    __ __    ___     | |    |   \    ___    __ __     ___  
+#   | |     | |   | ' \     \_, |   |  _/   | |    \ \ /   / -_)    | |    | |) |  / -_)   \ V /    |_ /  
+#  _|_|_   _|_|_  |_||_|   _|__/   _|_|_   _|_|_   /_\_\   \___|   _|_|_   |___/   \___|   _\_/_   _/__|  
+#_|"""""|_|"""""|_|"""""|_| """"|_| """ |_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""| 
+#"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-' 
+
+## Welcome to the Only Fully Functional and 100% Customizeable ShopUI By: Alexpads!!
+# HOW TO USE:
+## First Put a Category Whatever you Put will be the Name Exactly Like its Spelled.
+## Then Ta over and Put a - "" in the quotes go in this order:
+#### ItemID:MetaData:AmmmountOfTheItem:CustomName:Price:SellPrice
 Weapons:
-    - "123:0:12:880:test"
+    - "276:0:1:DiamondSword:2500:250"
+    - "267:0:1:IronSword:1000:100"
+    - "261:0:1:Bow:3500:50"
+    - "262:0:32:Arrow:2000:3"
+Tools:
+    - "278:0:1:DiamondPickaxe:2000:350"
+    - "279:0:1:DiamondAxe:1850:150"
+    - "293:0:1:DiamondHoe:500:50"
+    - "257:0:1:IronPickaxe:500:100"
+Armor:
+    - "306:0:1:IronHelemet:1000:50"
+    - "307:0:1:IronChestplate:1500:50"
+    - "308:0:1:IronLeggings:800:50"
+    - "309:0:1:IronBoots:500:50"
+    - "310:0:1:DiamondHelemet:2500:50"
+    - "311:0:1:DiamondChestplate:3500:50"
+    - "312:0:1:DiamondLeggings:1500:50"
+    - "313:0:1:DiamondBoots:500:50"
+Blocks:
+    - "1:0:32:Stone:120:50"
+    - "2:0:32:Grass:125:50"
+    - "3:0:32:Dirt:150:50"
+    - "4:0:32:CobbleStone:250:50"
+    - "17:0:5:OakLog:800:12"
+    - "12:0:32:Sand:1500:10"
+    - "1:1:32:Granite:850:15"
+    - "98:0:32:StoneBrick:2500:20"
+    - "45:0:32:Bricks:1500:12"
 ...
