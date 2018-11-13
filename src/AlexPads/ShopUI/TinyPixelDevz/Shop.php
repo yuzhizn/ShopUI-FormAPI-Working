@@ -41,10 +41,10 @@ use jojoe77777\FormAPI\SimpleForm;
             }
         }
         $this->saveDefaultConfig();
-		$this->getLogger()->info(TF::GREEN . "Enabled By: AlexPads!");	
+		$this->getLogger()->info("Enabled");
     }
 	public function onDisable(){
-              $this->getLogger()->info(TF::RED . "Disabled");
+              $this->getLogger()->info("Disabled");
     }
 	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool{
         switch ($cmd->getName()) {
