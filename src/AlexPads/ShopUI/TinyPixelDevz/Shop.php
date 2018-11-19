@@ -41,6 +41,7 @@ use jojoe77777\FormAPI\SimpleForm;
             }
         }
         $this->saveDefaultConfig();
+        $this->saveResource("shop.yml");
 		$this->getLogger()->info("Enabled");
     }
 	public function onDisable(){
@@ -82,11 +83,15 @@ use jojoe77777\FormAPI\SimpleForm;
 		foreach ($allshop as $categoryName => $access){
 			$category[] = $access;
 		}
-		foreach ($category[$data] as $items){
-			$list = explode(":", $items);
-			$form->addButton($list[3] . "  " . "$" . $list[4]);
+		if ($data === null){
+			$player->sendmessage("Thankyou for Shopping at". " ". $this->getConfig()->get("Title"));
+		}else{
+			foreach ($category[$data] as $items) {
+				$list = explode(":", $items);
+				$form->addButton($list[3] . "  " . "$" . $list[4]);
+			}
+			$form->sendToPlayer($player);
 		}
-		$form->sendToPlayer($player);
 	}
 	public function buysellForm(Player $player, $result, $cate) : void{
         $form = new SimpleForm(function(Player $player, int $data = null) use ($cate, $result){
