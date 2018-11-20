@@ -98,7 +98,6 @@ use jojoe77777\FormAPI\SimpleForm;
 		if ($data === 0){
 			$allshop = yaml_parse_file($this->getDataFolder(). "shop.yml");
 			$money = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player);
-			$result = $data;
 			foreach ($allshop as $categoryName => $access){
 				$category[] = $access;
 			}
@@ -119,12 +118,7 @@ use jojoe77777\FormAPI\SimpleForm;
 			$this->buysellForm($player, $result, $cate);
             } else {
                 $message = $this->getConfig()->getNested("messages.not-enough-money");
-                $tags = [
-                    "{amount}" => $list[2],
-                    "{name}" => $list[3],
-					"{cost}" => $list[4],
-                    "{missing}" => $list[4] - $money
-                ];
+                $tags = ["{amount}" => $list[2], "{name}" => $list[3], "{cost}" => $list[4], "{missing}" => $list[4] - $money ];
                 foreach ($tags as $tag => $replacement){
                     $message = str_replace($tag, $replacement, $message);
                 }
