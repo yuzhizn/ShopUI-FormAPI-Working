@@ -20,8 +20,8 @@ All of your forms for KitUI and Any UI will Still work! (Unlike many shopUI Plug
 - Made by: TinyPixelDevz
 - TeamMembers: AlexPads
 - Colaborator: Thunder33345
-- Discord: https://discord.gg/snXHfsN
-- Website: https://tinypixel.ga
+- Discord: https://discord.gg/cSEBKWj
+- Website: https://saltypixel.ga
 - I am Available On my Discord (Link above) to Dev plugins for anyone free of charge unless complicated OR there is already a working plugin. Donations are always Welcome!
 donate at (TinyPixel.ga Link above!)
 
