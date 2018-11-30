@@ -36,24 +36,14 @@ use pocketmine\item\enchantment\EnchantmentInstance;
 
 	 public function onEnable()
 	 {
-		 foreach (['FormAPI', 'EconomyAPI'] as $depend) {
-			 $plugin = $this->getServer()->getPluginManager()->getPlugin($depend);
-			 $plugin = strtolower($depend);
-			 if (is_null($plugin)) {
-				 $this->getLogger()->error("The plugin" . $depend . " is required in order to use this plugin.");
-				 $this->setEnabled(false);
-			 }
-		 }
 		 $this->saveDefaultConfig();
 		 $this->saveResource("shop.yml");
 		 $this->getLogger()->info("Enabled");
 	 }
-
 	 public function onDisable()
 	 {
 		 $this->getLogger()->info("Disabled");
 	 }
-
 	 public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool
 	 {
 		 switch ($cmd->getName()) {
