@@ -38,11 +38,9 @@ use pocketmine\item\enchantment\EnchantmentInstance;
 	 {
 		 $this->saveDefaultConfig();
 		 $this->saveResource("shop.yml");
-		 $this->getLogger()->info("Enabled");
 	 }
 	 public function onDisable()
 	 {
-		 $this->getLogger()->info("Disabled");
 	 }
 	 public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool
 	 {
