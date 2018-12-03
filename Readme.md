@@ -12,7 +12,7 @@ All of your forms for KitUI and Any UI will Still work! (Unlike many shopUI Plug
 
 ## Important
 
-- Requires FromAPI and EconomyAPI buy ONEBONE
+- Requires FormAPI and EconomyAPI by ONEBONE
 - Requires 2.7kb Space xD
 
 ## Devs/Info
