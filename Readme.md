@@ -2,7 +2,7 @@
 
 
 
-##This is Nolonger the Main Part of this Project it has been moved to CustomShopUI : 
+## This is Nolonger the Main Part of this Project it has been moved to CustomShopUI : 
 https://github.com/AlexPads/CustomShopUI
 Thanks!
 
