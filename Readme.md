@@ -1,3 +1,22 @@
+
+
+
+
+##This is Nolonger the Main Part of this Project it has been moved to CustomShopUI : 
+https://github.com/AlexPads/CustomShopUI
+Thanks!
+
+
+
+
+
+
+
+
+
+
+
+
 ## ShopUI
 
 YAY! Finally a ShopUI that doesn't cause Forms to not work!!!
