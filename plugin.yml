@@ -1,9 +1,7 @@
 name: CustomShopUI
 main: AlexPads\ShopUI\TinyPixelDevz\Shop
-version: 2.0.7
-depend:
-  FormAPI: https://poggit.pmmp.io/get/FormAPI
-api: [3.0.0]
+version: 3.0.0
+api: [3.3.2]
 author: TinyPixelDevz
 website: saltypixel.ga
 commands:
