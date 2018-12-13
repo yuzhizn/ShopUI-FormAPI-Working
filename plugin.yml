@@ -4,6 +4,8 @@ version: 3.0.0
 api: [3.3.2]
 author: TinyPixelDevz
 website: saltypixel.ga
+depend:
+- EconomyAPI
 commands:
- shop:
-  description: "Opens Shop Menu... By: SaltyPixelDevz!"
+  shop:
+    description: "Opens Shop Menu... By: SaltyPixelDevz!"
