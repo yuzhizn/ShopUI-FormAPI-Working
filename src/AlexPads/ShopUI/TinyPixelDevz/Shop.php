@@ -1,13 +1,14 @@
 <?php
-#   _______   _                   _____    _                 _   _____                       
-#  |__   __| (_)                 |  __ \  (_)               | | |  __ \                      
-#     | |     _   _ __    _   _  | |__) |  _  __  __   ___  | | | |  | |   ___  __   __  ____
-#     | |    | | | '_ \  | | | | |  ___/  | | \ \/ /  / _ \ | | | |  | |  / _ \ \ \ / / |_  /
-#     | |    | | | | | | | |_| | | |      | |  >  <  |  __/ | | | |__| | |  __/  \ V /   / / 
-#     |_|    |_| |_| |_|  \__, | |_|      |_| /_/\_\  \___| |_| |_____/   \___|   \_/   /___|
-#                          __/ |                                                             
-#                         |___/    
-#     
+
+#  _____       _ _         _____ _          _ _____
+# / ____|     | | |       |  __ (_)        | |  __ \
+# | (___   __ _| | |_ _   _| |__) |__  _____| | |  | | _____   ______
+# \___ \ / _` | | __| | | |  ___/ \ \/ / _ \ | |  | |/ _ \ \ / /_  /
+#   ____) | (_| | | |_| |_| | |   | |>  <  __/ | |__| |  __/\ V / / /
+#  |_____/ \__,_|_|\__|\__, |_|   |_/_/\_\___|_|_____/ \___| \_/ /___|
+#                       __/ |
+#                      |___/
+
 namespace AlexPads\ShopUI\TinyPixelDevz;
 
 use pocketmine\Server;
@@ -91,9 +92,6 @@ class Shop extends PluginBase implements Listener
         foreach ($allshop as $categoryName => $access) {
             $category[] = $access;
         }
-        if ($category[$cat] === "Enchants"){
-        	$this->Enchants($player, $category, $cat);
-		}else{
         if ($data === null) {
             $player->sendmessage($this->getConfig()->getNested("messages.thanks") . " " . $this->getConfig()->get("Title"));
         } else {
@@ -102,7 +100,6 @@ class Shop extends PluginBase implements Listener
                 $form->addButton($list[3] . "  " . "$" . $list[4], $list[6], $list[7]);
             }
             $form->sendToPlayer($player);
-        	}
         }
     }
 
