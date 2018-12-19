@@ -24,7 +24,6 @@ use jojoe77777\FormAPI\SimpleForm;
 use jojoe77777\FormAPI\CustomForm;
 use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;
-
 class Shop extends PluginBase implements Listener
 {
 
@@ -92,14 +91,18 @@ class Shop extends PluginBase implements Listener
         foreach ($allshop as $categoryName => $access) {
             $category[] = $access;
         }
+        if ($category[$cat] === "Enchants"){
+        	$this->Enchants($player, $category, $cat);
+		}else{
         if ($data === null) {
-            $player->sendmessage($this->getConfig()->getNested("message.thanks") . " " . $this->getConfig()->get("Title"));
+            $player->sendmessage($this->getConfig()->getNested("messages.thanks") . " " . $this->getConfig()->get("Title"));
         } else {
             foreach ($category[$cat] as $items) {
                 $list = explode(":", $items);
                 $form->addButton($list[3] . "  " . "$" . $list[4], $list[6], $list[7]);
             }
             $form->sendToPlayer($player);
+        	}
         }
     }
 
