@@ -1,6 +1,6 @@
 name: CustomShopUI
 main: AlexPads\ShopUI\SaltyPixelDevz\Shop
-version: 3.1.0
+version: 3.2.0
 api: [3.3.2]
 author: TinyPixelDevz
 website: saltypixel.ga
@@ -8,4 +8,4 @@ depend:
 - EconomyAPI
 commands:
   shop:
-    description: "Opens Shop Menu... By: SaltyPixelDevz!"
+    description: "Opens ShopUI Menu... By: SaltyPixelDevz!"
