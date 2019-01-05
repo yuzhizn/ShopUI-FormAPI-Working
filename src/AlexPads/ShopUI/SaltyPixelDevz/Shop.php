@@ -21,7 +21,7 @@ use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat as TF;
 
-class Shop extends PluginBase implements Listener
+class Shop extends PluginBase
 {
 
 	public function onEnable(): void
@@ -169,7 +169,7 @@ class Shop extends PluginBase implements Listener
 				} else {
 
 					if ($player->getInventory()->contains(Item::get($list[0], $list[1], $data[1])) === true) {
-						$player->getInventory()->removeItem(Item::get($list[0], $list[1], $data[1])->setCustomName($list[3]));
+						$player->getInventory()->removeItem(Item::get($list[0], $list[1], $data[1]));
 						$this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($player, $list[5] * $data[1]);
 						$message = $this->getConfig()->getNested("messages.money-received");
 						$vars = ["{amount}" => $list[2], "{item}" => $list[3], "{cost}" => $list[4] * $data[1]];
