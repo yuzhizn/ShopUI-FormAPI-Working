@@ -1,8 +1,8 @@
 name: CustomShopUI
 main: AlexPads\ShopUI\SaltyPixelDevz\Shop
-version: 3.2.1
-api: [3.3.2]
-author: TinyPixelDevz
+version: 3.2.2
+api: [3.0.0]
+author: SaltyPixelDevz
 website: saltypixel.ga
 depend:
 - EconomyAPI
