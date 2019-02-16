@@ -46,15 +46,16 @@ class Shop extends PluginBase
     }
 
     // Thanks JackMD!
-    public function checkConfigs(): void{
-        if((!$this->getConfig()->exists("config-version")) || ($this->getConfig()->get("config-version") !== self::CONFIG_VERSION)){
+    public function checkConfigs(): void
+    {
+        if ((!$this->getConfig()->exists("config-version")) || ($this->getConfig()->get("config-version") !== self::CONFIG_VERSION)) {
             rename($this->getDataFolder() . "config.yml", $this->getDataFolder() . "config_old.yml");
             $this->saveResource("config.yml");
             $this->getLogger()->critical("Your configuration file is outdated.");
             $this->getLogger()->notice("Your old configuration has been saved as config_old.yml and a new configuration file has been generated. Please update accordingly.");
         }
         $dataConfig = new Config($this->getDataFolder() . "data.yml", Config::YAML);
-        if((!$dataConfig->exists("data-version")) || ($dataConfig->get("data-version") !== self::SHOP_VERSION)){
+        if ((!$dataConfig->exists("data-version")) || ($dataConfig->get("data-version") !== self::SHOP_VERSION)) {
             rename($this->getDataFolder() . "shop.yml", $this->getDataFolder() . "shop_old.yml");
             $this->saveResource("shop.yml");
             $this->getLogger()->critical("Your shop.yml file is outdated.");
@@ -94,7 +95,7 @@ class Shop extends PluginBase
         $form = new SimpleForm(function (Player $player, int $data = null) use ($cfg, $msg) : void {
             if ($data == 0) {
                 $player->sendMessage($msg->getNested("Messages.Thanks2"));
-            }else {
+            } else {
                 if ($this->getConfig()->get("Category_ExitButton") == true) {
                     $categorys = $data - 1;
                     $this->Items($player, $categorys, $cfg);
@@ -109,8 +110,8 @@ class Shop extends PluginBase
             $form->addButton($msg->getNested("Messages.Category_ExitButton"));
         }
         foreach ($cfg as $cate => $category) {
-            if ($category == self::SHOP_VERSION){
-            }else {
+            if ($category == self::SHOP_VERSION) {
+            } else {
                 $list = explode(":", $category["Name"]);
                 if (substr($list[1], 0, 4) == "http") {
                     $form->addButton($list[0], 1, "https:" . $list[2]);
@@ -153,7 +154,11 @@ class Shop extends PluginBase
             $items = $cfg[$categorys];
             foreach ($items["Items"] as $cate => $item) {
                 $list = explode(":", $item);
-                $name = Item::get((int)$list[0], 0, 1)->getName();
+                if ($list[5] == "Default") {
+                    $name = Item::get((int)$list[0], 0, 1)->getName();
+                } else {
+                    $name = $list[5];
+                }
                 if ($list[0] == "cmd") {
                     if (substr($list[5], 0, 4) == "http") {
                         $form->addButton($list[1] . " " . $list[2] . $msg->getNested("Messages.Each"), 1, $list[5] . ":" . $list[6]);
