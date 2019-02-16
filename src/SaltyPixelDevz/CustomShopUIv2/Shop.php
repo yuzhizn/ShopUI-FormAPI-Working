@@ -47,9 +47,19 @@ class Shop extends PluginBase
 
     // Thanks JackMD!
     public function checkConfigs(): void{
-        $cfg2 = new Config($this->getDataFolder() . "shop.yml", Config::YAML);
-        ConfigUpdater::checkUpdate($this, $cfg2, "shop-version", self::SHOP_VERSION);
-        ConfigUpdater::checkUpdate($this, $this->getConfig(), "config-version", self::CONFIG_VERSION);
+        if((!$this->getConfig()->exists("config-version")) || ($this->getConfig()->get("config-version") !== self::CONFIG_VERSION)){
+            rename($this->getDataFolder() . "config.yml", $this->getDataFolder() . "config_old.yml");
+            $this->saveResource("config.yml");
+            $this->getLogger()->critical("Your configuration file is outdated.");
+            $this->getLogger()->notice("Your old configuration has been saved as config_old.yml and a new configuration file has been generated. Please update accordingly.");
+        }
+        $dataConfig = new Config($this->getDataFolder() . "data.yml", Config::YAML);
+        if((!$dataConfig->exists("data-version")) || ($dataConfig->get("data-version") !== self::SHOP_VERSION)){
+            rename($this->getDataFolder() . "shop.yml", $this->getDataFolder() . "shop_old.yml");
+            $this->saveResource("shop.yml");
+            $this->getLogger()->critical("Your shop.yml file is outdated.");
+            $this->getLogger()->notice("Your old shop.yml has been saved as shop_old.yml and a new shop.yml file has been generated. Please update accordingly.");
+        }
 
     }
     // Thanks JackMD!
