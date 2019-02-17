@@ -270,14 +270,14 @@ class Shop extends PluginBase
                             $player->getInventory()->removeItem(Item::get((int)$list[0], (int)$list[1], $data1));
                             EconomyAPI::getInstance()->addMoney($player, $list[4] * $data1);
                             $message = $msg->getNested("Messages.Paid");
-                            $vars = ["{amount}" => $data1, "{item}" => $list[5], "{pay}" => $list[4] * $data1];
+                            $vars = ["{amount}" => $data1, "{item}" => $name, "{pay}" => $list[4] * $data1];
                             foreach ($vars as $var => $replacement) {
                                 $message = str_replace($var, $replacement, $message);
                             }
                             $player->sendMessage($message);
                         } else {
                             $message = $msg->getNested("Messages.Not_enough_items");
-                            $tags = ["{amount}" => $data1, "{name}" => $list[5], "{pay}" => $list[4] * $data1];
+                            $tags = ["{amount}" => $data1, "{item}" => $name, "{pay}" => $list[4] * $data1];
                             foreach ($tags as $tag => $replacement) {
                                 $message = str_replace($tag, $replacement, $message);
                             }
@@ -296,7 +296,8 @@ class Shop extends PluginBase
             $item1[] = $item2;
         }
         $list = explode(":", $item1[$item]);
-        $vars = ["{item}" => $list[5], "{cost}" => $list[4]];
+        $name = Item::get((int)$list[0], 0, 1)->getName();
+        $vars = ["{item}" => $name, "{cost}" => $list[3]];
         foreach ($vars as $var => $replacement) {
             $message = str_replace($var, $replacement, $message);
         }
