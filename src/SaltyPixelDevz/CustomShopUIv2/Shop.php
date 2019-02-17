@@ -53,7 +53,7 @@ class Shop extends PluginBase
             $this->getLogger()->critical("Your configuration file is outdated.");
             $this->getLogger()->notice("Your old configuration has been saved as config_old.yml and a new configuration file has been generated. Please update accordingly.");
         }
-        $dataConfig = new Config($this->getDataFolder() . "data.yml", Config::YAML);
+        $dataConfig = new Config($this->getDataFolder() . "shop.yml", Config::YAML);
         if ((!$dataConfig->exists("shop-version")) || ($dataConfig->get("shop-version") != self::SHOP_VERSION)) {
             rename($this->getDataFolder() . "shop.yml", $this->getDataFolder() . "shop_old.yml");
             $this->saveResource("shop.yml");
