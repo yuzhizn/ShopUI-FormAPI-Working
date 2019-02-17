@@ -297,14 +297,19 @@ class Shop extends PluginBase
         }
         $list = explode(":", $item1[$item]);
         $name = Item::get((int)$list[0], 0, 1)->getName();
-        $vars = ["{item}" => $name, "{cost}" => $list[3]];
+        $vars = ["{item}" => $name, "{cost}" => $list[3], "{sell}" => $list[4]];
         foreach ($vars as $var => $replacement) {
             $message = str_replace($var, $replacement, $message);
         }
         $form->setTitle($msg->getNested("Titles.Amount"));
         $form->addLabel($message);
         if ($this->getConfig()->getNested("Types.Toggle") == true) {
-            $form->addToggle($msg->getNested("Messages.BuySell"));
+            $message2 = $msg->getNested("Messages.BuySell");
+            $vars2 = ["{item}" => $name, "{cost}" => $list[3], "{sell}" => $list[4]];
+            foreach ($vars2 as $var => $replacement) {
+                $message2 = str_replace($var, $replacement, $message2);
+            }
+            $form->addToggle($message2);
         }
         if ($this->getConfig()->getNested("Types.Input") == true) {
             $form->addInput($msg->getNested("Messages.Input"));

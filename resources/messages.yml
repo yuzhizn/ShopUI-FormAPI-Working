@@ -10,7 +10,11 @@ Messages:
   Category_ExitButton: "§c§lEXIT" # Button for Exiting Plugin!
   Input: "Amount" # The Words above the Input Amount!
   Each: "$ Each" # Signs for the Buttons like Steak 4($ Each) that is the part it changes
-  BuySell: "Buy/Sell" # The words next to the Toggle Switch
+
+  # You can add {sell} here For Showing the Sell Price of the Item.
+  BuySell: "Buy/Sell for {sell}$ Each" # The words next to the Toggle Switch
+
+  # You can Also add {sell} to here if you prefer it in the message up top.
   Information: "How Many of {item} for {cost}$ Each \nWould you Like to Buy?"
   ## You can use {amount}, {item} and {cost} here.
   Paid_for: "You Bought {amount}x {item} for {cost}."
