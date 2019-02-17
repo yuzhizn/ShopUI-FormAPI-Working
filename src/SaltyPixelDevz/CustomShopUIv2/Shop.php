@@ -93,7 +93,7 @@ class Shop extends PluginBase
     public function Category($cfg, Player $player, Config $msg): void
     {
         $form = new SimpleForm(function (Player $player, int $data = null) use ($cfg, $msg) : void {
-            if ($data == 0) {
+            if ($data == 0 && $this->getConfig()->get("Category_ExitButton") === true) {
                 $player->sendMessage($msg->getNested("Messages.Thanks2"));
             } else {
                 if ($this->getConfig()->get("Category_ExitButton") == true) {
