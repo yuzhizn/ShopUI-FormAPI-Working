@@ -161,7 +161,7 @@ class Shop extends PluginBase
                     if (substr($list[5], 0, 4) == "http") {
                         $form->addButton($list[1] . " " . $list[2] . $msg->getNested("Messages.Each"), 1, $list[5] . ":" . $list[6]);
                     } else {
-                        $form->addButton($list[1], 0, $list[5]);
+                        $form->addButton($list[1] . " " . $list[2] . $msg->getNested("Messages.Each"), 0, $list[5]);
                     }
                 } else {
                     if (substr($list[6], 0, 4) == "http") {
@@ -188,11 +188,11 @@ class Shop extends PluginBase
             if ($list[3] == "Console") {
                 $cmd = str_replace("{player}", $player->getName(), $list[4]);
                 Server::getInstance()->dispatchCommand(new ConsoleCommandSender(), $cmd);
-                EconomyAPI::getInstance()->reduceMoney($player->getName(), $list[3]);
+                EconomyAPI::getInstance()->reduceMoney($player->getName(), $list[2]);
             } elseif ($list[3] == "Player") {
                 $cmd = str_replace("{player}", $player->getName(), $list[4]);
                 Server::getInstance()->dispatchCommand($player, $cmd);
-                EconomyAPI::getInstance()->reduceMoney($player->getName(), $list[3]);
+                EconomyAPI::getInstance()->reduceMoney($player->getName(), $list[2]);
             }
         }
     }
