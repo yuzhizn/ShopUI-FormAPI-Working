@@ -184,7 +184,7 @@ class Shop extends PluginBase
             $item1[] = $item2;
         }
         $list = explode(":", $item1[$command]);
-        if (EconomyAPI::getInstance()->myMoney($player) > $list[3]) {
+        if (EconomyAPI::getInstance()->myMoney($player) > $list[2]) {
             if ($list[3] == "Console") {
                 $cmd = str_replace("{player}", $player->getName(), $list[4]);
                 Server::getInstance()->dispatchCommand(new ConsoleCommandSender(), $cmd);
@@ -194,6 +194,9 @@ class Shop extends PluginBase
                 Server::getInstance()->dispatchCommand($player, $cmd);
                 EconomyAPI::getInstance()->reduceMoney($player->getName(), $list[2]);
             }
+        }else{
+            $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+            $player->sendMessage($msg->getNested("messages.Not_enough_money"));
         }
     }
     // For Commands
