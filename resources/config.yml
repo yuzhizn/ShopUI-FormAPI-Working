@@ -17,6 +17,9 @@ Category_ExitButton: false
 # Turns off Messages like Thanks for Using On Close!
 Thanks: true
 
+#Turns on or off the Command Confirmation Window
+command_comfirm: true
+
 
 
 Types:

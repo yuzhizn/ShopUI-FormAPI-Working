@@ -20,12 +20,12 @@ use JackMD\ConfigUpdater\ConfigUpdater;
 
 //   _____       _ _         _____ _          _ _____
 //  / ____|     | | |       |  __ (_)        | |  __ \
-//  | (___   __ _| | |_ _   _| |__) |__  _____| | |  | | _____   ______
+// | (___   __ _| | |_ _   _| |__) |__  _____| | |  | | _____   ______
 //  \___ \ / _` | | __| | | |  ___/ \ \/ / _ \ | |  | |/ _ \ \ / /_  /
-//    ____) | (_| | | |_| |_| | |   | |>  <  __/ | |__| |  __/\ V / / /
-//   |_____/ \__,_|_|\__|\__, |_|   |_/_/\_\___|_|_____/ \___| \_/ /___|
-//                        __/ |
-//                       |___/
+//  ____) | (_| | | |_| |_| | |   | |>  <  __/ | |__| |  __/\ V / / /
+// |_____/ \__,_|_|\__|\__, |_|   |_/_/\_\___|_|_____/ \___| \_/ /___|
+//                      __/ |
+//                     |___/
 
 class Shop extends PluginBase
 {
@@ -36,6 +36,8 @@ class Shop extends PluginBase
 
     // For shop.yml Updates! (Changes more xD)
     private const SHOP_VERSION = 1;
+
+    private const MESSAGE_VERSION = 1;
 
     public function onEnable(): void
     {
@@ -59,6 +61,13 @@ class Shop extends PluginBase
             $this->saveResource("shop.yml");
             $this->getLogger()->critical("Your shop.yml file is outdated.");
             $this->getLogger()->notice("Your old shop.yml has been saved as shop_old.yml and a new shop.yml file has been generated. Please update accordingly.");
+        }
+        $dataConfig = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+        if ((!$dataConfig->exists("message-version")) || ($dataConfig->get("message-version") != self::MESSAGE_VERSION)) {
+            rename($this->getDataFolder() . "message.yml", $this->getDataFolder() . "message_old.yml");
+            $this->saveResource("message.yml");
+            $this->getLogger()->critical("Your message.yml file is outdated.");
+            $this->getLogger()->notice("Your old message.yml has been saved as message_old.yml and a new message.yml file has been generated. Please update accordingly.");
         }
 
     }
@@ -136,7 +145,11 @@ class Shop extends PluginBase
                 }
                 if ($list[0] == "cmd") {
                     $command = $data - 1;
-                    $this->Command($player, $cfg, $categorys, $command);
+                    if ($this->getConfig()->get("command_confirm") === true) {
+                        $this->Commandform($player, $cfg, $categorys, $command);
+                    } else {
+                        $this->Command($player, $cfg, $categorys, $command);
+                    }
                 } elseif (($data != 0) && ($list[0] != "cmd")) {
                     $item = $data - 1;
                     $this->Confirmation($player, $cfg, $categorys, $item);
@@ -174,7 +187,24 @@ class Shop extends PluginBase
             $form->sendToPlayer($player);
         }
     }
+
     // For Items
+    public function commandform(Player $player, $cfg, $categorys, $command)
+    {
+        $form = new SimpleForm(function (Player $player, $data) use ($cfg, $categorys, $command) {
+            $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+            if ($data == 0) {
+                $player->sendMessage($msg->getNested("messages.command_buy_cancel"));
+            }
+            if ($data == 1) {
+                $this->Command($player, $cfg, $categorys, $command);
+            }
+        });
+        $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+        $form->setContent($msg->getNested("messages.cmd_confirm"));
+        $form->addButton($msg->getNested("messages.yes"));
+        $form->addButton($msg->getNested("messages.no"));
+    }
 
     // For Commands
     public function Command(Player $player, $cfg, $categorys, $command)
@@ -194,7 +224,7 @@ class Shop extends PluginBase
                 Server::getInstance()->dispatchCommand($player, $cmd);
                 EconomyAPI::getInstance()->reduceMoney($player->getName(), $list[2]);
             }
-        }else{
+        } else {
             $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
             $player->sendMessage($msg->getNested("messages.Not_enough_money"));
         }
@@ -326,4 +356,15 @@ class Shop extends PluginBase
         $form->sendToPlayer($player);
     }
     // For Confirm Form (LONG BOI)
+
+//    _____       _ _         _____ _          _ _____
+//   / ____|     | | |       |  __ (_)        | |  __ \
+//  | (___   __ _| | |_ _   _| |__) |__  _____| | |  | | _____   ______
+//   \___ \ / _` | | __| | | |  ___/ \ \/ / _ \ | |  | |/ _ \ \ / /_  /
+//   ____) | (_| | | |_| |_| | |   | |>  <  __/ | |__| |  __/\ V / / /
+//  |_____/ \__,_|_|\__|\__, |_|   |_/_/\_\___|_|_____/ \___| \_/ /___|
+//                       __/ |
+//                      |___/
+
+
 }
