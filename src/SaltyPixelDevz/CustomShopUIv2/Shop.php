@@ -37,7 +37,7 @@ class Shop extends PluginBase
     // For shop.yml Updates! (Changes more xD)
     private const SHOP_VERSION = 1;
 
-    private const MESSAGE_VERSION = 1;
+    private const MESSAGE_VERSION = 2;
 
     public function onEnable(): void
     {
@@ -226,7 +226,7 @@ class Shop extends PluginBase
             }
         } else {
             $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-            $player->sendMessage($msg->getNested("messages.Not_enough_money"));
+            $player->sendMessage($msg->getNested("Messages.Not_enough_money_command"));
         }
     }
     // For Commands

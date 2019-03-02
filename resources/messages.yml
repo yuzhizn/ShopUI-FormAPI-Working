@@ -1,4 +1,4 @@
-message-version: 1
+message-version: 2
 Titles:
   Category: "ShopUI" # Title on the Main Shop!
   Items: "Items" # Title on the Items Section                    (All of these three things can have colors using the "§" Symbol!)
@@ -21,6 +21,7 @@ Messages:
   Paid_for: "You Bought {amount}x {item} for {cost}."
   ## You can use {amount}, {item}, {cost}, and {missing} here.
   Not_enough_money: "You Tried to By {amount} of {item} for {cost} but were missing {missing}."
+  Not_enough_money_command: "You don't have enough money to buy that Command!"
   Paid: "You Sold {amount} of {item} for {pay}."
   Not_enough_items: "You tried to sell {amount} of {item} for {pay} but didn't have enough Items!"
   Thanks: "Thank you for Using the Shop!" # Message sent on Item Buy!
@@ -28,4 +29,4 @@ Messages:
   cmd_confirm: "Are you sure you want to Buy this Command?"
   yes: "§a§lYes"
   no: "§4§lNo"
-  command_buy_cance: "You canceled the Transaction!"
+  command_buy_cancel: "You canceled the Transaction!"
