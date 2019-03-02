@@ -64,10 +64,10 @@ class Shop extends PluginBase
         }
         $dataConfig = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
         if ((!$dataConfig->exists("message-version")) || ($dataConfig->get("message-version") != self::MESSAGE_VERSION)) {
-            rename($this->getDataFolder() . "messages.yml", $this->getDataFolder() . "message_old.yml");
-            $this->saveResource("message.yml");
-            $this->getLogger()->critical("Your message.yml file is outdated.");
-            $this->getLogger()->notice("Your old message.yml has been saved as message_old.yml and a new message.yml file has been generated. Please update accordingly.");
+            rename($this->getDataFolder() . "messages.yml", $this->getDataFolder() . "messages_old.yml");
+            $this->saveResource("messages.yml");
+            $this->getLogger()->critical("Your messages.yml file is outdated.");
+            $this->getLogger()->notice("Your old messages.yml has been saved as messages_old.yml and a new messages.yml file has been generated. Please update accordingly.");
         }
 
     }
