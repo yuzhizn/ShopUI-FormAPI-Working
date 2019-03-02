@@ -165,22 +165,23 @@ class Shop extends PluginBase
             $items = $cfg[$categorys];
             foreach ($items["Items"] as $cate => $item) {
                 $list = explode(":", $item);
+                if ($list[5] == "Default") {
+                    $name = Item::get((int)$list[0], 0, 1)->getName();
+                } else {
+                    $name = $list[5];
+                }
                 if ($list[0] == "cmd") {
                     if (substr($list[5], 0, 4) == "http") {
                         $form->addButton($list[1] . " " . $list[2] . $msg->getNested("Messages.Each"), 1, $list[5] . ":" . $list[6]);
                     } else {
                         $form->addButton($list[1] . " " . $list[2] . $msg->getNested("Messages.Each"), 0, $list[5]);
                     }
-                }
-                if ($list[5] == "Default") {
-                    $name = Item::get((int)$list[0], 0, 1)->getName();
                 } else {
-                    $name = $list[5];
-                }
-                if (substr($list[6], 0, 4) == "http") {
-                    $form->addButton($name . " " . $list[3] . $msg->getNested("Messages.Each"), 1, $list[6] . ":" . $list[7]);
-                } else {
-                    $form->addButton($name . " " . $list[3] . $msg->getNested("Messages.Each"), 0, $list[6]);
+                    if (substr($list[6], 0, 4) == "http") {
+                        $form->addButton($name . " " . $list[3] . $msg->getNested("Messages.Each"), 1, $list[6] . ":" . $list[7]);
+                    } else {
+                        $form->addButton($name . " " . $list[3] . $msg->getNested("Messages.Each"), 0, $list[6]);
+                    }
                 }
             }
             $form->sendToPlayer($player);
