@@ -166,7 +166,7 @@ class Shop extends PluginBase
             foreach ($items["Items"] as $cate => $item) {
                 $list = explode(":", $item);
                 if ($list[5] == "Default") {
-                    $name = Item::get((int)$list[0], 0, 1)->getName();
+                    $name = Item::get((int)$list[0], (int)$list[1], 1)->getName();
                 } else {
                     $name = $list[5];
                 }
