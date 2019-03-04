@@ -251,7 +251,7 @@ class Shop extends PluginBase
                     $item1[] = $item2;
                 }
                 $list = explode(":", $item1[$item]);
-                $name = Item::get((int)$list[0], 0, 1)->getName();
+                $name = Item::get((int)$list[0], (int)$list[1], 1)->getName();
                 $vars = ["{item}" => $name, "{cost}" => $list[4]];
                 foreach ($vars as $var => $replacement) {
                     $message = str_replace($var, $replacement, $message);
@@ -329,7 +329,7 @@ class Shop extends PluginBase
             $item1[] = $item2;
         }
         $list = explode(":", $item1[$item]);
-        $name = Item::get((int)$list[0], 0, 1)->getName();
+        $name = Item::get((int)$list[0], (int)$list[1], 1)->getName();
         $vars = ["{item}" => $name, "{cost}" => $list[3], "{sell}" => $list[4]];
         foreach ($vars as $var => $replacement) {
             $message = str_replace($var, $replacement, $message);
