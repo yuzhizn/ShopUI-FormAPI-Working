@@ -138,10 +138,10 @@ class Shop extends PluginBase
                 } else {
                     if ($this->getConfig()->get("Category_ExitButton") == true) {
                         $categorys = $data - 1;
-                        $this->Items($player, $categorys, $cfg);
+                        $this->Items($player, $categorys, $cfg, $ans);
                     } else {
                         $categorys = $data;
-                        $this->Items($player, $categorys, $cfg);
+                        $this->Items($player, $categorys, $cfg, $ans);
                     }
                 }
             }
@@ -170,12 +170,12 @@ class Shop extends PluginBase
     // For Categories
 
     // For Items
-    public function Items(Player $player, $categorys, $cfg)
+    public function Items(Player $player, $categorys, $cfg, $ans)
     {
-        $form = new SimpleForm(function (Player $player, int $data = null) use ($cfg, $categorys) : void {
+        $form = new SimpleForm(function (Player $player, int $data = null) use ($cfg, $categorys, $ans) : void {
             if ($data == 0) {
                 $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                $this->Category($cfg, $player, $msg);
+                $this->Category($cfg, $player, $msg, $ans);
             } else {
                 $items = $cfg[$categorys];
                 foreach ($items["Items"] as $cate => $item) {
@@ -190,7 +190,7 @@ class Shop extends PluginBase
                     }
                 } elseif (($data != 0) && ($list[0] != "cmd")) {
                     $item = $data - 1;
-                    $this->Confirmation($player, $cfg, $categorys, $item);
+                    $this->Confirmation($player, $cfg, $categorys, $item, $ans);
                 }
             }
         });
@@ -266,15 +266,15 @@ class Shop extends PluginBase
     // For Commands
 
     // For Confirm Form (LONG BOI)
-    public function Confirmation(Player $player, $cfg, $categorys, $item)
+    public function Confirmation(Player $player, $cfg, $categorys, $item, $ans)
     {
-        $form = new CustomForm(function (Player $player, $data) use ($cfg, $categorys, $item) {
+        $form = new CustomForm(function (Player $player, $data) use ($cfg, $categorys, $item, $ans) {
             if ($data === null) {
                 $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
                 if (($this->getConfig()->get("Straight_Back") == true) and ($data !== null)) {
                     $player->sendMessage($msg->getNested("Messages.Thanks"));
                 } elseif ($this->getConfig()->get("Back_to_Start") == true) {
-                    $this->Category($cfg, $player, $msg);
+                    $this->Category($cfg, $player, $msg, $ans);
                 }
             } else {
                 $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
