@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace SaltyPixelDevz\CustomShopUIv2;
 
 use onebone\economyapi\EconomyAPI;
+use pmmp\TesterPlugin\TestFailedException;
 use pocketmine\command\ConsoleCommandSender;
 use pocketmine\item\Item;
 use pocketmine\Player;
@@ -31,13 +32,14 @@ class Shop extends PluginBase
 {
 
     public $msg;
-    // For Config Updates
-    private const CONFIG_VERSION = 1;
+    // For Config Updates!
+    private const CONFIG_VERSION = 2;
 
-    // For shop.yml Updates! (Changes more xD)
-    private const SHOP_VERSION = 1;
+    // For shop Updates!
+    private const SHOP_VERSION = 2;
 
-    private const MESSAGE_VERSION = 2;
+    // For Message Updates!
+    private const MESSAGE_VERSION = 3;
 
     public function onEnable(): void
     {
@@ -78,42 +80,78 @@ class Shop extends PluginBase
         switch ("shop") {
             case "shop":
                 if ($sender instanceof Player) {
-                    if ($sender->getGamemode() != 0 and $this->getConfig()->get("Survival") === true) {
-                        $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                        $sender->sendMessage($msg->getNested("messages.Survival"));
-                        return true;
-                    } else {
-                        $cfg = yaml_parse_file($this->getDataFolder() . "shop.yml");
-                        $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                        $this->Category($cfg, $sender, $msg);
-                        return true;
+                    $cfg = yaml_parse_file($this->getDataFolder() . "shop.yml");
+                    if (empty($args)) {
+                        $ans = strtolower($this->getConfig()->get("Default-Shop"));
+                        $cfg = $cfg[$ans];
+                        if ($sender->getGamemode() != 0 and $this->getConfig()->get("Survival") === true) {
+                            $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                            $sender->sendMessage($msg->getNested("messages.Survival"));
+                            return true;
+                        } else {
+                            $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                            $this->Category($cfg, $sender, $msg, $ans);
+                            return true;
+                        }
+                    } else if (!empty($args) && $this->getConfig()->get("Multi-Shop") === true) {
+                        $ans = strtolower($args[0]);
+                        if (array_key_exists($ans, $cfg)) {
+                            $cfg = $cfg[$ans];
+                            if ($sender->hasPermission("shop.$ans")) {
+                                if ($sender->getGamemode() != 0 and $this->getConfig()->get("Survival") === true) {
+                                    $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                                    $sender->sendMessage($msg->getNested("messages.Survival"));
+                                    return true;
+                                } else {
+                                    $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                                    $this->Category($cfg, $sender, $msg, $ans);
+                                    return true;
+                                }
+                                break;
+                            } else if (!$sender->hasPermission("shop.$ans")) {
+                                $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                                $sender->sendMessage($msg->getNested("Messages.NoPermission"));
+                            }
+                        } else {
+                            $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                            $sender->sendMessage($msg->getNested("Messages.ShopError"));
+                        }
                     }
+                } else {
+                    $sender->sendMessage(TF::RED . "Please use this in-game.");
                 }
-                $sender->sendMessage(TF::RED . "Please use this in-game.");
-                break;
+                return true;
         }
-        return true;
     }
     // For Commands Test Survival
 
     // For Categories
-    public function Category($cfg, Player $player, Config $msg): void
+    public function Category($cfg, Player $player, Config $msg, $ans): void
     {
-        $form = new SimpleForm(function (Player $player, int $data = null) use ($cfg, $msg) : void {
-            if ($data == 0 && $this->getConfig()->get("Category_ExitButton") === true) {
+        $form = new SimpleForm(function (Player $player, int $data = null) use ($cfg, $msg, $ans) : void {
+            $categorys = $data;
+            if (($categorys === null) && ($this->getConfig()->get("Thanks") === true)) {
                 $player->sendMessage($msg->getNested("Messages.Thanks2"));
-            } else {
-                if ($this->getConfig()->get("Category_ExitButton") == true) {
-                    $categorys = $data - 1;
-                    $this->Items($player, $categorys, $cfg);
+            } else if (($this->getConfig()->get("Thanks") === true) or ($categorys !== null)){
+                if ($data == 0 && $this->getConfig()->get("Category_ExitButton") === true) {
+                    $player->sendMessage($msg->getNested("Messages.Thanks2"));
                 } else {
-                    $categorys = $data;
-                    $this->Items($player, $categorys, $cfg);
+                    if ($this->getConfig()->get("Category_ExitButton") == true) {
+                        $categorys = $data - 1;
+                        $this->Items($player, $categorys, $cfg);
+                    } else {
+                        $categorys = $data;
+                        $this->Items($player, $categorys, $cfg);
+                    }
                 }
             }
         });
-        $form->setTitle($msg->getNested("Titles.Category"));
-        if ($this->getConfig()->get("Category_ExitButton") == true) {
+        if ($this->getConfig()->getNested("Titles.$ans"."title") !== null){
+            $form->setTitle($this->getConfig()->getNested("Titles.$ans"."title"));
+        }else{
+            $form->setTitle($this->getConfig()->getNested("Titles.Default"));
+        }
+        if ($this->getConfig()->get("Category_ExitButton") === true) {
             $form->addButton($msg->getNested("Messages.Category_ExitButton"));
         }
         foreach ($cfg as $cate => $category) {
@@ -121,7 +159,7 @@ class Shop extends PluginBase
             } else {
                 $list = explode(":", $category["Name"]);
                 if (substr($list[1], 0, 4) == "http") {
-                    $form->addButton($list[0], 1, "https:" . $list[2]);
+                    $form->addButton($list[0], 1, $list[1] . $list[2]);
                 } else {
                     $form->addButton($list[0], 0, $list[1]);
                 }
@@ -159,33 +197,29 @@ class Shop extends PluginBase
         $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
         $form->setTitle($msg->getNested("Titles.Items"));
         $form->addButton($msg->getNested("Messages.ExitButton"));
-        if (($categorys === null) && ($this->getConfig()->get("Thanks") == true)) {
-            $player->sendMessage($msg->getNested("Messages.Thanks"));
-        } else {
-            $items = $cfg[$categorys];
-            foreach ($items["Items"] as $cate => $item) {
-                $list = explode(":", $item);
-                if ($list[5] == "Default") {
-                    $name = Item::get((int)$list[0], (int)$list[1], 1)->getName();
+        $items = $cfg[$categorys];
+        foreach ($items["Items"] as $cate => $item) {
+            $list = explode(":", $item);
+            if ($list[5] == "Default") {
+                $name = Item::get((int)$list[0], (int)$list[1], 1)->getName();
+            } else {
+                $name = $list[5];
+            }
+            if ($list[0] == "cmd") {
+                if (substr($list[5], 0, 4) == "http") {
+                    $form->addButton($list[1] . " " . $list[2] . $msg->getNested("Messages.Each"), 1, $list[5] . ":" . $list[6]);
                 } else {
-                    $name = $list[5];
+                    $form->addButton($list[1] . " " . $list[2] . $msg->getNested("Messages.Each"), 0, $list[5]);
                 }
-                if ($list[0] == "cmd") {
-                    if (substr($list[5], 0, 4) == "http") {
-                        $form->addButton($list[1] . " " . $list[2] . $msg->getNested("Messages.Each"), 1, $list[5] . ":" . $list[6]);
-                    } else {
-                        $form->addButton($list[1] . " " . $list[2] . $msg->getNested("Messages.Each"), 0, $list[5]);
-                    }
+            } else {
+                if (substr($list[6], 0, 4) == "http") {
+                    $form->addButton($name . " " . $list[3] . $msg->getNested("Messages.Each"), 1, $list[6] . ":" . $list[7]);
                 } else {
-                    if (substr($list[6], 0, 4) == "http") {
-                        $form->addButton($name . " " . $list[3] . $msg->getNested("Messages.Each"), 1, $list[6] . ":" . $list[7]);
-                    } else {
-                        $form->addButton($name . " " . $list[3] . $msg->getNested("Messages.Each"), 0, $list[6]);
-                    }
+                    $form->addButton($name . " " . $list[3] . $msg->getNested("Messages.Each"), 0, $list[6]);
                 }
             }
-            $form->sendToPlayer($player);
         }
+        $form->sendToPlayer($player);
     }
 
     // For Items
@@ -237,7 +271,7 @@ class Shop extends PluginBase
         $form = new CustomForm(function (Player $player, $data) use ($cfg, $categorys, $item) {
             if ($data === null) {
                 $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                if ($this->getConfig()->get("Straight_Back") == true) {
+                if (($this->getConfig()->get("Straight_Back") == true) and ($data !== null)) {
                     $player->sendMessage($msg->getNested("Messages.Thanks"));
                 } elseif ($this->getConfig()->get("Back_to_Start") == true) {
                     $this->Category($cfg, $player, $msg);
@@ -269,8 +303,12 @@ class Shop extends PluginBase
                     }
                 }
 
-                if (($data1 == 0) && ($this->getConfig()->get("Thanks")) === true) {
-                    $player->sendMessage($msg->getNested("Messages.Thanks2"));
+                if (($this->getConfig()->get("Thanks")) === true) {
+                    if ($data1 === null){
+                        $player->sendMessage($msg->getNested("Messages.Thanks2"));
+                    }else {
+                        $player->sendMessage($msg->getNested("Messages.Thanks"));
+                    }
                 } else {
                     if ($data[1] == false) {
                         if ($money >= $list[3] * $data1) {

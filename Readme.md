@@ -10,6 +10,8 @@ This Plugin uses LibFormAPI
 
 ## Features
 
+
+- Make Unlimited Shops! (with Permissions)
 - Categories
 - Items
 - Pictures
@@ -46,7 +48,7 @@ If You would like a image on this DataBase Please send me the Image file! Email 
 
 - Made by: SaltyPixelDevz
 - TeamMembers(That worked on this Project): AlexPads
-- Discord: https://discord.gg/cSEBKWj
+- Discord: https://discord.gg/kVuKY2s
 - Website: http://saltypixel.ga
 - Want to Develop the with the SaltyPixel Dev Team! Contact me on discord! (Link Above) 
 donate at (SaltyPixel.ga Link above!)

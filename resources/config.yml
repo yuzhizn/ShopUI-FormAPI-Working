@@ -1,5 +1,5 @@
 # DO NOT TO
-config-version: 1
+config-version: 2
 # DO NOT TOUCH^^^^
 
 # When someone closes the shop it shuts completely cout they will have to run the command again!
@@ -15,10 +15,21 @@ Survival: false
 Category_ExitButton: false
 
 # Turns off Messages like Thanks for Using On Close!
-Thanks: true
+Thanks: false
 
 #Turns on or off the Command Confirmation Window
 command_comfirm: true
+
+# Turns on or off Multi Shop Support!
+Multi-Shop: true
+
+# Default Shop for when the Player Runs the /shop command with no Arguments!
+Default-Shop: "Shop"
+Titles:
+  # adding these is simple just put exactly what you have in the shop.yml as the name and then title after it and then the name!
+  Default: "ShopUI" ## This is default for when you don't add the titles Below!
+  shoptitle: "ShopUI"
+  viptitle: "Vip Shop"
 
 
 
