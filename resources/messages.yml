@@ -1,4 +1,4 @@
-message-version: 3
+message-version: 4
 Titles:
   Items: "Items" # Title on the Items Section                    (All of these three things can have colors using the "§" Symbol!)
   Amount: "Amount" # Title on the Buying area with Sliders and Things!
@@ -9,7 +9,8 @@ Messages:
   ExitButton: "§c§lBACK" # Button for Item Category
   Category_ExitButton: "§c§lEXIT" # Button for Exiting Plugin!
   Input: "Amount" # The Words above the Input Amount!
-  Each: "$ Each" # Signs for the Buttons like Steak 4($ Each) that is the part it changes
+  # You can use {price here now!}
+  Each: "$ {price} Each" # Signs for the Buttons like Steak 4($ Each) that is the part it changes
 
   # You can add {sell} here For Showing the Sell Price of the Item.
   BuySell: "Buy/Sell for {sell}$ Each" # The words next to the Toggle Switch

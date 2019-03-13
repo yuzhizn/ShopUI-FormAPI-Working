@@ -12,6 +12,9 @@ This Plugin uses LibFormAPI
 
 
 - Make Unlimited Shops! (with Permissions)
+    the commands turns into /shop (default shop in config)
+    and /shop <shopname> so Ex. /shop vip will take you to the VIP shop or whatever ones you make.
+    Perfect for SkyBlock and Other Minigames with rankup Systems!
 - Categories
 - Items
 - Pictures

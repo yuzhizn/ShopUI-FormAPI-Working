@@ -39,7 +39,7 @@ class Shop extends PluginBase
     private const SHOP_VERSION = 2;
 
     // For Message Updates!
-    private const MESSAGE_VERSION = 3;
+    private const MESSAGE_VERSION = 4;
 
     public function onEnable(): void
     {
@@ -212,10 +212,11 @@ class Shop extends PluginBase
                     $form->addButton($list[1] . " " . $list[2] . $msg->getNested("Messages.Each"), 0, $list[5]);
                 }
             } else {
+                $msg2 = str_replace("{price}", "$list[3]", $msg->getNested("Messages.Each"));
                 if (substr($list[6], 0, 4) == "http") {
-                    $form->addButton($name . " " . $list[3] . $msg->getNested("Messages.Each"), 1, $list[6] . ":" . $list[7]);
+                    $form->addButton($name . " " .  $msg2, 1, $list[6] . ":" . $list[7]);
                 } else {
-                    $form->addButton($name . " " . $list[3] . $msg->getNested("Messages.Each"), 0, $list[6]);
+                    $form->addButton($name . " " .  $msg2, 0, $list[6]);
                 }
             }
         }
