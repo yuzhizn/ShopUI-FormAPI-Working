@@ -1,8 +1,8 @@
 # DO NOT TO
-config-version: 2
+config-version: 3
 # DO NOT TOUCH^^^^
 
-# When someone closes the shop it shuts completely cout they will have to run the command again!
+# When someone closes the shop it shuts completely out they will have to run the command again!
 Straight_Back: true
 
 # when someone closes the shop it goes back to the Category area they can then close it from there.
@@ -11,8 +11,12 @@ Back_to_Start: false
 # This makes the Command only work when the player is in Survival
 Survival: false
 
+# This is Used to Ban Commands in only the Worlds Below.
+Worlds: ["bannedworld1", "bannedworld2"] # You can add as Many as needed
+
 # This adds an Exit Button to Categories Section of Plugin (Recommended to Leave false)
 Category_ExitButton: false
+Items_ExitButton: false
 
 # Turns off Messages like Thanks for Using On Close!
 Thanks: false

@@ -1,5 +1,5 @@
 ## DO NOT TOUCH (This is for Updates only!)
-shop-version: 2
+shop-version: 3
 # DO NOT TOUCH ^^^^^
 
 #Command Example!!!
@@ -29,30 +29,79 @@ shop-version: 2
 #
 #
 # Developer: AlexPads Team: SaltyPixelDevz! (hub.saltypixel.ga 19132) Join!
-#
+# NEW!!!!!!!!!! SubCategories!
 #======================================================================================================
 
 # MUST be all Lowercase! RECOMMENDED TO KEEP THIS YOUR DEFAULT SHOP!
 shop: # if you want the shop to have a custom name you must add the options in the Config.yml file if now it will default to ShopUI
   0: #must start at 0 and go up by one with every new category you make.
-    Name: "Weapons:textures/items/stone_sword" #Can use Custom Colors in the Names using the "§" Symbol
-    Items:
-      - "268:0:1:250:0:Default:textures/items/wood_sword"
-      - "272:0:1:500:0:Default:textures/items/stone_sword"
-      - "267:0:1:1000:0:Default:textures/items/gold_sword"
-      - "283:0:1:1200:0:Default:textures/items/iron_sword"
-      - "276:0:1:2000:0:Default:textures/items/diamond_sword"
-      - "261:0:1:2000:0:Default:textures/items/bow_standby"
-      - "262:0:64:3:1:Default:textures/items/arrow"
+    Name: "Weapons / Tools:textures/items/stone_sword" #Can use Custom Colors in the Names using the "§" Symbol
+    Sub:
+      0:
+        Name: "Swords:textures/items/stone_sword"
+        Items:
+          - "268:0:1:250:0:Default:textures/items/wood_sword"
+          - "272:0:1:500:0:Default:textures/items/stone_sword"
+          - "267:0:1:2000:0:Default:textures/items/iron_sword"
+          - "276:0:1:3500:0:Default:textures/items/diamond_sword"
+      1:
+        Name: "Bows:textures/items/bow_pulling_2"
+        Items:
+          - "261:0:1:500:0:Default:textures/items/bow_pulling_2"
+          - "262:0:1:2:0:Default:textures/items/arrow"
+      2:
+        Name: "Picks:textures/items/diamond_pickaxe"
+        Items:
+          - "278:0:1:2500:0:Default:textures/items/diamond_pickaxe"
+          - "285:0:1:2000:0:Default:textures/items/gold_pickaxe"
+          - "257:0:1:1000:0:Default:textures/items/iron_pickaxe"
+          - "274:0:1:550:0:Default:textures/items/stone_pickaxe"
+          - "270:0:1:100:0:Default:textures/items/wood_pickaxe"
+      3:
+        Name: "Axes:textures/items/diamond_axe"
+        Items:
+          - "271:0:1:200:0:Default:textures/items/wood_axe"
+          - "275:0:1:200:0:Default:textures/items/stone_axe"
+          - "258:0:1:200:0:Default:textures/items/iron_axe"
+          - "279:0:1:200:0:Default:textures/items/diamond_axe"
   1:
-    Name: "Tools:textures/items/stone_shovel"
-    Items:
-      - "278:0:1:2500:0:Default:textures/items/diamond_pickaxe"
-      - "285:0:1:2000:0:Default:textures/items/gold_pickaxe"
-      - "257:0:1:1000:0:Default:textures/items/iron_pickaxe"
-      - "274:0:1:550:0:Default:textures/items/stone_pickaxe"
-      - "270:0:1:100:0:Default:textures/items/wood_pickaxe"
-      - "258:0:1:200:0:Default:textures/items/iron_axe"
+    Name: "Armor:textures/items/diamond_chestplate"
+    Sub:
+      0:
+        Name: "Leather:textures/items/leather_chestplate"
+        Items:
+          - "298:0:1:10000:0:Default:textures/items/leather_helmet"
+          - "299:0:1:10000:0:Default:textures/items/leather_chestplate"
+          - "300:0:1:10000:0:Default:textures/items/leather_leggings"
+          - "301:0:1:10000:0:Default:textures/items/leather_boots"
+      1:
+        Name: "ChainMail:textures/items/chainmail_chestplate"
+        Items:
+          - "302:0:1:15000:0:Default:textures/items/chainmail_helmet"
+          - "303:0:1:15000:0:Default:textures/items/chainmail_chestplate"
+          - "304:0:1:15000:0:Default:textures/items/chainmail_leggings"
+          - "305:0:1:15000:0:Default:textures/items/chainmail_boots"
+      2:
+        Name: "Iron:textures/items/iron_chestplate"
+        Items:
+          - "306:0:1:17000:0:Default:textures/items/iron_helmet"
+          - "307:0:1:17000:0:Default:textures/items/iron_chestplate"
+          - "308:0:1:17000:0:Default:textures/items/iron_leggings"
+          - "309:0:1:17000:0:Default:textures/items/iron_boots"
+      3:
+        Name: "Gold:textures/items/gold_chestplate"
+        Items:
+          - "314:0:1:12000:0:Default:textures/items/gold_helmet"
+          - "315:0:1:12000:0:Default:textures/items/gold_chestplate"
+          - "316:0:1:12000:0:Default:textures/items/gold_leggings"
+          - "317:0:1:12000:0:Default:textures/items/gold_boots"
+      4:
+        Name: "Diamond:textures/items/diamond_chestplate"
+        Items:
+          - "310:0:1:25000:0:Default:textures/items/diamond_helmet"
+          - "311:0:1:25000:0:Default:textures/items/diamond_chestplate"
+          - "312:0:1:25000:0:Default:textures/items/diamond_leggings"
+          - "313:0:1:25000:0:Default:textures/items/diamond_boots"
   2:
     Name: "Blocks:textures/blocks/dirt"
     Items:
@@ -122,65 +171,91 @@ shop: # if you want the shop to have a custom name you must add the options in t
   8:
     Name: "Decor:http://saltypixel.ga/textures/items/white_wool.png"
     Items:
-      - "35:0:64:25:1.75:White Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-      - "35:1:64:25:1.75:Orange Wool:https:://saltypixel.ga/textures/items/White_wool.png"
-      - "35:2:64:25:1.75:Magenta Wool:https:://saltypixel.ga/textures/items/White_wool.png"
-      - "35:3:64:25:1.75:Light Blue Wool:https:://saltypixel.ga/textures/items/white_Wool.png"
-      - "35:4:64:25:1.75:Yellow Wool:https:://saltypixel.ga/textures/items/White_wool.png"
-      - "35:5:64:25:1.75:Lime Wool:https:://saltypixel.ga/textures/items/White_wool.png"
-      - "35:6:64:25:1.75:Pink Wool:https:://saltypixel.ga/textures/items/White_wool.png"
-      - "35:7:64:25:1.75:Gray Wool:https:://saltypixel.ga/textures/items/White_wool.png"
-      - "35:8:64:25:1.75:Light Gray Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-      - "35:9:64:25:1.75:Cyan Wool:https:://saltypixel.ga/textures/items/White_wool.png"
-      - "35:10:64:25:1.75:Purple Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-      - "35:11:64:25:1.75:Blue Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-      - "35:12:64:l:1.5:Brown Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-      - "35:13:64:25:1.75:Green Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-      - "35:14:64:25:1.75:Red Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-      - "35:15:64:25:1.75:Black Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-  9:
-    Name: "Armor:textures/items/diamond_chestplate"
-    Items:
-      - "310:0:1:25000:0:Default:textures/items/diamond_helmet"
-      - "311:0:1:25000:0:Default:textures/items/diamond_chestplate"
-      - "312:0:1:25000:0:Default:textures/items/diamond_leggings"
-      - "313:0:1:25000:0:Default:textures/items/diamond_boots"
-      - "302:0:1:15000:0:Default:textures/items/chainmail_helmet"
-      - "303:0:1:15000:0:Default:textures/items/chainmail_chestplate"
-      - "304:0:1:15000:0:Default:textures/items/chainmail_leggings"
-      - "305:0:1:15000:0:Default:textures/items/chainmail_boots"
-      - "306:0:1:17000:0:Default:textures/items/iron_helmet"
-      - "307:0:1:17000:0:Default:textures/items/iron_chestplate"
-      - "308:0:1:17000:0:Default:textures/items/iron_leggings"
-      - "309:0:1:17000:0:Default:textures/items/iron_boots"
-      - "314:0:1:12000:0:Default:textures/items/gold_helmet"
-      - "315:0:1:12000:0:Default:textures/items/gold_chestplate"
-      - "316:0:1:12000:0:Default:textures/items/gold_leggings"
-      - "317:0:1:12000:0:Default:textures/items/gold_boots"
-      - "298:0:1:10000:0:Default:textures/items/leather_helmet"
-      - "299:0:1:10000:0:Default:textures/items/leather_chestplate"
-      - "300:0:1:10000:0:Default:textures/items/leather_leggings"
-      - "301:0:1:10000:0:Default:textures/items/leather_boots"
-vip: # MUST be all Lowercase!
+      - "35:0:64:25:1.75:White Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:1:64:25:1.75:Orange Wool:https://saltypixel.ga/textures/items/White_wool.png"
+      - "35:2:64:25:1.75:Magenta Wool:https://saltypixel.ga/textures/items/White_wool.png"
+      - "35:3:64:25:1.75:Light Blue Wool:https://saltypixel.ga/textures/items/white_Wool.png"
+      - "35:4:64:25:1.75:Yellow Wool:https://saltypixel.ga/textures/items/White_wool.png"
+      - "35:5:64:25:1.75:Lime Wool:https://saltypixel.ga/textures/items/White_wool.png"
+      - "35:6:64:25:1.75:Pink Wool:https://saltypixel.ga/textures/items/White_wool.png"
+      - "35:7:64:25:1.75:Gray Wool:https://saltypixel.ga/textures/items/White_wool.png"
+      - "35:8:64:25:1.75:Light Gray Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:9:64:25:1.75:Cyan Wool:https://saltypixel.ga/textures/items/White_wool.png"
+      - "35:10:64:25:1.75:Purple Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:11:64:25:1.75:Blue Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:12:64:l:1.5:Brown Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:13:64:25:1.75:Green Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:14:64:25:1.75:Red Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:15:64:25:1.75:Black Wool:https://saltypixel.ga/textures/items/white_wool.png"
+vip: # if you want the shop to have a custom name you must add the options in the Config.yml file if now it will default to ShopUI
   0: #must start at 0 and go up by one with every new category you make.
-    Name: "Vip Weapons:textures/items/stone_sword" #Can use Custom Colors in the Names using the "§" Symbol
-    Items:
-      - "268:0:1:250:0:Default:textures/items/wood_sword"
-      - "272:0:1:500:0:Default:textures/items/stone_sword"
-      - "267:0:1:1000:0:Default:textures/items/gold_sword"
-      - "283:0:1:1200:0:Default:textures/items/iron_sword"
-      - "276:0:1:2000:0:Default:textures/items/diamond_sword"
-      - "261:0:1:2000:0:Default:textures/items/bow_standby"
-      - "262:0:64:3:1:Default:textures/items/arrow"
+    Name: "Vip Weapons / Tools:textures/items/stone_sword" #Can use Custom Colors in the Names using the "§" Symbol
+    Sub:
+      0:
+        Name: "Swords:textures/items/stone_sword"
+        Items:
+          - "268:0:1:250:0:Default:textures/items/wood_sword"
+          - "272:0:1:500:0:Default:textures/items/stone_sword"
+          - "267:0:1:2000:0:Default:textures/items/iron_sword"
+          - "276:0:1:3500:0:Default:textures/items/diamond_sword"
+      1:
+        Name: "Bows:textures/items/bow_pulling_2"
+        Items:
+          - "261:0:1:500:0:Default:textures/items/bow_pulling_2"
+          - "262:0:1:2:0:Default:textures/items/arrow"
+      2:
+        Name: "Picks:textures/items/diamond_pickaxe"
+        Items:
+          - "278:0:1:2500:0:Default:textures/items/diamond_pickaxe"
+          - "285:0:1:2000:0:Default:textures/items/gold_pickaxe"
+          - "257:0:1:1000:0:Default:textures/items/iron_pickaxe"
+          - "274:0:1:550:0:Default:textures/items/stone_pickaxe"
+          - "270:0:1:100:0:Default:textures/items/wood_pickaxe"
+      3:
+        Name: "Axes:textures/items/diamond_axe"
+        Items:
+          - "271:0:1:200:0:Default:textures/items/wood_axe"
+          - "275:0:1:200:0:Default:textures/items/stone_axe"
+          - "258:0:1:200:0:Default:textures/items/iron_axe"
+          - "279:0:1:200:0:Default:textures/items/diamond_axe"
   1:
-    Name: "Vip Tools:textures/items/stone_shovel"
-    Items:
-      - "278:0:1:2500:0:Default:textures/items/diamond_pickaxe"
-      - "285:0:1:2000:0:Default:textures/items/gold_pickaxe"
-      - "257:0:1:1000:0:Default:textures/items/iron_pickaxe"
-      - "274:0:1:550:0:Default:textures/items/stone_pickaxe"
-      - "270:0:1:100:0:Default:textures/items/wood_pickaxe"
-      - "258:0:1:200:0:Default:textures/items/iron_axe"
+    Name: "Vip Armor:textures/items/diamond_chestplate"
+    Sub:
+      0:
+        Name: "Leather:textures/items/leather_chestplate"
+        Items:
+          - "298:0:1:10000:0:Default:textures/items/leather_helmet"
+          - "299:0:1:10000:0:Default:textures/items/leather_chestplate"
+          - "300:0:1:10000:0:Default:textures/items/leather_leggings"
+          - "301:0:1:10000:0:Default:textures/items/leather_boots"
+      1:
+        Name: "ChainMail:textures/items/chainmail_chestplate"
+        Items:
+          - "302:0:1:15000:0:Default:textures/items/chainmail_helmet"
+          - "303:0:1:15000:0:Default:textures/items/chainmail_chestplate"
+          - "304:0:1:15000:0:Default:textures/items/chainmail_leggings"
+          - "305:0:1:15000:0:Default:textures/items/chainmail_boots"
+      2:
+        Name: "Iron:textures/items/iron_chestplate"
+        Items:
+          - "306:0:1:17000:0:Default:textures/items/iron_helmet"
+          - "307:0:1:17000:0:Default:textures/items/iron_chestplate"
+          - "308:0:1:17000:0:Default:textures/items/iron_leggings"
+          - "309:0:1:17000:0:Default:textures/items/iron_boots"
+      3:
+        Name: "Gold:textures/items/gold_chestplate"
+        Items:
+          - "314:0:1:12000:0:Default:textures/items/gold_helmet"
+          - "315:0:1:12000:0:Default:textures/items/gold_chestplate"
+          - "316:0:1:12000:0:Default:textures/items/gold_leggings"
+          - "317:0:1:12000:0:Default:textures/items/gold_boots"
+      4:
+        Name: "Diamond:textures/items/diamond_chestplate"
+        Items:
+          - "310:0:1:25000:0:Default:textures/items/diamond_helmet"
+          - "311:0:1:25000:0:Default:textures/items/diamond_chestplate"
+          - "312:0:1:25000:0:Default:textures/items/diamond_leggings"
+          - "313:0:1:25000:0:Default:textures/items/diamond_boots"
   2:
     Name: "Vip Blocks:textures/blocks/dirt"
     Items:
@@ -250,42 +325,19 @@ vip: # MUST be all Lowercase!
   8:
     Name: "Vip Decor:http://saltypixel.ga/textures/items/white_wool.png"
     Items:
-      - "35:0:64:25:1.75:White Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-      - "35:1:64:25:1.75:Orange Wool:https:://saltypixel.ga/textures/items/White_wool.png"
-      - "35:2:64:25:1.75:Magenta Wool:https:://saltypixel.ga/textures/items/White_wool.png"
-      - "35:3:64:25:1.75:Light Blue Wool:https:://saltypixel.ga/textures/items/white_Wool.png"
-      - "35:4:64:25:1.75:Yellow Wool:https:://saltypixel.ga/textures/items/White_wool.png"
-      - "35:5:64:25:1.75:Lime Wool:https:://saltypixel.ga/textures/items/White_wool.png"
-      - "35:6:64:25:1.75:Pink Wool:https:://saltypixel.ga/textures/items/White_wool.png"
-      - "35:7:64:25:1.75:Gray Wool:https:://saltypixel.ga/textures/items/White_wool.png"
-      - "35:8:64:25:1.75:Light Gray Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-      - "35:9:64:25:1.75:Cyan Wool:https:://saltypixel.ga/textures/items/White_wool.png"
-      - "35:10:64:25:1.75:Purple Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-      - "35:11:64:25:1.75:Blue Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-      - "35:12:64:l:1.5:Brown Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-      - "35:13:64:25:1.75:Green Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-      - "35:14:64:25:1.75:Red Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-      - "35:15:64:25:1.75:Black Wool:https:://saltypixel.ga/textures/items/white_wool.png"
-  9:
-    Name: "Vip Armor:textures/items/diamond_chestplate"
-    Items:
-      - "310:0:1:25000:0:Default:textures/items/diamond_helmet"
-      - "311:0:1:25000:0:Default:textures/items/diamond_chestplate"
-      - "312:0:1:25000:0:Default:textures/items/diamond_leggings"
-      - "313:0:1:25000:0:Default:textures/items/diamond_boots"
-      - "302:0:1:15000:0:Default:textures/items/chainmail_helmet"
-      - "303:0:1:15000:0:Default:textures/items/chainmail_chestplate"
-      - "304:0:1:15000:0:Default:textures/items/chainmail_leggings"
-      - "305:0:1:15000:0:Default:textures/items/chainmail_boots"
-      - "306:0:1:17000:0:Default:textures/items/iron_helmet"
-      - "307:0:1:17000:0:Default:textures/items/iron_chestplate"
-      - "308:0:1:17000:0:Default:textures/items/iron_leggings"
-      - "309:0:1:17000:0:Default:textures/items/iron_boots"
-      - "314:0:1:12000:0:Default:textures/items/gold_helmet"
-      - "315:0:1:12000:0:Default:textures/items/gold_chestplate"
-      - "316:0:1:12000:0:Default:textures/items/gold_leggings"
-      - "317:0:1:12000:0:Default:textures/items/gold_boots"
-      - "298:0:1:10000:0:Default:textures/items/leather_helmet"
-      - "299:0:1:10000:0:Default:textures/items/leather_chestplate"
-      - "300:0:1:10000:0:Default:textures/items/leather_leggings"
-      - "301:0:1:10000:0:Default:textures/items/leather_boots"
+      - "35:0:64:25:1.75:White Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:1:64:25:1.75:Orange Wool:https://saltypixel.ga/textures/items/White_wool.png"
+      - "35:2:64:25:1.75:Magenta Wool:https://saltypixel.ga/textures/items/White_wool.png"
+      - "35:3:64:25:1.75:Light Blue Wool:https://saltypixel.ga/textures/items/white_Wool.png"
+      - "35:4:64:25:1.75:Yellow Wool:https://saltypixel.ga/textures/items/White_wool.png"
+      - "35:5:64:25:1.75:Lime Wool:https://saltypixel.ga/textures/items/White_wool.png"
+      - "35:6:64:25:1.75:Pink Wool:https://saltypixel.ga/textures/items/White_wool.png"
+      - "35:7:64:25:1.75:Gray Wool:https://saltypixel.ga/textures/items/White_wool.png"
+      - "35:8:64:25:1.75:Light Gray Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:9:64:25:1.75:Cyan Wool:https://saltypixel.ga/textures/items/White_wool.png"
+      - "35:10:64:25:1.75:Purple Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:11:64:25:1.75:Blue Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:12:64:l:1.5:Brown Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:13:64:25:1.75:Green Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:14:64:25:1.75:Red Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:15:64:25:1.75:Black Wool:https://saltypixel.ga/textures/items/white_wool.png"
