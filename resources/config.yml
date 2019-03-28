@@ -1,5 +1,5 @@
 # DO NOT TO
-config-version: 3
+config-version: 4
 # DO NOT TOUCH^^^^
 
 # When someone closes the shop it shuts completely out they will have to run the command again!
@@ -22,7 +22,7 @@ Items_ExitButton: false
 Thanks: false
 
 #Turns on or off the Command Confirmation Window
-command_comfirm: true
+command_confirm: true
 
 # Turns on or off Multi Shop Support!
 Multi-Shop: true

@@ -33,7 +33,7 @@ class Shop extends PluginBase
 
     public $msg;
     // For Config Updates!
-    private const CONFIG_VERSION = 3;
+    private const CONFIG_VERSION = 4;
     // For shop Updates!
     private const SHOP_VERSION = 3;
     // For Message Updates!
@@ -254,9 +254,11 @@ class Shop extends PluginBase
                 if ($list[0] == "cmd") {
                     $command = $data;
                     if ($this->getConfig()->get("command_confirm") === true) {
-                        $this->Commandform($player, $cfg, $categorys, $command);
+                        $sub = 1;
+                        $this->Commandform($player, $cfg, $categorys, $command, $sub, $ans);
                     } else {
-                        $this->Command($player, $cfg, $categorys, $command);
+                        $sub = 1;
+                        $this->Command($player, $cfg, $categorys, $command, $sub, $ans);
                     }
                 } elseif (($list[0] != "cmd")) {
                     $item = $data;
@@ -304,32 +306,42 @@ class Shop extends PluginBase
         }
     }
     // For Items
-    public function commandform(Player $player, $cfg, $categorys, $command)
+    public function commandform(Player $player, $cfg, $categorys, $command, $sub, $ans)
     {
-        $form = new SimpleForm(function (Player $player, $data) use ($cfg, $categorys, $command) {
+        $form = new SimpleForm(function (Player $player, $data) use ($cfg, $categorys, $command, $sub, $ans) {
             $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-            if ($data == 0) {
-                $player->sendMessage($msg->getNested("messages.command_buy_cancel"));
-            }
             if ($data == 1) {
-                $this->Command($player, $cfg, $categorys, $command);
+                $player->sendMessage($msg->getNested("Messages.command_buy_cancel"));
+            }
+            if ($data == 0) {
+                $this->Command($player, $cfg, $categorys, $command, $sub, $ans);
             }
         });
         $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-        $form->setContent($msg->getNested("messages.cmd_confirm"));
-        $form->addButton($msg->getNested("messages.yes"));
-        $form->addButton($msg->getNested("messages.no"));
+        $form->setContent($msg->getNested("Messages.cmd_confirm"));
+        $form->addButton($msg->getNested("Messages.yes"));
+        $form->addButton($msg->getNested("Messages.no"));
         $player->sendForm($form);
     }
 
     // For Commands
-    public function Command(Player $player, $cfg, $categorys, $command)
+    public function Command(Player $player, $cfg, $categorys, $command, $sub, $ans)
     {
-        $items = $cfg[$categorys];
-        foreach ($items["Items"] as $cate => $item2) {
-            $item1[] = $item2;
+        if ($sub != 1) {
+            $items = $cfg[$categorys];
+            foreach ($items["Items"] as $cate => $item2) {
+                $item1[] = $item2;
+            }
+            $list = explode(":", $item1[$command]);
+        }else if ($sub = 1){
+            $items = $cfg[$categorys];
+            $items2 = $items["Sub"];
+            $items3 = $items2[$ans];
+            foreach ($items3["Items"] as $cate => $item2) {
+                $item1[] = $item2;
+            }
+            $list = explode(":", $item1[$command]);
         }
-        $list = explode(":", $item1[$command]);
         if (EconomyAPI::getInstance()->myMoney($player) > $list[2]) {
             if ($list[3] == "Console") {
                 $cmd = str_replace("{player}", $player->getName(), $list[4]);

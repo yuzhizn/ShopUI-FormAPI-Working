@@ -10,7 +10,7 @@ This Plugin uses LibFormAPI
 
 ## Features
 
-
+- ***NEW!***  ***Shop Categories!***
 - Make Unlimited Shops! (with Permissions)
     the commands turns into /shop (default shop in config)
     and /shop <shopname> so Ex. /shop vip will take you to the VIP shop or whatever ones you make.
