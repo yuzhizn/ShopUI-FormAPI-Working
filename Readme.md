@@ -4,9 +4,10 @@
 [![](https://poggit.pmmp.io/shield.dl.total/CustomShopUI)](https://poggit.pmmp.io/p/CustomShopUI)
 [![](https://poggit.pmmp.io/shield.dl/CustomShopUI)](https://poggit.pmmp.io/p/CustomShopUI)
 
-This Plugin uses LibFormAPI
+This Plugin uses LibFormAPI No Need for FormAPI Plugin!
 - Easy to use 
 - Custom, Simple, Free, Active!, Updated!
+![Alt text](icon.png?raw=true "CustomShopUI")
 
 ## Features
 
@@ -26,11 +27,12 @@ This Plugin uses LibFormAPI
 - Enchants (Coming Soon..... "Can be Done Using Commands")
 - Make Suggestions!
 
-Tired of restarting your server every time you need to make a small change?
+#####Tired of restarting your server every time you need to make a small change?
 
 Well......
 
-- The shop.yml can be Edited without server Restart and Take effect Immediately!
+- The shop.yml can be Edited without server Restart and Take effect **Immediately!**
+- **Disclaimer:** If your Editor Saves as you type and someone uses the Shop it will Crash! you must make the changes and then Save them all at once!
 
 ## ImageIndex
 
@@ -43,9 +45,8 @@ If You would like a image on this DataBase Please send me the Image file! Email 
 - founders@saltypixel.ga
 
 ## Important
-- Commands are NEW and could be Buggy but probably not!
 - Requires EconomyAPI by ONEBONE!
-- any issues need to be reported on the github repo in the issues section OR at http://saltypixel.ga in the LiveChat!
+- any issues need to be reported on the github repo in the issues section OR at http://saltypixel.ga in the LiveChat! or BugReport Section!
 
 ## Devs/Info
 

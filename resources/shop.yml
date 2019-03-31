@@ -1,5 +1,5 @@
 ## DO NOT TOUCH (This is for Updates only!)
-shop-version: 3
+shop-version: 4
 # DO NOT TOUCH ^^^^^
 
 #Command Example!!!
@@ -44,6 +44,7 @@ shop: # if you want the shop to have a custom name you must add the options in t
           - "272:0:1:500:0:Default:textures/items/stone_sword"
           - "267:0:1:2000:0:Default:textures/items/iron_sword"
           - "276:0:1:3500:0:Default:textures/items/diamond_sword"
+          - "cmd:Sharpness III:100:Console:enchant {player} protection 3:textures/items/stone_sword"
       1:
         Name: "Bows:textures/items/bow_pulling_2"
         Items:
@@ -104,21 +105,43 @@ shop: # if you want the shop to have a custom name you must add the options in t
           - "313:0:1:25000:0:Default:textures/items/diamond_boots"
   2:
     Name: "Blocks:textures/blocks/dirt"
-    Items:
-      - "4:0:64:50:2:Default:textures/blocks/cobblestone"
-      - "3:0:64:50:1:Default:textures/blocks/dirt"
-      - "1:0:64:12:.5:Default:textures/blocks/stone"
-      - "17:0:64:12:2:Default:textures/blocks/log_oak"
-      - "20:0:64:25:2:Default:textures/blocks/glass"
-      - "24:0:64:15:2:Default:textures/blocks/sandstone_normal"
-      - "98:0:64:15:2:Default:textures/blocks/stonebrick"
-      - "155:0:64:15:2:Default:textures/blocks/quartz_block_side"
-      - "88:0:64:20:0.5:Default:textures/blocks/snow"
-      - "44:0:64:25:3:Default:textures/blocks/stone_slab_side"
-      - "47:0:64:15:2:Default:textures/blocks/bookshelf"
-      - "45:0:64:15:2:Default:textures/blocks/brick"
-      - "87:0:64:15:1:Default:textures/blocks/nether_brick"
-      - "49:0:64:25:3:Default:textures/blocks/obsidian"
+    Sub:
+      0:
+        Name: "Building:textures/blocks/cobblestone"
+        Items:
+          - "4:0:64:50:2:Default:textures/blocks/cobblestone"
+          - "3:0:64:50:1:Default:textures/blocks/dirt"
+          - "1:0:64:12:.5:Default:textures/blocks/stone"
+          - "17:0:64:12:2:Default:textures/blocks/log_oak"
+          - "20:0:64:25:2:Default:textures/blocks/glass"
+          - "24:0:64:15:2:Default:textures/blocks/sandstone_normal"
+          - "98:0:64:15:2:Default:textures/blocks/stonebrick"
+          - "155:0:64:15:2:Default:textures/blocks/quartz_block_side"
+          - "88:0:64:20:0.5:Default:textures/blocks/snow"
+          - "44:0:64:25:3:Default:textures/blocks/stone_slab_side"
+          - "47:0:64:15:2:Default:textures/blocks/bookshelf"
+          - "45:0:64:15:2:Default:textures/blocks/brick"
+          - "87:0:64:15:1:Default:textures/blocks/nether_brick"
+          - "49:0:64:25:3:Default:textures/blocks/obsidian"
+      1:
+        Name: "Decor:http://saltypixel.ga/textures/items/white_wool.png"
+        Items:
+          - "35:0:64:25:1.75:White Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:1:64:25:1.75:Orange Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:2:64:25:1.75:Magenta Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:3:64:25:1.75:Light Blue Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:4:64:25:1.75:Yellow Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:5:64:25:1.75:Lime Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:6:64:25:1.75:Pink Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:7:64:25:1.75:Gray Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:8:64:25:1.75:Light Gray Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:9:64:25:1.75:Cyan Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:10:64:25:1.75:Purple Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:11:64:25:1.75:Blue Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:12:64:l:1.5:Brown Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:13:64:25:1.75:Green Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:14:64:25:1.75:Red Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:15:64:25:1.75:Black Wool:https://saltypixel.ga/textures/items/white_wool.png"
   3:
     Name: "Food & Special:textures/items/apple"
     Items:
@@ -132,9 +155,9 @@ shop: # if you want the shop to have a custom name you must add the options in t
     Name: "Farming:textures/items/stone_hoe"
     Items:
       - "291:0:1:100:1:Default:textures/items/stone_hoe"
-      - "351:15:32:20:1.75:Default:/textures/items/inc_sac"
+      - "351:15:32:20:1.75:Default:/textures/items/ink_sac"
       - "296:0:12:10:2.50:Default:textures/items/seeds_wheat"
-      - "338:0:32:10:2:Default:textures/items/sugar_cane"
+      - "338:0:32:10:2:Default:textures/items/sugar"
       - "362:0:32:10:1.50:Default:textures/items/seeds_melon"
       - "361:0:32:10:2:Default:textures/items/seeds_pumpkin"
       - "391:0:32:5:1:Default:textures/items/carrot"
@@ -158,7 +181,7 @@ shop: # if you want the shop to have a custom name you must add the options in t
       - "351:4:10:1000:1.5:Default:textures/items/lapis_lazuli"
       - "331:0:10:25:3:Default:textures/items/redstone"
   7:
-    Name: "Spawners:http://saltypixel.ga/textures/items/spawner.png"
+    Name: "Spawners:textures/blocks/mob_spawner"
     Items:
       - "52:0:1:100000:50000:Default:textures/blocks/mob_spawner"
       - "383:33:1:15000:5000:Default:textures/items/spawn_egg"
@@ -168,25 +191,6 @@ shop: # if you want the shop to have a custom name you must add the options in t
       - "369:0:64:50:3.5:Default:textures/items/blaze_rod"
       - "352:0:64:50:2.75:Default:textures/items/bone"
       - "262:0:64:50:1.75:Default:textures/items/arrow"
-  8:
-    Name: "Decor:http://saltypixel.ga/textures/items/white_wool.png"
-    Items:
-      - "35:0:64:25:1.75:White Wool:https://saltypixel.ga/textures/items/white_wool.png"
-      - "35:1:64:25:1.75:Orange Wool:https://saltypixel.ga/textures/items/White_wool.png"
-      - "35:2:64:25:1.75:Magenta Wool:https://saltypixel.ga/textures/items/White_wool.png"
-      - "35:3:64:25:1.75:Light Blue Wool:https://saltypixel.ga/textures/items/white_Wool.png"
-      - "35:4:64:25:1.75:Yellow Wool:https://saltypixel.ga/textures/items/White_wool.png"
-      - "35:5:64:25:1.75:Lime Wool:https://saltypixel.ga/textures/items/White_wool.png"
-      - "35:6:64:25:1.75:Pink Wool:https://saltypixel.ga/textures/items/White_wool.png"
-      - "35:7:64:25:1.75:Gray Wool:https://saltypixel.ga/textures/items/White_wool.png"
-      - "35:8:64:25:1.75:Light Gray Wool:https://saltypixel.ga/textures/items/white_wool.png"
-      - "35:9:64:25:1.75:Cyan Wool:https://saltypixel.ga/textures/items/White_wool.png"
-      - "35:10:64:25:1.75:Purple Wool:https://saltypixel.ga/textures/items/white_wool.png"
-      - "35:11:64:25:1.75:Blue Wool:https://saltypixel.ga/textures/items/white_wool.png"
-      - "35:12:64:l:1.5:Brown Wool:https://saltypixel.ga/textures/items/white_wool.png"
-      - "35:13:64:25:1.75:Green Wool:https://saltypixel.ga/textures/items/white_wool.png"
-      - "35:14:64:25:1.75:Red Wool:https://saltypixel.ga/textures/items/white_wool.png"
-      - "35:15:64:25:1.75:Black Wool:https://saltypixel.ga/textures/items/white_wool.png"
 vip: # if you want the shop to have a custom name you must add the options in the Config.yml file if now it will default to ShopUI
   0: #must start at 0 and go up by one with every new category you make.
     Name: "Vip Weapons / Tools:textures/items/stone_sword" #Can use Custom Colors in the Names using the "§" Symbol

@@ -33,9 +33,9 @@ class Shop extends PluginBase
 
     public $msg;
     // For Config Updates!
-    private const CONFIG_VERSION = 4;
+    private const CONFIG_VERSION = 5;
     // For shop Updates!
-    private const SHOP_VERSION = 3;
+    private const SHOP_VERSION = 4;
     // For Message Updates!
     private const MESSAGE_VERSION = 5;
     public function onEnable(): void
@@ -134,7 +134,7 @@ class Shop extends PluginBase
                 if ($data == 0 && $this->getConfig()->get("Category_ExitButton") === true) {
                     $player->sendMessage($msg->getNested("Messages.Thanks2"));
                 } else {
-                    if ($this->getConfig()->get("Category_ExitButton") == true) {
+                    if ($this->getConfig()->get("Category_ExitButton") === true) {
                         $categorys = $data - 1;
                         $this->Items($player, $categorys, $cfg, $ans);
                     } else {
@@ -163,43 +163,59 @@ class Shop extends PluginBase
                 }
             }
         }
-        $form->sendToPlayer($player);
+        $player->sendForm($form);
     }
     public function Items(Player $player, $categorys, $cfg, $ans)
     {
         $form = new SimpleForm(function (Player $player, int $data = null) use ($cfg, $categorys, $ans) : void {
             $items = $cfg[$categorys];
             if (!isset($items["Sub"])) {
-                if ($data == 0 and $this->getConfig()->get("ItemsExit_Button") === true) {
+                if ($data == 0 and $this->getConfig()->get("Items_ExitButton") === true) {
                     $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
                     $this->Category($cfg, $player, $msg, $ans);
                 } else {
+                    if ($this->getConfig()->get("Items_ExitButton") === true){
+                        $command = $data - 1;
+                    }else{
+                        $command = $data;
+                    }
                     foreach ($items["Items"] as $cate => $item) {
                         $list = explode(":", $item);
                     }
                     if ($list[0] == "cmd") {
-                        $command = $data;
                         if ($this->getConfig()->get("command_confirm") === true) {
-                            $this->Commandform($player, $cfg, $categorys, $command);
+                            $sub = 0;
+                            $this->Commandform($player, $cfg, $categorys, $command, $sub, $ans);
                         } else {
-                            $this->Command($player, $cfg, $categorys, $command);
+                            $sub = 0;
+                            $this->Command($player, $cfg, $categorys, $command, $sub, $ans);
                         }
                     } elseif (($list[0] != "cmd")) {
-                        $item = $data;
+                        $item = $command;
                         $sub = 0;
                         $this->Confirmation($player, $cfg, $categorys, $item, $ans, $sub);
                     }
                 }
             }else{
-                $ans = $data;
-                $this->SubItems($player, $categorys, $cfg, $ans);
+                if ($this->getConfig()->get("Category_ExitButton") === true) {
+                    if ($data == 0){
+                        $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                        $this->Category($cfg, $player, $msg, $ans);
+                    }else {
+                        $ans = $data - 1;
+                        $this->SubItems($player, $categorys, $cfg, $ans);
+                    }
+                }else{
+                    $ans = $data;
+                    $this->SubItems($player, $categorys, $cfg, $ans);
+                }
             }
         });
         $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
         $form->setTitle($msg->getNested("Titles.Items"));
-        if ($this->getConfig()->get("ItemsExit_Button") === true) {
+        if ($this->getConfig()->get("Items_ExitButton") === true) {
             $form->addButton($msg->getNested("Messages.ExitButton"));
-        }else {
+        }
             $items = $cfg[$categorys];
             if (!isset($items["Sub"])) {
                 foreach ($items["Items"] as $cate => $item) {
@@ -235,16 +251,20 @@ class Shop extends PluginBase
                     }
                 }
             }
-        }
-        $form->sendToPlayer($player);
+        $player->sendForm($form);
     }
     public function SubItems(Player $player, $categorys, $cfg, $ans)
     {
         $form = new SimpleForm(function (Player $player, int $data = null) use ($cfg, $categorys, $ans) : void {
-            if ($data == 0 and $this->getConfig()->get("ItemsExit_Button") === true) {
+            if ($data == 0 and $this->getConfig()->get("Items_ExitButton") === true) {
                 $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
                 $this->Category($cfg, $player, $msg, $ans);
             } else {
+                if ($this->getConfig()->get("Items_ExitButton") === true){
+                    $command = $data - 1;
+                }else{
+                    $command = $data;
+                }
                 $items = $cfg[$categorys];
                 $items2 = $items["Sub"];
                 $items3 = $items2[$ans];
@@ -252,7 +272,6 @@ class Shop extends PluginBase
                     $list = explode(":", $item);
                 }
                 if ($list[0] == "cmd") {
-                    $command = $data;
                     if ($this->getConfig()->get("command_confirm") === true) {
                         $sub = 1;
                         $this->Commandform($player, $cfg, $categorys, $command, $sub, $ans);
@@ -261,16 +280,16 @@ class Shop extends PluginBase
                         $this->Command($player, $cfg, $categorys, $command, $sub, $ans);
                     }
                 } elseif (($list[0] != "cmd")) {
-                    $item = $data;
+                    $item = $command;
                     $sub = 1;
                     $this->Confirmation($player, $cfg, $categorys, $item, $ans, $sub);
                 }
             }
         });
         $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-        if ($this->getConfig()->get("ItemsExit_Button") === true) {
+        if ($this->getConfig()->get("Items_ExitButton") === true) {
             $form->addButton($msg->getNested("Messages.ExitButton"));
-        }else {
+        }
             $items = $cfg[$categorys];
             $items2 = $items["Sub"];
             if ($ans !== null) {
@@ -304,7 +323,6 @@ class Shop extends PluginBase
                 $player->sendMessage($msg->getNested("Messages.Thanks2"));
             }
         }
-    }
     // For Items
     public function commandform(Player $player, $cfg, $categorys, $command, $sub, $ans)
     {
@@ -504,7 +522,7 @@ class Shop extends PluginBase
             if ($this->getConfig()->getNested("Types.StepSlider") == true) {
                 $form->addStepSlider("Amount", $this->getConfig()->getNested("Types.Slider_Numbers"));
             }
-            $form->sendToPlayer($player);
+            $player->sendForm($form);
         }else{
             $player->sendMessage($msg->getNested("Messages.Thanks2"));
         }

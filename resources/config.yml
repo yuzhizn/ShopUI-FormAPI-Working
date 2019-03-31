@@ -1,5 +1,5 @@
 # DO NOT TO
-config-version: 4
+config-version: 5
 # DO NOT TOUCH^^^^
 
 # When someone closes the shop it shuts completely out they will have to run the command again!
@@ -15,8 +15,8 @@ Survival: false
 Worlds: ["bannedworld1", "bannedworld2"] # You can add as Many as needed
 
 # This adds an Exit Button to Categories Section of Plugin (Recommended to Leave false)
-Category_ExitButton: false
-Items_ExitButton: false
+Category_ExitButton: true
+Items_ExitButton: true
 
 # Turns off Messages like Thanks for Using On Close!
 Thanks: false
