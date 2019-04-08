@@ -7,7 +7,7 @@
 This Plugin uses LibFormAPI No Need for FormAPI Plugin!
 - Easy to use 
 - Custom, Simple, Free, Active!, Updated!
-![Alt text](icon.png?raw=true "CustomShopUI")
+![Alt text](http://saltypixel.ga/icon.png "CustomShopUI")
 
 ## Features
 
