@@ -226,14 +226,14 @@ class Shop extends PluginBase
                         $name = $list[5];
                     }
                     if ($list[0] == "cmd") {
-                        $msg2 = str_replace("{price}", "$list[3]", $msg->getNested("Messages.Each"));
+                        $msg2 = str_replace("{price}", "$list[2]", $msg->getNested("Messages.Each"));
                         if (substr($list[5], 0, 4) == "http") {
                             $form->addButton($list[1] . " " . $msg2, 1, $list[5] . ":" . $list[6]);
                         } else {
                             $form->addButton($list[1] . " " . $msg2, 0, $list[5]);
                         }
                     } else {
-                        $msg2 = str_replace("{price}", "$list[3]", $msg->getNested("Messages.Each"));
+                        $msg2 = str_replace("{price}", "$list[2]", $msg->getNested("Messages.Each"));
                         if (substr($list[6], 0, 4) == "http") {
                             $form->addButton($name . " " . $msg2, 1, $list[6] . ":" . $list[7]);
                         } else {
