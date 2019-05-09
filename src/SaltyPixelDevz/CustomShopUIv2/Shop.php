@@ -180,8 +180,9 @@ class Shop extends PluginBase
                         $command = $data;
                     }
                     foreach ($items["Items"] as $cate => $item) {
-                        $list = explode(":", $item);
+                        $list4[] = $item;
                     }
+                    $list = explode(":", $list4[$command]);
                     if ($list[0] == "cmd") {
                         if ($this->getConfig()->get("command_confirm") === true) {
                             $sub = 0;
@@ -270,8 +271,9 @@ class Shop extends PluginBase
                 $items2 = $items["Sub"];
                 $items3 = $items2[$ans];
                 foreach ($items3["Items"] as $cate => $item) {
-                    $list = explode(":", $item);
+                    $list4[] = $item;
                 }
+                $list = explode(":", $list4[$command]);
                 if ($list[0] == "cmd") {
                     if ($this->getConfig()->get("command_confirm") === true) {
                         $sub = 1;
