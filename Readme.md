@@ -7,7 +7,7 @@
 This Plugin uses LibFormAPI No Need for FormAPI Plugin!
 - Easy to use 
 - Custom, Simple, Free, Active!, Updated!
-![Alt text](http://saltypixel.ga/icon.png "CustomShopUI")
+<img src="https://github.com/AlexPads/ShopUI-FormAPI-Working/blob/master/icon.png?raw=true" width="200"/>
 
 ## Features
 
@@ -24,7 +24,7 @@ This Plugin uses LibFormAPI No Need for FormAPI Plugin!
 - Colors of All Text
 - Commands!
 - Type of Amount Input (Slider, StepSlider, TextBox, Toggle)
-- Enchants (Coming Soon..... "Can be Done Using Commands")
+- Enchants (Supports PiggyCustomEnchants, Vanilla Enchants)
 - Make Suggestions!
 
 #####Tired of restarting your server every time you need to make a small change?
@@ -34,25 +34,18 @@ Well......
 - The shop.yml can be Edited without server Restart and Take effect **Immediately!**
 - **Disclaimer:** If your Editor Saves as you type and someone uses the Shop it will Crash! you must make the changes and then Save them all at once!
 
-## ImageIndex
-
-We have a Website http://saltypixel.ga on there is a Image directory!
-YOU can use this if you dont know what an image is called in the game!
-just go to http://saltypixel.ga/textures/ and find your image!
-This is a Free to use Service and Saves you time 
-
-If You would like a image on this DataBase Please send me the Image file! Email it to:
-- founders@saltypixel.ga
 
 ## Important
 - Requires EconomyAPI by ONEBONE!
-- any issues need to be reported on the github repo in the issues section OR at http://saltypixel.ga in the LiveChat! or BugReport Section!
+- any issues need to be reported on the github repo in the issues section.
 
 ## Devs/Info
 
-- Made by: SaltyPixelDevz
-- TeamMembers(That worked on this Project): AlexPads
-- Discord: https://discord.gg/kVuKY2s
-- Website: http://saltypixel.ga
-- Want to Develop the with the SaltyPixel Dev Team! Contact me on discord! (Link Above) 
-donate at (SaltyPixel.ga Link above!)
+- Made by: WitherHosting &nbsp; 
+
+<img src="https://witherhosting.com/icons/WitherHostingGray.png" width="200"/>
+
+- TeamMembers: AlexPads, JustTalz
+- Discord: https://witherhosting.com/discord
+- Website: https://witherhosting.com
+
