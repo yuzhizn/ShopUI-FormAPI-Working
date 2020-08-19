@@ -150,7 +150,7 @@ class Shop extends PluginBase
             $form->setTitle($this->getConfig()->getNested("Titles.Default"));
         }
         if ($this->getConfig()->get("Category_ExitButton") === true) {
-            $form->addButton($msg->getNested("Messages.Category_ExitButton"));
+            $form->addButton($msg->getNested("Messages.Category_ExitButton"),0,"textures/ui/ps4_face_button_down");
         }
         foreach ($cfg as $cate => $category) {
             if ($category == self::SHOP_VERSION) {
@@ -215,7 +215,7 @@ class Shop extends PluginBase
         $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
         $form->setTitle($msg->getNested("Titles.Items"));
         if ($this->getConfig()->get("Items_ExitButton") === true) {
-            $form->addButton($msg->getNested("Messages.ExitButton"));
+            $form->addButton($msg->getNested("Messages.ExitButton"),0,"textures/ui/ps4_dpad_right");
         }
             $items = $cfg[$categorys];
             if (!isset($items["Sub"])) {
@@ -260,7 +260,7 @@ class Shop extends PluginBase
         $form = new SimpleForm(function (Player $player, int $data = null) use ($cfg, $categorys, $ans) : void {
             if ($data == 0 and $this->getConfig()->get("Items_ExitButton") === true) {
                 $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                $this->Category($cfg, $player, $msg, $ans);
+                $this->Items($player,$categorys ,$cfg,$ans);
             } else {
                 if ($this->getConfig()->get("Items_ExitButton") === true){
                     $command = $data - 1;
@@ -291,7 +291,7 @@ class Shop extends PluginBase
         });
         $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
         if ($this->getConfig()->get("Items_ExitButton") === true) {
-            $form->addButton($msg->getNested("Messages.ExitButton"));
+            $form->addButton($msg->getNested("Messages.ExitButton"),0,"textures/ui/ps4_dpad_right");
         }
             $items = $cfg[$categorys];
             $items2 = $items["Sub"];
@@ -385,11 +385,8 @@ class Shop extends PluginBase
         $form = new CustomForm(function (Player $player, $data) use ($cfg, $categorys, $item, $ans, $sub) {
             if ($data === null) {
                 $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                if (($this->getConfig()->get("Straight_Back") == true)) {
-                    $player->sendMessage($msg->getNested("Messages.Thanks2"));
-                } elseif ($this->getConfig()->get("Back_to_Start") == true) {
-                    $this->Category($cfg, $player, $msg, $ans);
-                }
+                $this->SubItems($player,$categorys,$cfg,$ans);
+                return;
             } else {
                 $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
                 $money = EconomyAPI::getInstance()->myMoney($player);
