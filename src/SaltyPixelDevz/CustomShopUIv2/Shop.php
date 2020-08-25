@@ -385,7 +385,11 @@ class Shop extends PluginBase
         $form = new CustomForm(function (Player $player, $data) use ($cfg, $categorys, $item, $ans, $sub) {
             if ($data === null) {
                 $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                $this->SubItems($player,$categorys,$cfg,$ans);
+                if(isset($cfg[$categorys]["Sub"])){
+                    $this->SubItems($player,$categorys,$cfg,$ans);
+                }else{
+                    $this->Items($player, $categorys, $cfg, $ans);
+                }
                 return;
             } else {
                 $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
