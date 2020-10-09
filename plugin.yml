@@ -2,8 +2,8 @@ name: CustomShopUI
 main: SaltyPixelDevz\CustomShopUIv2\Shop
 version: 4.0.5
 api: [3.0.0]
-author: SaltyPixelDevz
-website: http://saltypixel.ga
+author: WitherHosting
+website: https://witherhosting.com
 depend:
 - EconomyAPI
 commands:
