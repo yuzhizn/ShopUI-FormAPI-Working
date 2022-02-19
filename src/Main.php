@@ -2,49 +2,48 @@
 
 declare(strict_types=1);
 
-namespace SaltyPixelDevz\CustomShopUIv2;
+namespace AlexPads\CustomShopUI;
 
-use onebone\economyapi\EconomyAPI;
 use pmmp\TesterPlugin\TestFailedException;
 use pocketmine\command\ConsoleCommandSender;
 use pocketmine\item\Item;
-use pocketmine\Player;
+use pocketmine\item\ItemFactory;
+use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\CommandSender;
 use pocketmine\command\Command;
 use pocketmine\Server;
 use pocketmine\utils\Config;
-use jojoe77777\FormAPI\SimpleForm;
+use Vecnavium\FormsUI\SimpleForm;
 use pocketmine\utils\TextFormat as TF;
-use jojoe77777\FormAPI\CustomForm;
+use Vecnavium\FormsUI\CustomForm;
 use JackMD\ConfigUpdater\ConfigUpdater;
+use AlexPads\CustomShopUI\economy\EconomyManager;
+use AlexPads\CustomShopUI\economy\EconomyIntegration;
 
-//   _____       _ _         _____ _          _ _____
-//  / ____|     | | |       |  __ (_)        | |  __ \
-// | (___   __ _| | |_ _   _| |__) |__  _____| | |  | | _____   ______
-//  \___ \ / _` | | __| | | |  ___/ \ \/ / _ \ | |  | |/ _ \ \ / /_  /
-//  ____) | (_| | | |_| |_| | |   | |>  <  __/ | |__| |  __/\ V / / /
-// |_____/ \__,_|_|\__|\__, |_|   |_/_/\_\___|_|_____/ \___| \_/ /___|
-//                      __/ |
-//                     |___/
-
-class Shop extends PluginBase
+class Main extends PluginBase
 {
 
     public $msg;
     // For Config Updates!
-    private const CONFIG_VERSION = 5;
+    private const CONFIG_VERSION = 6;
     // For shop Updates!
-    private const SHOP_VERSION = 4;
+    private const SHOP_VERSION = 5;
     // For Message Updates!
     private const MESSAGE_VERSION = 5;
+
     public function onEnable(): void
     {
+
+        //Enable the Economy Management Systems
+        EconomyManager::init($this);
+
         $this->saveDefaultConfig();
         $this->saveResource("messages.yml");
         $this->saveResource("shop.yml");
         $this->checkConfigs();
     }
+
     public function checkConfigs(): void
     {
         if ((!$this->getConfig()->exists("config-version")) || ($this->getConfig()->get("config-version") != self::CONFIG_VERSION)) {
@@ -71,57 +70,49 @@ class Shop extends PluginBase
     }
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool
     {
-        switch ("shop") {
-            case "shop":
-                if ($sender instanceof Player) {
-                    $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                    $cfg = yaml_parse_file($this->getDataFolder() . "shop.yml");
-                    $level = $sender->getLevel()->getName();
-                    $worlds = $this->getConfig()->get("Worlds");
-                        if(in_array($level, $worlds) === true){
-                            $sender->sendMessage($msg->getNested("Messages.BannedinWorld"));
-                        }else {
-                            if (empty($args)) {
-                                $ans = strtolower($this->getConfig()->get("Default-Shop"));
-                                $cfg = $cfg[$ans];
-                                if ($sender->getGamemode() != 0 and $this->getConfig()->get("Survival") === true) {
-                                    $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                                    $sender->sendMessage($msg->getNested("messages.Survival"));
-                                    return true;
-                                } else {
-                                    $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                                    $this->Category($cfg, $sender, $msg, $ans);
-                                    return true;
-                                }
-                            } else if (!empty($args) && $this->getConfig()->get("Multi-Shop") === true) {
-                                $ans = strtolower($args[0]);
-                                if (array_key_exists($ans, $cfg)) {
-                                    $cfg = $cfg[$ans];
-                                    if ($sender->hasPermission("shop.$ans")) {
-                                        if ($sender->getGamemode() != 0 and $this->getConfig()->get("Survival") === true) {
-                                            $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                                            $sender->sendMessage($msg->getNested("messages.Survival"));
-                                            return true;
-                                        } else {
-                                            $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                                            $this->Category($cfg, $sender, $msg, $ans);
-                                            return true;
-                                        }
-                                        break;
-                                    } else if (!$sender->hasPermission("shop.$ans")) {
-                                        $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                                        $sender->sendMessage($msg->getNested("Messages.NoPermission"));
-                                    }
-                                } else {
-                                    $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                                    $sender->sendMessage($msg->getNested("Messages.ShopError"));
-                                }
+        if ($command->getName() == "shop") {
+            if ($sender instanceof Player) {
+                $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                $cfg = yaml_parse_file($this->getDataFolder() . "shop.yml");
+                if (empty($args)) {
+                    $ans = strtolower($this->getConfig()->get("Default-Shop"));
+                    $cfg = $cfg[$ans];
+                    if ($sender->getGamemode() != "Creative" and $this->getConfig()->get("Survival") === true) {
+                        $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                        $sender->sendMessage($msg->getNested("messages.Survival"));
+                        return true;
+                    } else {
+                        $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                        $this->Category($cfg, $sender, $msg, $ans);
+                        return true;
+                    }
+                } else if (!empty($args) && $this->getConfig()->get("Multi-Shop") === true) {
+                    $ans = strtolower($args[0]);
+                    if (array_key_exists($ans, $cfg)) {
+                        $cfg = $cfg[$ans];
+                        if ($sender->hasPermission("shop.$ans")) {
+                            if ($sender->getGamemode() != 0 and $this->getConfig()->get("Survival") === true) {
+                                $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                                $sender->sendMessage($msg->getNested("messages.Survival"));
+                                return true;
+                            } else {
+                                $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                                $this->Category($cfg, $sender, $msg, $ans);
+                                return true;
                             }
+                        } else if (!$sender->hasPermission("shop.$ans")) {
+                            $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                            $sender->sendMessage($msg->getNested("Messages.NoPermission"));
                         }
-                } else {
-                    $sender->sendMessage(TF::RED . "Please use this in-game.");
+                    } else {
+                        $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                        $sender->sendMessage($msg->getNested("Messages.ShopError"));
+                    }
                 }
-                return true;
+            } else {
+                $sender->sendMessage(TF::RED . "Please use this in-game.");
+            }
+            return true;
         }
     }
     public function Category($cfg, Player $player, Config $msg, $ans): void
@@ -222,7 +213,7 @@ class Shop extends PluginBase
                 foreach ($items["Items"] as $cate => $item) {
                     $list = explode(":", $item);
                     if ($list[5] == "Default") {
-                        $name = Item::get((int)$list[0], (int)$list[1], 1)->getName();
+                        $name = ItemFactory::getInstance()->get((int)$list[0], (int)$list[1], 1)->getName();
                     } else {
                         $name = $list[5];
                     }
@@ -300,7 +291,7 @@ class Shop extends PluginBase
                 foreach ($items3["Items"] as $cate => $item) {
                     $list = explode(":", $item);
                     if ($list[5] == "Default") {
-                        $name = Item::get((int)$list[0], (int)$list[1], 1)->getName();
+                        $name = ItemFactory::getInstance()->get((int)$list[0], (int)$list[1], 1)->getName();
                     } else {
                         $name = $list[5];
                     }
@@ -363,22 +354,27 @@ class Shop extends PluginBase
             }
             $list = explode(":", $item1[$command]);
         }
-        if (EconomyAPI::getInstance()->myMoney($player) > $list[2]) {
-            if ($list[3] == "Console") {
-                $cmd = str_replace("{player}", $player->getName(), $list[4]);
-                Server::getInstance()->dispatchCommand(new ConsoleCommandSender(), $cmd);
-                EconomyAPI::getInstance()->reduceMoney($player->getName(), $list[2]);
-            } elseif ($list[3] == "Player") {
-                $cmd = str_replace("{player}", $player->getName(), $list[4]);
-                Server::getInstance()->dispatchCommand($player, $cmd);
-                EconomyAPI::getInstance()->reduceMoney($player->getName(), $list[2]);
+        $economy = EconomyManager::get();
+        $economy->removeMoney($player, $list[2], static function(bool $success) use($cmd, $list, $economy, $player, $msg) : void {
+            if($success){
+                if($player === null){
+                    $economy->addMoney($player, $list[2]);
+                }else{
+                    if ($list[3] == "Console"){
+                        $cmd = str_replace("{player}", $player->getName(), $list[4]);
+                        Server::getInstance()->dispatchCommand(new ConsoleCommandSender(), $cmd);
+                    }
+                    if ($list[3] == "Player"){
+                        $cmd = str_replace("{player}", $player->getName(), $list[4]);
+                        Server::getInstance()->dispatchCommand($player, $cmd);
+                    }
+                }
+            }else{
+                $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+                $player->sendMessage($msg->getNested("Messages.Not_enough_money_command"));
             }
-        } else {
-            $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-            $player->sendMessage($msg->getNested("Messages.Not_enough_money_command"));
-        }
+        });
     }
-    // For Commands
     // For Confirm Form (LONG BOI)
     public function Confirmation(Player $player, $cfg, $categorys, $item, $ans, $sub)
     {
@@ -393,7 +389,6 @@ class Shop extends PluginBase
                 return;
             } else {
                 $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-                $money = EconomyAPI::getInstance()->myMoney($player);
                 $items = $cfg[$categorys];
                 $message = $msg->getNested("Messages.Information");
                 if ($sub != 1) {
@@ -410,7 +405,7 @@ class Shop extends PluginBase
                     }
                     $list = explode(":", $item1[$item]);
                 }
-                $name = Item::get((int)$list[0], (int)$list[1], 1)->getName();
+                $name = ItemFactory::getInstance()->get((int)$list[0], (int)$list[1], 1)->getName();
                 $vars = ["{item}" => $name, "{cost}" => $list[4]];
                 foreach ($vars as $var => $replacement) {
                     $message = str_replace($var, $replacement, $message);
@@ -427,7 +422,6 @@ class Shop extends PluginBase
                         $data1 = $numbers[$data[4]];
                     }
                 }
-
                 if (($this->getConfig()->get("Thanks")) === true) {
                     if ($data1 === null) {
                         $player->sendMessage($msg->getNested("Messages.Thanks2"));
@@ -436,46 +430,54 @@ class Shop extends PluginBase
                     }
                 } else {
                     if ($data[1] == false) {
-                        if ($money >= $list[3] * $data1) {
-                            $item = $player->getInventory();
-                            if ($list[5] != "Default") {
-                                $item->addItem(Item::get((int)$list[0], (int)$list[1], $data1)->setCustomName($list[5]));
-                            } elseif ($list[5] == "Default") {
-                                $item->addItem(Item::get((int)$list[0], (int)$list[1], $data1));
+                        $economy = EconomyManager::get();
+                        $economy->removeMoney($player, $list[3] * $data1, static function(bool $success) use($msg, $name, $data1, $list, $economy, $player) : void {
+                            if($success){
+                                if ($player === null){
+                                    $economy->addMoney($player, $list[3] * $data1);
+                                }else{
+                                    $inventory = $player->getInventory();
+                                    if ($list[5] != "Default") {
+                                        $inventory->addItem(ItemFactory::getInstance()->get((int)$list[0], (int)$list[1], $data1)->setCustomName($list[5]));
+                                    } elseif ($list[5] == "Default") {
+                                        $inventory->addItem(ItemFactory::getInstance()->get((int)$list[0], (int)$list[1], $data1));
+                                    }
+                                    $message = $msg->getNested("Messages.Paid_for");
+                                    $vars = ["{amount}" => $data1, "{item}" => $name, "{cost}" => $list[3] * $data1];
+                                    foreach ($vars as $var => $replacement) {
+                                        $message = str_replace($var, (string)$replacement, $message);
+                                    }
+                                    $player->sendMessage($message);
+                                }
+                            }elseif($player !== null){
+                                $economy->getMoney($player, static function(float $money) use($data1, $player, $msg, $list, $name) : void {
+                                    $message = $msg->getNested("Messages.Not_enough_money");
+                                    $tags = ["{amount}" => $data1, "{item}" => $name, "{cost}" => $list[3] * $data1, "{missing}" => $list[3] * $data1 - $money];
+                                    foreach ($tags as $tag => $replacement) {
+                                        $message = str_replace($tag, (string)$replacement, $message);
+                                    }
+                                    $player->sendMessage($message);
+                                });
                             }
-                            EconomyAPI::getInstance()->reduceMoney($player, $list[3] * $data1);
-                            $message = $msg->getNested("Messages.Paid_for");
-                            $vars = ["{amount}" => $data1, "{item}" => $name, "{cost}" => $list[3] * $data1];
-                            foreach ($vars as $var => $replacement) {
-                                $message = str_replace($var, $replacement, $message);
-                            }
-                            $player->sendMessage($message);
-                        } else {
-                            $message = $msg->getNested("Messages.Not_enough_money");
-                            $tags = ["{amount}" => $data1, "{item}" => $name, "{cost}" => $list[3] * $data1, "{missing}" => $list[3] * $data1 - $money];
-                            foreach ($tags as $tag => $replacement) {
-                                $message = str_replace($tag, $replacement, $message);
-                            }
-                            $player->sendMessage($message);
-                        }
+                        });
                     }
 
-
                     if ($data[1] == true) {
-                        if ($player->getInventory()->contains(Item::get((int)$list[0], (int)$list[1], $data1)) === true) {
-                            $player->getInventory()->removeItem(Item::get((int)$list[0], (int)$list[1], $data1));
-                            EconomyAPI::getInstance()->addMoney($player, $list[4] * $data1);
+                        if ($player->getInventory()->contains(ItemFactory::getInstance()->get((int)$list[0], (int)$list[1], $data1)) === true) {
+                            $player->getInventory()->removeItem(ItemFactory::getInstance()->get((int)$list[0], (int)$list[1], $data1));
+                            $economy = EconomyManager::get();
+                            $economy->addMoney($player, $list[4] * $data1);
                             $message = $msg->getNested("Messages.Paid");
                             $vars = ["{amount}" => $data1, "{item}" => $name, "{pay}" => $list[4] * $data1];
                             foreach ($vars as $var => $replacement) {
-                                $message = str_replace($var, $replacement, $message);
+                                $message = str_replace($var, (string)$replacement, $message);
                             }
                             $player->sendMessage($message);
                         } else {
                             $message = $msg->getNested("Messages.Not_enough_items");
                             $tags = ["{amount}" => $data1, "{item}" => $name, "{pay}" => $list[4] * $data1];
                             foreach ($tags as $tag => $replacement) {
-                                $message = str_replace($tag, $replacement, $message);
+                                $message = str_replace($tag, (string)$replacement, $message);
                             }
                             $player->sendMessage($message);
                         }
@@ -502,7 +504,7 @@ class Shop extends PluginBase
                 }
                 $list = explode(":", $item1[$item]);
             }
-            $name = Item::get((int)$list[0], (int)$list[1], 1)->getName();
+            $name = ItemFactory::getInstance()->get((int)$list[0], (int)$list[1], 1)->getName();
             $vars = ["{item}" => $name, "{cost}" => $list[3], "{sell}" => $list[4]];
             foreach ($vars as $var => $replacement) {
                 $message = str_replace($var, $replacement, $message);
@@ -532,15 +534,4 @@ class Shop extends PluginBase
         }
     }
     // For Confirm Form (LONG BOI)
-
-//    _____       _ _         _____ _          _ _____
-//   / ____|     | | |       |  __ (_)        | |  __ \
-//  | (___   __ _| | |_ _   _| |__) |__  _____| | |  | | _____   ______
-//   \___ \ / _` | | __| | | |  ___/ \ \/ / _ \ | |  | |/ _ \ \ / /_  /
-//   ____) | (_| | | |_| |_| | |   | |>  <  __/ | |__| |  __/\ V / / /
-//  |_____/ \__,_|_|\__|\__, |_|   |_/_/\_\___|_|_____/ \___| \_/ /___|
-//                       __/ |
-//                      |___/
-
-
 }

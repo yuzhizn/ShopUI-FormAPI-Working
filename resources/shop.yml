@@ -1,5 +1,5 @@
 ## DO NOT TOUCH (This is for Updates only!)
-shop-version: 4
+shop-version: 5
 # DO NOT TOUCH ^^^^^
 
 #Command Example!!!
@@ -21,15 +21,14 @@ shop-version: 4
 #  Next Update Finishes Enchants (Can be Done with Commands!)
 #
 #  NEW!!! We have a Minecraft Texture Library on our Website!
-#         Go to: http://saltypixel.gs/textures after that add the item like this:
-#                   http://saltypixel.ga/textures/blocks/tnt_side.png (You can Send us .png files and we will add them!)
+#         Go to: https://minecraft-cdn.witherhosting.com/textures/ after that add the item like this:
+#                   https://minecraft-cdn.witherhosting.com/textures/blocks/tnt_side.png (You can Send us .png files and we will add them!)
 #                          That would Look like this in use!
 #
-#   - "268:0:1:250:0:Default:http://saltypixel.ha/textures/blocks/tnt_side.png"
+#   - "268:0:1:250:0:Default:https://minecraft-cdn.witherhosting.com/textures/blocks/tnt_side.png"
 #
 #
-# Developer: AlexPads Team: SaltyPixelDevz! (hub.saltypixel.ga 19132) Join!
-# NEW!!!!!!!!!! SubCategories!
+# Developer: AlexPads
 #======================================================================================================
 
 # MUST be all Lowercase! RECOMMENDED TO KEEP THIS YOUR DEFAULT SHOP!
@@ -124,28 +123,28 @@ shop: # if you want the shop to have a custom name you must add the options in t
           - "87:0:64:15:1:Default:textures/blocks/nether_brick"
           - "49:0:64:25:3:Default:textures/blocks/obsidian"
       1:
-        Name: "Decor:http://saltypixel.ga/textures/items/white_wool.png"
+        Name: "Decor:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
         Items:
-          - "35:0:64:25:1.75:White Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:1:64:25:1.75:Orange Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:2:64:25:1.75:Magenta Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:3:64:25:1.75:Light Blue Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:4:64:25:1.75:Yellow Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:5:64:25:1.75:Lime Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:6:64:25:1.75:Pink Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:7:64:25:1.75:Gray Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:8:64:25:1.75:Light Gray Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:9:64:25:1.75:Cyan Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:10:64:25:1.75:Purple Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:11:64:25:1.75:Blue Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:12:64:l:1.5:Brown Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:13:64:25:1.75:Green Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:14:64:25:1.75:Red Wool:https://saltypixel.ga/textures/items/white_wool.png"
-          - "35:15:64:25:1.75:Black Wool:https://saltypixel.ga/textures/items/white_wool.png"
+          - "35:0:64:25:1.75:White Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:1:64:25:1.75:Orange Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:2:64:25:1.75:Magenta Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:3:64:25:1.75:Light Blue Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:4:64:25:1.75:Yellow Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:5:64:25:1.75:Lime Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:6:64:25:1.75:Pink Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:7:64:25:1.75:Gray Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:8:64:25:1.75:Light Gray Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:9:64:25:1.75:Cyan Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:10:64:25:1.75:Purple Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:11:64:25:1.75:Blue Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:12:64:l:1.5:Brown Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:13:64:25:1.75:Green Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:14:64:25:1.75:Red Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+          - "35:15:64:25:1.75:Black Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
   3:
     Name: "Food & Special:textures/items/apple"
     Items:
-      - "466:0:1:50000:0:Default:http://saltypixel.ga/textures/items/enchanted_golden_apple.png"
+      - "466:0:1:50000:0:Default:https://minecraft-cdn.witherhosting.com/textures/items/enchanted_golden_apple.png"
       - "322:0:1:15000:0:Default:textures/items/apple_golden"
       - "396:0:1:10000:0:Default:textures/items/carrot_golden"
       - "364:0:16:5:0:Default:textures/items/beef_cooked"
@@ -280,7 +279,7 @@ vip: # if you want the shop to have a custom name you must add the options in th
   3:
     Name: "Vip Food & Special:textures/items/apple"
     Items:
-      - "466:0:1:50000:0:Default:http://saltypixel.ga/textures/items/enchanted_golden_apple.png"
+      - "466:0:1:50000:0:Default:https://minecraft-cdn.witherhosting.com/textures/items/enchanted_golden_apple.png"
       - "322:0:1:15000:0:Default:textures/items/apple_golden"
       - "396:0:1:10000:0:Default:textures/items/carrot_golden"
       - "364:0:16:5:0:Default:textures/items/beef_cooked"
@@ -316,7 +315,7 @@ vip: # if you want the shop to have a custom name you must add the options in th
       - "351:4:10:1000:1.5:Default:textures/items/lapis_lazuli"
       - "331:0:10:25:3:Default:textures/items/redstone"
   7:
-    Name: "Vip Spawners:http://saltypixel.ga/textures/items/spawner.png"
+    Name: "Vip Spawners:https://minecraft-cdn.witherhosting.com/textures/items/spawner.png"
     Items:
       - "52:0:1:100000:50000:Default:textures/blocks/mob_spawner"
       - "383:33:1:15000:5000:Default:textures/items/spawn_egg"
@@ -327,21 +326,21 @@ vip: # if you want the shop to have a custom name you must add the options in th
       - "352:0:64:50:2.75:Default:textures/items/bone"
       - "262:0:64:50:1.75:Default:textures/items/arrow"
   8:
-    Name: "Vip Decor:http://saltypixel.ga/textures/items/white_wool.png"
+    Name: "Vip Decor:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
     Items:
-      - "35:0:64:25:1.75:White Wool:https://saltypixel.ga/textures/items/white_wool.png"
-      - "35:1:64:25:1.75:Orange Wool:https://saltypixel.ga/textures/items/White_wool.png"
-      - "35:2:64:25:1.75:Magenta Wool:https://saltypixel.ga/textures/items/White_wool.png"
-      - "35:3:64:25:1.75:Light Blue Wool:https://saltypixel.ga/textures/items/white_Wool.png"
-      - "35:4:64:25:1.75:Yellow Wool:https://saltypixel.ga/textures/items/White_wool.png"
-      - "35:5:64:25:1.75:Lime Wool:https://saltypixel.ga/textures/items/White_wool.png"
-      - "35:6:64:25:1.75:Pink Wool:https://saltypixel.ga/textures/items/White_wool.png"
-      - "35:7:64:25:1.75:Gray Wool:https://saltypixel.ga/textures/items/White_wool.png"
-      - "35:8:64:25:1.75:Light Gray Wool:https://saltypixel.ga/textures/items/white_wool.png"
-      - "35:9:64:25:1.75:Cyan Wool:https://saltypixel.ga/textures/items/White_wool.png"
-      - "35:10:64:25:1.75:Purple Wool:https://saltypixel.ga/textures/items/white_wool.png"
-      - "35:11:64:25:1.75:Blue Wool:https://saltypixel.ga/textures/items/white_wool.png"
-      - "35:12:64:l:1.5:Brown Wool:https://saltypixel.ga/textures/items/white_wool.png"
-      - "35:13:64:25:1.75:Green Wool:https://saltypixel.ga/textures/items/white_wool.png"
-      - "35:14:64:25:1.75:Red Wool:https://saltypixel.ga/textures/items/white_wool.png"
-      - "35:15:64:25:1.75:Black Wool:https://saltypixel.ga/textures/items/white_wool.png"
+      - "35:0:64:25:1.75:White Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+      - "35:1:64:25:1.75:Orange Wool:https://minecraft-cdn.witherhosting.com/textures/items/White_wool.png"
+      - "35:2:64:25:1.75:Magenta Wool:https://minecraft-cdn.witherhosting.com/textures/items/White_wool.png"
+      - "35:3:64:25:1.75:Light Blue Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_Wool.png"
+      - "35:4:64:25:1.75:Yellow Wool:https://minecraft-cdn.witherhosting.com/textures/items/White_wool.png"
+      - "35:5:64:25:1.75:Lime Wool:https://minecraft-cdn.witherhosting.com/textures/items/White_wool.png"
+      - "35:6:64:25:1.75:Pink Wool:https://minecraft-cdn.witherhosting.com/textures/items/White_wool.png"
+      - "35:7:64:25:1.75:Gray Wool:https://minecraft-cdn.witherhosting.com/textures/items/White_wool.png"
+      - "35:8:64:25:1.75:Light Gray Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+      - "35:9:64:25:1.75:Cyan Wool:https://minecraft-cdn.witherhosting.com/textures/items/White_wool.png"
+      - "35:10:64:25:1.75:Purple Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+      - "35:11:64:25:1.75:Blue Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+      - "35:12:64:l:1.5:Brown Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+      - "35:13:64:25:1.75:Green Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+      - "35:14:64:25:1.75:Red Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"
+      - "35:15:64:25:1.75:Black Wool:https://minecraft-cdn.witherhosting.com/textures/items/white_wool.png"

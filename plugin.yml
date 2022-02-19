@@ -1,15 +1,16 @@
+---
 name: CustomShopUI
-main: SaltyPixelDevz\CustomShopUIv2\Shop
-version: 4.0.5
-api: [3.0.0]
-author: WitherHosting
-website: https://witherhosting.com
-depend:
-- EconomyAPI
+version: 0.0.1
+main: AlexPads\CustomShopUI\Main
+api: 4.2.0
+src-namespace-prefix: AlexPads\CustomShopUI
 commands:
-  shop:
-    description: "Opens CustomShopUI"
+ shop:
+  description: Opens the CustomShopUI
+  usage: "/shop"
+  permission: shop.shop
 permissions:
-  shop.shop:
-    default: true
-    description: "Allows use of the /shop command"
+ shop.shop:
+  default: true
+  description: "Allows user to open the shop using the /shop command"
+...

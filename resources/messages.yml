@@ -16,7 +16,7 @@ Messages:
   BuySell: "Buy/Sell for {sell}$ Each" # The words next to the Toggle Switch
 
   # You can Also add {sell} to here if you prefer it in the message up top.
-  Information: "§7Item: §b{item}\n§7Buy price: §b{cost}§7,Sell price: §b{sell}
+  Information: "§7Item: §b{item}\n§7Buy price: §b{cost}§7,Sell price: §b{sell}"
   ## You can use {amount}, {item} and {cost} here.
   Paid_for: "You Bought {amount}x {item} for {cost}."
   ## You can use {amount}, {item}, {cost}, and {missing} here.
