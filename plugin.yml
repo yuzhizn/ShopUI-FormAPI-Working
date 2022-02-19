@@ -3,7 +3,6 @@ name: CustomShopUI
 version: 5.0.0
 main: AlexPads\CustomShopUI\Main
 api: 4.0.0
-src-namespace-prefix: AlexPads\CustomShopUI
 commands:
  shop:
   description: Opens the CustomShopUI
