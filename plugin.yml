@@ -1,6 +1,6 @@
 ---
 name: CustomShopUI
-version: 5.0.0
+version: 5.0.1
 main: AlexPads\CustomShopUI\Main
 api: 4.0.0
 commands:
