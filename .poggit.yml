@@ -3,7 +3,7 @@ build-by-default: true
 branches:
 - master
 projects:
-  CustomShopUI:
+  ShopUI-FormAPI-Working:
     path: ""
     libs:
     - src: Vecnavium/FormsUI/FormsUI
