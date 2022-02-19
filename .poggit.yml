@@ -8,4 +8,5 @@ projects:
     libs:
     - src: Vecnavium/FormsUI/FormsUI
       version: ^1.0.0
+php-stan: false
 ...
