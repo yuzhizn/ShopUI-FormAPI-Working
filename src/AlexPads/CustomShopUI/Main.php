@@ -91,7 +91,7 @@ class Main extends PluginBase
                     if (array_key_exists($ans, $cfg)) {
                         $cfg = $cfg[$ans];
                         if ($sender->hasPermission("shop.$ans")) {
-                            if ($sender->getGamemode() != 0 and $this->getConfig()->get("Survival") === true) {
+                            if ($sender->getGamemode()->getValue() != 0 && $this->getConfig()->get("Survival") === true) {
                                 $msg = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
                                 $sender->sendMessage($msg->getNested("messages.Survival"));
                                 return true;
